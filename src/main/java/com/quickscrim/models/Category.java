@@ -12,26 +12,18 @@ public class Category {
 
     @Column(nullable = false)
     private String sport;
+    
+    @Column(nullable = false)
+    private String iconIMG;
 
 
+    @OneToOne
+    private Event sportOFEvent;
 
-    public Category(String sport) {
-        this.sport = sport;
-    }
+    @OneToOne
+    private Post sportOfPost;
 
-    public long getId() {
-        return id;
-    }
+    @OneToOne
+    private Team sportOfTeam;
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getSport() {
-        return sport;
-    }
-
-    public void setSport(String sport) {
-        this.sport = sport;
-    }
 }

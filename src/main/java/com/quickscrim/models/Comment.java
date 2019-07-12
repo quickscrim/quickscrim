@@ -21,34 +21,8 @@ public class Comment {
     @Column(nullable = false)
     private Date dateCreated;
 
+    @OneToOne
+    private User commentAuthor;
 
 
-    public Comment(String body, Date dateCreated) {
-        this.body = body;
-        this.dateCreated = dateCreated;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getBody() {
-        return body;
-    }
-
-    public void setBody(String body) {
-        this.body = body;
-    }
-
-    public Date getDateCreated() {
-        return dateCreated;
-    }
-
-    public void setDateCreated(Date dateCreated) {
-        this.dateCreated = dateCreated;
-    }
 }
