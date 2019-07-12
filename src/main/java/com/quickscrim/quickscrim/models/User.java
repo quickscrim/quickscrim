@@ -11,7 +11,7 @@ public class User {
     @GeneratedValue
     private long id;
 
-    @Column(nullable = false, length = 24, unique = true)
+    @Column(nullable = false, length = 50, unique = true)
     private String username;
 
     @Column(nullable = false, unique = true)
@@ -24,10 +24,10 @@ public class User {
     private Boolean isAdmin;
 
     @Column(nullable = false)
-    private String firstname;
+    private String firstName;
 
     @Column(nullable = false)
-    private String lastname;
+    private String lastName;
 
     @Column(nullable = false)
     private String city;
@@ -38,18 +38,18 @@ public class User {
     @Column(nullable = false)
     private String image;
 
-    @Column(nullable = false, length = 1000)
+    @Column(nullable = false)
     private String bio;
 
 
 
-    public User(String username, String email, String password, Boolean isAdmin, String firstname, String lastname, String city, String state, String image, String bio) {
+    public User(String username, String email, String password, Boolean isAdmin, String firstName, String lastname, String city, String state, String image, String bio) {
         this.username = username;
         this.email = email;
         this.password = password;
         this.isAdmin = isAdmin;
-        this.firstname = firstname;
-        this.lastname = lastname;
+        this.firstName = firstName;
+        this.lastName = lastname;
         this.city = city;
         this.State = state;
         this.image = image;
@@ -96,20 +96,20 @@ public class User {
         isAdmin = admin;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getfirstName() {
+        return firstName;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setfirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastname() {
-        return lastname;
+        return lastName;
     }
 
     public void setLastname(String lastname) {
-        this.lastname = lastname;
+        this.lastName = lastname;
     }
 
     public String getCity() {

@@ -13,7 +13,7 @@ public class Comment {
     @GeneratedValue
     private long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 8000)
     private String body;
 
     @CreationTimestamp
