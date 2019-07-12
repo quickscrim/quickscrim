@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table
-public class Group {
+public class Team {
 
     @Id
     @GeneratedValue
@@ -15,7 +15,7 @@ public class Group {
 
 
 
-    public Group(String name) {
+    public Team(String name) {
         this.name = name;
     }
 
