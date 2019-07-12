@@ -1,4 +1,4 @@
-package com.quickscrim.quicksrim;
+package com.quickscrim;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
