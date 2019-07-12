@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.quickscrim</groupId>
-    <artifactId>quicksrim</artifactId>
+    <artifactId>quickscrim</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>quickscrim</name>
     <description>An application that connects people through sports</description>
@@ -30,7 +30,6 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
 
     </dependencies>
 
