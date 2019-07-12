@@ -1,4 +1,4 @@
-package com.quickscrim.quicksrim.models;
+package com.quickscrim.quickscrim.models;
 
 
 import javax.persistence.Column;
@@ -13,7 +13,7 @@ public class User {
     @GeneratedValue
     private long id;
 
-
+    @Column(nullable = false, length = )
     private String username;
 
 

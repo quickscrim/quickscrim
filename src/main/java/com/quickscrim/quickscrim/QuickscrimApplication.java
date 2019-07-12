@@ -1,13 +1,13 @@
-package com.quickscrim.quicksrim;
+package com.quickscrim.quickscrim;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class QuicksrimApplication {
+public class QuickscrimApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(QuicksrimApplication.class, args);
+        SpringApplication.run(QuickscrimApplication.class, args);
     }
 
 }

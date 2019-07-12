@@ -11,7 +11,7 @@
     <groupId>com.quickscrim</groupId>
     <artifactId>quicksrim</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>quicksrim</name>
+    <name>quickscrim</name>
     <description>An application that connects people through sports</description>
 
     <properties>
