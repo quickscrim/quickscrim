@@ -41,6 +41,8 @@ public class User {
     @Column(nullable = false, length = 1000)
     private String bio;
 
+
+
     public User(String username, String email, String password, Boolean isAdmin, String firstname, String lastname, String city, String state, String image, String bio) {
         this.username = username;
         this.email = email;
