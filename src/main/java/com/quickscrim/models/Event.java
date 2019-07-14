@@ -33,4 +33,5 @@ public class Event {
     @OneToOne
     private User eventCreator;
 
+
 }

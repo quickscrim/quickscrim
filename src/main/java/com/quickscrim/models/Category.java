@@ -26,4 +26,7 @@ public class Category {
     @OneToOne
     private Team sportOfTeam;
 
+    @ManyToOne
+    private User userFavSports;
+
 }

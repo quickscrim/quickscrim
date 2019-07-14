@@ -45,5 +45,19 @@ public class User {
     @OneToMany(mappedBy = "usersports")
     private List<Category> favSports;
 
+    @OneToMany(mappedBy = "postByUser")
+    private List<Post> userPosts;
+
+    @OneToMany(mappedBy = "commentByUser")
+    private List<Comment> userComments;
+
+    @OneToMany(mappedBy = "eventByUser")
+    private List<Event> userEvents;
+
+    @OneToMany(mappedBy = "teamByUser")
+    private List<Team> userTeams;
+
+
+
 
 }

@@ -1,7 +1,10 @@
 package com.quickscrim.models;
 
+import org.hibernate.validator.constraints.EAN;
+
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table
@@ -23,6 +26,12 @@ public class Post {
 
     @OneToOne
     private User postAuthor;
+
+    @OneToOne
+    private Category postCategory;
+
+    @OneToMany(mappedBy = "commentOnPost")
+    private List<Comment> postComments;
 
 
 

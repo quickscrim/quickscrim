@@ -24,5 +24,8 @@ public class Comment {
     @OneToOne
     private User commentAuthor;
 
+    @ManyToOne
+    private Post comments;
+
 
 }
