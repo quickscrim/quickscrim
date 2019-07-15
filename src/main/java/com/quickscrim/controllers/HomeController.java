@@ -11,6 +11,6 @@ public class HomeController {
     @GetMapping("/")
     @ResponseBody
     public String index() {
-        return "test";
+        return "nat_test";
     }
 }
