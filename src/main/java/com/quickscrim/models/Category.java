@@ -1,6 +1,7 @@
 package com.quickscrim.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table
@@ -26,16 +27,16 @@ public class Category {
     @OneToOne
     private Team sportOfTeam;
 
-    @ManyToOne
-    private User userSports;
+    @ManyToMany(mappedBy = "favSports")
+    private List<User> favSports;
 
-    public Category(String sport, String iconIMG, Event sportOFEvent, Post sportOfPost, Team sportOfTeam, User userSports) {
+    public Category(String sport, String iconIMG, Event sportOFEvent, Post postCategory, Team sportOfTeam, List<User> favSports) {
         this.sport = sport;
         this.iconIMG = iconIMG;
         this.sportOFEvent = sportOFEvent;
-        this.postCategory = sportOfPost;
+        this.postCategory = postCategory;
         this.sportOfTeam = sportOfTeam;
-        this.userSports = userSports;
+        this.favSports = favSports;
     }
 
     public long getId() {
@@ -70,12 +71,12 @@ public class Category {
         this.sportOFEvent = sportOFEvent;
     }
 
-    public Post getSportOfPost() {
+    public Post getPostCategory() {
         return postCategory;
     }
 
-    public void setSportOfPost(Post sportOfPost) {
-        this.postCategory = sportOfPost;
+    public void setPostCategory(Post postCategory) {
+        this.postCategory = postCategory;
     }
 
     public Team getSportOfTeam() {
@@ -86,11 +87,11 @@ public class Category {
         this.sportOfTeam = sportOfTeam;
     }
 
-    public User getuserSports() {
-        return userSports;
+    public List<User> getFavSports() {
+        return favSports;
     }
 
-    public void setuserSports(User userSports) {
-        this.userSports = userSports;
+    public void setFavSports(List<User> favSports) {
+        this.favSports = favSports;
     }
 }
