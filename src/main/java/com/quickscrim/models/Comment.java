@@ -22,10 +22,56 @@ public class Comment {
     private Date dateCreated;
 
     @OneToOne
-    private User commentAuthor;
+    private User commentByUser;
 
     @ManyToOne
-    private Post comments;
+    private Post commentOnPost;
 
 
+    public Comment(String body, Date dateCreated, User commentAuthor, Post comments) {
+        this.body = body;
+        this.dateCreated = dateCreated;
+        this.commentByUser = commentAuthor;
+        this.commentOnPost = comments;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getBody() {
+        return body;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
+    }
+
+    public Date getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(Date dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
+    public User getCommentAuthor() {
+        return commentByUser;
+    }
+
+    public void setCommentAuthor(User commentAuthor) {
+        this.commentByUser = commentAuthor;
+    }
+
+    public Post getComments() {
+        return commentOnPost;
+    }
+
+    public void setComments(Post comments) {
+        this.commentOnPost = comments;
+    }
 }

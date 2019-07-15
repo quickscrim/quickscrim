@@ -31,7 +31,80 @@ public class Event {
     private int howOften;
 
     @OneToOne
-    private User eventCreator;
+    private User eventByUser;
 
 
+    public Event(String eventName, String description, Date eventDate, int locationApi, boolean recurring, int howOften, User eventCreator) {
+        this.eventName = eventName;
+        this.description = description;
+        this.eventDate = eventDate;
+        this.locationApi = locationApi;
+        this.recurring = recurring;
+        this.howOften = howOften;
+        this.eventByUser = eventCreator;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getEventName() {
+        return eventName;
+    }
+
+    public void setEventName(String eventName) {
+        this.eventName = eventName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Date getEventDate() {
+        return eventDate;
+    }
+
+    public void setEventDate(Date eventDate) {
+        this.eventDate = eventDate;
+    }
+
+    public int getLocationApi() {
+        return locationApi;
+    }
+
+    public void setLocationApi(int locationApi) {
+        this.locationApi = locationApi;
+    }
+
+    public boolean isRecurring() {
+        return recurring;
+    }
+
+    public void setRecurring(boolean recurring) {
+        this.recurring = recurring;
+    }
+
+    public int getHowOften() {
+        return howOften;
+    }
+
+    public void setHowOften(int howOften) {
+        this.howOften = howOften;
+    }
+
+    public User getEventCreator() {
+        return eventByUser;
+    }
+
+    public void setEventCreator(User eventCreator) {
+        this.eventByUser = eventCreator;
+    }
 }

@@ -42,7 +42,7 @@ public class User {
     @Column(nullable = false)
     private String bio;
 
-    @OneToMany(mappedBy = "usersports")
+    @OneToMany(mappedBy = "userSports")
     private List<Category> favSports;
 
     @OneToMany(mappedBy = "postByUser")
