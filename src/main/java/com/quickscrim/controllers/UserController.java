@@ -19,7 +19,7 @@ public class UserController {
         this.passwordEncoder = passwordEncoder;
     }
 
-    @GetMapping("user/register")
+    @GetMapping("/register")
     public String register(Model model) {
         model.addAttribute("user", new User());
         return "user/register";
