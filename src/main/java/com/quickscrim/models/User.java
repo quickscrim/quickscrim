@@ -34,7 +34,7 @@ public class User {
     private String city;
 
     @Column(nullable = false)
-    private String State;
+    private String state;
 
     @Column(nullable = false)
     private String image;
@@ -67,6 +67,29 @@ public class User {
     )
     private List<Team> userTeams;
 
+
+    public User() {
+    }
+
+    public User(User copy) {
+        this.id = copy.id;
+        this.username = copy.username;
+        this.email = copy.email;
+        this.password = copy.password;
+        this.isAdmin = copy.isAdmin;
+        this.firstName = copy.firstName;
+        this.lastName = copy.lastName;
+        this.city = copy.city;
+        this.state = copy.state;
+        this.image = copy.image;
+        this.bio = copy.bio;
+        this.favSports = copy.favSports;
+        this.userPosts = copy.userPosts;
+        this.userComments = copy.userComments;
+        this.userEvents = copy.userEvents;
+        this.userTeams = copy.userTeams;
+    }
+
     public User(String username, String email, String password, Boolean isAdmin, String firstName, String lastName, String city, String state, String image, String bio, List<Category> favSports, List<Post> userPosts, List<Comment> userComments, List<Event> userEvents, List<Team> userTeams) {
         this.username = username;
         this.email = email;
@@ -75,7 +98,7 @@ public class User {
         this.firstName = firstName;
         this.lastName = lastName;
         this.city = city;
-        State = state;
+        this.state = state;
         this.image = image;
         this.bio = bio;
         this.favSports = favSports;
@@ -150,11 +173,11 @@ public class User {
     }
 
     public String getState() {
-        return State;
+        return state;
     }
 
     public void setState(String state) {
-        State = state;
+        state = state;
     }
 
     public String getImage() {
