@@ -1,7 +1,10 @@
 package com.quickscrim.models;
 
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -13,12 +16,17 @@ public class User {
     private long id;
 
     @Column(nullable = false, length = 50, unique = true)
+    @NotBlank(message = "User must enter username.")
+    @Size(min = 4, message = "Username must be at least 4 characters.")
     private String username;
 
     @Column(nullable = false, unique = true)
+    @NotBlank(message = "Must enter email.")
     private String email;
 
     @Column(nullable = false)
+    @NotBlank(message = "Must enter password to register.")
+    @Size(min = 5, max = 20, message = "Your password must be 8-20 characters long, contain letters and numbers, and must NOT contain spaces, special characters, or emoji.")
     private String password;
 
     @Column
