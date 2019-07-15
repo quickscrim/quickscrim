@@ -1,6 +1,7 @@
 package com.quickscrim.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table
@@ -13,13 +14,13 @@ public class Team {
     @Column(nullable = false)
     private String name;
 
-    @ManyToOne
-    private User teamByUser;
+    @ManyToMany(mappedBy = "userTeams")
+    private List<User> userTeams;
 
 
-    public Team(String name, User usersTeams) {
+    public Team(String name, List<User> userTeams) {
         this.name = name;
-        this.teamByUser = usersTeams;
+        this.userTeams = userTeams;
     }
 
     public long getId() {
@@ -38,11 +39,11 @@ public class Team {
         this.name = name;
     }
 
-    public User getUsersTeams() {
-        return teamByUser;
+    public List<User> getUserTeams() {
+        return userTeams;
     }
 
-    public void setUsersTeams(User usersTeams) {
-        this.teamByUser = usersTeams;
+    public void setUserTeams(List<User> userTeams) {
+        this.userTeams = userTeams;
     }
 }
