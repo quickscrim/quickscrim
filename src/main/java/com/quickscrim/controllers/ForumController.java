@@ -6,18 +6,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ForumController {
 
-    @GetMapping("/forum/category")
+    @GetMapping("forum/select")
     public String CategorySelect() {
         return "forum/category";
     }
 
-    @GetMapping("/forum/posts")
+    @GetMapping("forum/posts{category}")
         public String Posts() {
         return "forum/posts";
     }
-
-
-
-
 
 }
