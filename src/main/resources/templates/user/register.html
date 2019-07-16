@@ -2,9 +2,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>Title</title>
+    <title>Register</title>
+    <div th:include="fragments/header :: header (Register) "></div>
 </head>
 <body>
+<nav th:replace="fragments/navbar :: navbar"></nav>
 
 
 <h1>Create an account</h1>
@@ -29,5 +31,7 @@
             <button type="submit" class="btn btn-primary">Sign me up!</button>
         </form>
     </main>
+
+<div th:include="fragments/footer :: footer"></div>
 </body>
 </html>
