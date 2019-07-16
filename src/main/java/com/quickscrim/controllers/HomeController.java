@@ -12,13 +12,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String index() {
-<<<<<<< HEAD
-
-        return "home";
-
-=======
         return "index";
->>>>>>> origin/master
     }
 
 
