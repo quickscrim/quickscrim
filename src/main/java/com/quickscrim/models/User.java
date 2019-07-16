@@ -21,25 +21,25 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false)
+    @Column
     private Boolean isAdmin;
 
-    @Column(nullable = false)
+    @Column
     private String firstName;
 
-    @Column(nullable = false)
+    @Column
     private String lastName;
 
-    @Column(nullable = false)
+    @Column
     private String city;
 
-    @Column(nullable = false)
+    @Column
     private String state;
 
-    @Column(nullable = false)
+    @Column
     private String image;
 
-    @Column(nullable = false)
+    @Column
     private String bio;
 
     @ManyToMany(cascade = CascadeType.ALL)
@@ -88,6 +88,12 @@ public class User {
         this.userComments = copy.userComments;
         this.userEvents = copy.userEvents;
         this.userTeams = copy.userTeams;
+    }
+
+    public User(String username, String email, String password) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
     }
 
     public User(String username, String email, String password, Boolean isAdmin, String firstName, String lastName, String city, String state, String image, String bio, List<Category> favSports, List<Post> userPosts, List<Comment> userComments, List<Event> userEvents, List<Team> userTeams) {
