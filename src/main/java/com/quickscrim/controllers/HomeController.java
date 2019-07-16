@@ -1,18 +1,27 @@
+
 package com.quickscrim.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @Controller
 public class HomeController {
 
+
+//    Landing Page for Users
+
     @GetMapping("/")
-    @ResponseBody
     public String index() {
-
-        return "home";
-
+        return "index";
     }
+
+
+//    Landing Page after a User sucessfully loggs in
+
+    @GetMapping("/home")
+    public String homePageforUsers(){
+        return "user/home";
+    }
+
 }
