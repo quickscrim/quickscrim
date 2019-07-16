@@ -33,6 +33,7 @@ public class Post {
     @OneToMany(mappedBy = "commentOnPost")
     private List<Comment> postComments;
 
+    public Post() {}
 
     public Post(String title, String body, Date date, User postAuthor, Category postCategory, List<Comment> postComments) {
         this.title = title;
