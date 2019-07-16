@@ -1,7 +1,10 @@
 package com.quickscrim.models;
 
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -13,33 +16,38 @@ public class User {
     private long id;
 
     @Column(nullable = false, length = 50, unique = true)
+    @NotBlank(message = "User must enter username.")
+    @Size(min = 4, message = "Username must be at least 4 characters.")
     private String username;
 
     @Column(nullable = false, unique = true)
+    @NotBlank(message = "Must enter email.")
     private String email;
 
     @Column(nullable = false)
+    @NotBlank(message = "Must enter password to register.")
+    @Size(min = 8, max = 20, message = "Your password must be 8-20 characters long, contain letters and numbers, and must NOT contain spaces, special characters, or emoji.")
     private String password;
 
-    @Column(nullable = false)
+    @Column
     private Boolean isAdmin;
 
-    @Column(nullable = false)
+    @Column
     private String firstName;
 
-    @Column(nullable = false)
+    @Column
     private String lastName;
 
-    @Column(nullable = false)
+    @Column
     private String city;
 
-    @Column(nullable = false)
-    private String State;
+    @Column
+    private String state;
 
-    @Column(nullable = false)
+    @Column
     private String image;
 
-    @Column(nullable = false)
+    @Column
     private String bio;
 
     @ManyToMany(cascade = CascadeType.ALL)
@@ -67,6 +75,35 @@ public class User {
     )
     private List<Team> userTeams;
 
+
+    public User() {
+    }
+
+    public User(User copy) {
+        this.id = copy.id;
+        this.username = copy.username;
+        this.email = copy.email;
+        this.password = copy.password;
+        this.isAdmin = copy.isAdmin;
+        this.firstName = copy.firstName;
+        this.lastName = copy.lastName;
+        this.city = copy.city;
+        this.state = copy.state;
+        this.image = copy.image;
+        this.bio = copy.bio;
+        this.favSports = copy.favSports;
+        this.userPosts = copy.userPosts;
+        this.userComments = copy.userComments;
+        this.userEvents = copy.userEvents;
+        this.userTeams = copy.userTeams;
+    }
+
+    public User(String username, String email, String password) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
+
     public User(String username, String email, String password, Boolean isAdmin, String firstName, String lastName, String city, String state, String image, String bio, List<Category> favSports, List<Post> userPosts, List<Comment> userComments, List<Event> userEvents, List<Team> userTeams) {
         this.username = username;
         this.email = email;
@@ -75,7 +112,7 @@ public class User {
         this.firstName = firstName;
         this.lastName = lastName;
         this.city = city;
-        State = state;
+        this.state = state;
         this.image = image;
         this.bio = bio;
         this.favSports = favSports;
@@ -150,11 +187,11 @@ public class User {
     }
 
     public String getState() {
-        return State;
+        return state;
     }
 
     public void setState(String state) {
-        State = state;
+        state = state;
     }
 
     public String getImage() {
