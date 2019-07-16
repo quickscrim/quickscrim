@@ -67,13 +67,13 @@ public class ForumController {
         return "redirect:/posts";
     }
 
-    @GetMapping("forum/posts/{id}/edit")
+    @GetMapping("/posts/{id}/edit")
     public String getEdit(@PathVariable long id, Model model) {
         model.addAttribute("post", postService.getPost(id));
         return "posts/edit";
     }
 
-    @PostMapping("forum/posts/{id}/edit")
+    @PostMapping("/posts/{id}/edit")
     public String postEdit(@PathVariable long id, @ModelAttribute Post post) {
         postService.save(post);
         return "redirect:/posts/{id}";
