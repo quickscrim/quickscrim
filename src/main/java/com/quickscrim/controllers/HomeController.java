@@ -17,7 +17,7 @@ public class HomeController {
     }
 
 
-//    Landing Page after a User sucessfully loggs in
+//    Landing Page after a User sucessfully logs in
 
     @GetMapping("/home")
     public String homePageforUsers(){

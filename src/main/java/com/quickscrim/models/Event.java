@@ -1,5 +1,7 @@
 package com.quickscrim.models;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -17,7 +19,7 @@ public class Event {
     @Column(nullable = false, length = 8000)
     private String description;
 
-    @Temporal(TemporalType.TIMESTAMP)
+   @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     @Column(nullable = false)
     private Date eventDate;
 
@@ -42,6 +44,15 @@ public class Event {
         this.recurring = recurring;
         this.howOften = howOften;
         this.eventByUser = eventCreator;
+    }
+
+    public Event() { }
+
+    public Event(String eventName, String description, Date eventDate, int locationApi) {
+        this.eventName = eventName;
+        this.description = description;
+        this.eventDate = eventDate;
+        this.locationApi = locationApi;
     }
 
     public long getId() {
