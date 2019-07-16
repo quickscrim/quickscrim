@@ -26,7 +26,7 @@ public class User {
 
     @Column(nullable = false)
     @NotBlank(message = "Must enter password to register.")
-    @Size(min = 8, max = 20, message = "Your password must be 8-20 characters long, contain letters and numbers, and must NOT contain spaces, special characters, or emoji.")
+    @Size(min = 8, message = "Your password must be at least 8 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.\n")
     private String password;
 
     @Column
