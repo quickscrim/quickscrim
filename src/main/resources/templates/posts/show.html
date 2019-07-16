@@ -1,10 +1,43 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+
+<div class="container">
+
+    <div class="row">
+        <div class="column"><h2 th:text="${post.getTitle()}"></h2></div>
+    </div>
+
+    <div class="row">
+        <div class="column"><em><h6 th:text="'Authored by ' + ${post.getPostAuthor().getUsername()}"></h6></em></div>
+    </div>
+
+    <hr/>
+
+    <div class="row">
+        <div class="column">
+            <blockquote>
+                <p th:text="${post.getBody()}"></p>
+            </blockquote>
+        </div>
+    </div>
+
+    <hr/>
+
+    <div class="row" sec:authorize="isAuthenticated()">
+        <div class="column">
+            <a th:href="@{'/posts/' + ${post.getId()} + '/edit'}" class="button button-outline">Edit Post</a>
+            <form th:action="@{'/posts/' + ${post.getId()} + '/delete'}" method="post" th:object="${post}">
+                <input class="button button-outline" type="submit" value="Delete Post"/>
+            </form>
+        </div>
+    </div>
+
+</div>
 
 </body>
 </html>

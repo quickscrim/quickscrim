@@ -5,6 +5,7 @@
     <title>Title</title>
 </head>
 <body>
+
 <div>
 
     <form th:action="@{'/posts/create'}" method="post" th:object="${post}">
@@ -14,10 +15,11 @@
         <label for="body">Body:</label>
         <textarea id="body" th:field="*{body}"></textarea>
         <p th:if="${#fields.hasErrors('body')}" th:errors="*{body}"></p>
-        <input type="hidden" th:field="*{author}"/>
+        <input type="hidden" th:field="*{postAuthor}"/>
         <input type="submit" value="Create Post"/>
     </form>
 
 </div>
+
 </body>
 </html>

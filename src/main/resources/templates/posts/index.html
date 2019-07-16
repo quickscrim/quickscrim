@@ -6,5 +6,29 @@
 </head>
 <body>
 
+<div class="container">
+
+    <h1>Posts</h1>
+
+    <hr/>
+
+    <th:block th:each="post : ${posts}">
+        <div class="row">
+            <div class="column">
+                <div class="card">
+                    <h4 th:text="${post.getTitle()}"></h4>
+                    <em><h6 th:text="'Authored by ' + ${post.getPostAuthor().getUsername()}"></h6></em>
+                    <p class="body-preview" th:text="${post.getBody()}"></p>
+                    <a class="button button-clear" th:href="@{'/posts/' + ${post.getId()}}">Read More</a>
+                </div>
+            </div>
+        </div>
+
+    <hr/>
+
+    </th:block>
+
+</div>
+
 </body>
 </html>
