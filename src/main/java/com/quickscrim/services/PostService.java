@@ -1,5 +1,7 @@
 package com.quickscrim.services;
 
+import com.quickscrim.models.Post;
+import com.quickscrim.repositories.PostRepository;
 import org.springframework.stereotype.Service;
 
 @Service
