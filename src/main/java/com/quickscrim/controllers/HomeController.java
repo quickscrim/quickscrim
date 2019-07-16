@@ -1,3 +1,4 @@
+
 package com.quickscrim.controllers;
 
 import com.quickscrim.models.Event;
