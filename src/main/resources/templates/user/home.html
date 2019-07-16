@@ -16,19 +16,19 @@
                     <form class="form-signin" th:action="@{/test}" method="post" th:object="${event}">
                         <div class="form-label-group">
                             <label>Name</label>
-                            <!--<input type="text" class="form-control" th:field="*{event_name}" />-->
+                            <input type="text" class="form-control" th:field="*{eventName}" />
                         </div>
                         <div class="form-label-group">
                             <label>Description</label>
-                            <!--<textarea  class="form-control" th:field="*{description}"></textarea>-->
+                            <textarea  class="form-control" th:field="*{description}"></textarea>
                         </div>
                         <div class="form-label-group">
                             <label>Date and time</label>
-                                <!--<input class="form-control" type="datetime-local" value="2019-08-19T13:45:00" th:field="*{event_date}" />-->
+                                <input class="form-control" type="datetime-local" value="2019-08-19T13:45:00" th:field="*{eventDate}" />
                         </div>
                         <div class="form-label-group">
                             <label>Location</label>
-                            <!--<input class="form-control" th:field="*{location_api}"  />-->
+                            <input class="form-control" th:field="*{locationApi}"  />
                         </div>
                         <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" value="Create Event">Create Event</button>
                     </form>
@@ -39,30 +39,15 @@
 </div>
 
 <div class="list-group">
-    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
-        <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">List group item heading</h5>
-            <small>3 days ago</small>
-        </div>
-        <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-        <small>Donec id elit non mi porta.</small>
-    </a>
-    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-        <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">List group item heading</h5>
-            <small class="text-muted">3 days ago</small>
-        </div>
-        <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-        <small class="text-muted">Donec id elit non mi porta.</small>
-    </a>
-    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-        <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">List group item heading</h5>
-            <small class="text-muted">3 days ago</small>
-        </div>
-        <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-        <small class="text-muted">Donec id elit non mi porta.</small>
-    </a>
+    <th:block th:each="event : ${events}">
+        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1" th:text="${event.eventName}"></h5>
+            </div>
+            <p class="mb-1" th:text="${event.description}"></p>
+            <small th:text="${event.eventByUser.username}"></small>
+        </a>
+    </th:block>
 </div>
 
 

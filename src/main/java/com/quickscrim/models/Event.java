@@ -20,30 +20,30 @@ public class Event {
     private String description;
 
    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
-    @Column(nullable = false)
+    @Column
     private Date eventDate;
 
-    @Column(nullable = false)
+    @Column
     private int locationApi;
 
-    @Column(nullable = false)
+    @Column
     private boolean recurring;
 
-    @Column(nullable = false)
+    @Column
     private int howOften;
 
     @OneToOne
     private User eventByUser;
 
 
-    public Event(String eventName, String description, Date eventDate, int locationApi, boolean recurring, int howOften, User eventCreator) {
+    public Event(String eventName, String description, Date eventDate, int locationApi, boolean recurring, int howOften, User eventByUser) {
         this.eventName = eventName;
         this.description = description;
         this.eventDate = eventDate;
         this.locationApi = locationApi;
         this.recurring = recurring;
         this.howOften = howOften;
-        this.eventByUser = eventCreator;
+        this.eventByUser = eventByUser;
     }
 
     public Event() { }
@@ -53,6 +53,12 @@ public class Event {
         this.description = description;
         this.eventDate = eventDate;
         this.locationApi = locationApi;
+    }
+
+    public Event(String eventName, String description, User eventByUser) {
+        this.eventName = eventName;
+        this.description = description;
+        this.eventByUser = eventByUser;
     }
 
     public long getId() {
@@ -111,11 +117,11 @@ public class Event {
         this.howOften = howOften;
     }
 
-    public User getEventCreator() {
+    public User getEventByUser() {
         return eventByUser;
     }
 
-    public void setEventCreator(User eventCreator) {
+    public void setEventByUser(User eventCreator) {
         this.eventByUser = eventCreator;
     }
 }

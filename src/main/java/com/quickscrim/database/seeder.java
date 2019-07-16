@@ -4,7 +4,9 @@
 ////import com.codeup.springblogapp.models.User;
 ////import com.codeup.springblogapp.repositories.PostsRepository;
 ////import com.codeup.springblogapp.repositories.UserRepository;
+//import com.quickscrim.models.Event;
 //import com.quickscrim.models.User;
+//import com.quickscrim.repositories.EventRepository;
 //import com.quickscrim.repositories.UserRepository;
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
@@ -42,17 +44,8 @@
 //    }
 //
 //    private void seedPosts(List<User> users) {
-//        Event longPost = new Event(
-//                "Example 1",
-//                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci atque commodi eligendi necessitatibus voluptates. At distinctio dolores minus molestiae mollitia nemo sapiente ut veniam voluptates! Corporis distinctio error quaerat vel!"
-//        );
 //        List<Event> posts = Arrays.asList(
-//                new Event("Title 1", "Body 1"),
-//                new Event("Title 2", "Body 2"),
-//                new Event("Title 3", "Body 3"),
-//                new Event("Example 2", "QWE Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci atque commodi eligendi necessitatibus voluptates. At distinctio dolores minus molestiae mollitia nemo sapiente ut veniam voluptates! Corporis distinctio error quaerat vel!"),
-//                new Event("Example 3", "ASD Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci atque commodi eligendi necessitatibus voluptates. At distinctio dolores minus molestiae mollitia nemo sapiente ut veniam voluptates! Corporis distinctio error quaerat vel!"),
-//                longPost
+//                new Event("Event 1", " description", 1),
 //        );
 //        Random r = new Random();
 //        for (Event e : events) {
