@@ -1,6 +1,8 @@
 package com.quickscrim.models;
 
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.*;
 import java.util.List;
 

@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8" />
     <title>Log In</title>
-    <!--<link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />-->
-    <!--<link href="/vendor/bootstrap/css/blog-style.css" rel="stylesheet" />-->
-    <!--<link th:replace="navbar :: bootstrap" />-->
+   <div th:include="fragments/header :: header (LogIn) "></div>
 </head>
 <body>
-<!--<nav th:replace="navbar :: navbar"></nav>-->
+
+<div th:if="${param.error}">
+    You have entered an invalid username and/or password. Please try again
+</div>
+<nav th:replace="fragments/navbar :: navbar"></nav>
 <div class="container">
     <div class="row">
         <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
@@ -39,6 +41,6 @@
         </div>
     </div>
 </div>
-<!--<div th:include="navbar :: scripts"></div>-->
+<div th:include="fragments/footer :: footer"></div>
 </body>
 </html>
