@@ -1,8 +1,10 @@
 package com.quickscrim.controllers;
 
+import com.quickscrim.models.Category;
 import com.quickscrim.models.Post;
 import com.quickscrim.models.User;
 import com.quickscrim.services.PostService;
+import org.springframework.security.config.authentication.UserServiceBeanDefinitionParser;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 public class ForumController {
@@ -53,7 +56,7 @@ public class ForumController {
     }
 
     @PostMapping("/posts/create")
-    public String postCreate(@Valid Post post, Errors validation, Model model) {
+    public String postCreate(@Valid Post post, Errors validation, Model model, Category sport) {
 
         if (validation.hasErrors()) {
             model.addAttribute("errors", validation);
@@ -63,6 +66,7 @@ public class ForumController {
 
         User authorUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         post.setPostAuthor(authorUser);
+        post.setPostCategory(sport);
         postService.save(post);
         return "redirect:/posts";
     }
@@ -70,7 +74,10 @@ public class ForumController {
     @GetMapping("/posts/{id}/edit")
     public String getEdit(@PathVariable long id, Model model) {
         model.addAttribute("post", postService.getPost(id));
-        return "posts/edit";
+        User authorUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (authorUser.getId() == postService.getPost(id).getPostAuthor().getId()) {
+            return "posts/edit";
+        } else return "redirect/posts{id}";
     }
 
     @PostMapping("/posts/{id}/edit")
