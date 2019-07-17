@@ -50,6 +50,18 @@
     </th:block>
 </div>
 
+<div class="list-group">
+    <th:block th:each=" post: ${posts}">
+        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1" th:text="${post.title}"></h5>
+            </div>
+            <p class="mb-1" th:text="${post.body}"></p>
+            <small th:text="${post.postByUser.username}"></small>
+        </a>
+    </th:block>
+</div>
+
 
 
 <div th:include="fragments/footer :: footer"></div>

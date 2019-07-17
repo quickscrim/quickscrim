@@ -2,6 +2,7 @@
 package com.quickscrim.controllers;
 
 import com.quickscrim.models.Event;
+import com.quickscrim.models.Post;
 import com.quickscrim.models.User;
 import com.quickscrim.repositories.EventRepository;
 import com.quickscrim.repositories.UserRepository;
@@ -20,10 +21,12 @@ import javax.validation.Valid;
 public class HomeController {
     private final EventRepository eventDao;
     private final UserRepository userDao;
+    private final PostRepository postDao;
 
-    public HomeController(EventRepository eventDao, UserRepository userDao){
+    public HomeController(EventRepository eventDao, UserRepository userDao, PostRepository postDao) {
         this.eventDao = eventDao;
         this.userDao = userDao;
+        this.postDao = postDao;
     }
 
 
@@ -38,9 +41,11 @@ public class HomeController {
 //    Landing Page after a User sucessfully logs in
 
     @GetMapping("/home")
-    public String homePageforUsers(Model model){
+    public String homePageforUsers(Model model) {
         model.addAttribute("events", eventDao.findAll());
+        model.addAttribute("posts", postDao.findAll());
         model.addAttribute("event", new Event());
+        model.addAttribute("post", new Post());
         return "user/home";
     }
 
