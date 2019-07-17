@@ -14,7 +14,7 @@ public class Category {
     @Column(nullable = false)
     private String sport;
     
-    @Column(nullable = false)
+    @Column
     private String iconIMG;
 
 

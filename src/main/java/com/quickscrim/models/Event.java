@@ -36,6 +36,13 @@ public class Event {
     private User eventByUser;
 
 
+    public Event() { }
+
+    public Event(String eventName, String description) {
+        this.eventName = eventName;
+        this.description = description;
+    }
+
     public Event(String eventName, String description, Date eventDate, int locationApi, boolean recurring, int howOften, User eventByUser) {
         this.eventName = eventName;
         this.description = description;
@@ -45,8 +52,6 @@ public class Event {
         this.howOften = howOften;
         this.eventByUser = eventByUser;
     }
-
-    public Event() { }
 
     public Event(String eventName, String description, Date eventDate, int locationApi) {
         this.eventName = eventName;
