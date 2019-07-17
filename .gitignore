@@ -1,5 +1,5 @@
 src/main/resrouces/application.properties
-
+application.properties
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
@@ -31,3 +31,5 @@ build/
 
 ### VS Code ###
 .vscode/
+
+/Users/macintosh/IdeaProjects/quickscrim/src/main/resources/application.properties
