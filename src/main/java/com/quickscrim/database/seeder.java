@@ -1,9 +1,5 @@
 //package com.quickscrim.database;
 //
-////import com.codeup.springblogapp.models.Post;
-////import com.codeup.springblogapp.models.User;
-////import com.codeup.springblogapp.repositories.PostsRepository;
-////import com.codeup.springblogapp.repositories.UserRepository;
 //import com.quickscrim.models.Event;
 //import com.quickscrim.models.User;
 //import com.quickscrim.repositories.EventRepository;
@@ -44,8 +40,17 @@
 //    }
 //
 //    private void seedPosts(List<User> users) {
+//        Event longEvent = new Event(
+//                "Event 1", ""
+//        );
 //        List<Event> posts = Arrays.asList(
-//                new Event("Event 1", " description", 1),
+//                new Event("Event 1", "description 1"),
+//                new Event("Event 2", "description 2"),
+//                new Event("Event 3", "description 3"),
+//                new Event("Event 4", "description 4"),
+//                new Event("Example 2", "QWE Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci atque commodi eligendi necessitatibus voluptates. At distinctio dolores minus molestiae mollitia nemo sapiente ut veniam voluptates! Corporis distinctio error quaerat vel!"),
+//                new Event("Example 3", "ASD Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci atque commodi eligendi necessitatibus voluptates. At distinctio dolores minus molestiae mollitia nemo sapiente ut veniam voluptates! Corporis distinctio error quaerat vel!"),
+//                longEvent
 //        );
 //        Random r = new Random();
 //        for (Event e : events) {
