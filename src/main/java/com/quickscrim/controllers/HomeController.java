@@ -45,6 +45,7 @@ public class HomeController {
     }
 
     @PostMapping("/home")
+<<<<<<< HEAD
     public String insertEvent(@ModelAttribute @Valid Event eventPosted, Errors validation, Model model) {
         if (validation.hasErrors()) {
             model.addAttribute("errors", validation);
@@ -54,5 +55,15 @@ public class HomeController {
         eventPosted.setEventByUser((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         eventDao.save(eventPosted);
         return "redirect:/index";
+=======
+    public String insertEvent(@ModelAttribute @Valid Event event, Errors validation, Model model) {
+        if (validation.hasErrors()) {
+            model.addAttribute("errors", validation);
+            return "user/home";
+        }
+        event.setEventByUser((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        eventDao.save(event);
+        return "/home";
+>>>>>>> 047f92492815edf6868d1e5e2121493fd091c8bb
     }
 }
