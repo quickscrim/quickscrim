@@ -5,6 +5,7 @@ import com.quickscrim.models.Event;
 import com.quickscrim.models.Post;
 import com.quickscrim.models.User;
 import com.quickscrim.repositories.EventRepository;
+import com.quickscrim.repositories.PostRepository;
 import com.quickscrim.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
