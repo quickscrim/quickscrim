@@ -13,7 +13,7 @@
             <div class="card card-signin my-5">
                 <div class="card-body">
                     <h5 class="card-title text-center">Create Event</h5>
-                    <form class="form-signin" th:action="@{/test}" method="post" th:object="${event}">
+                    <form class="form-signin" th:action="@{/home}" method="post" th:object="${event}">
                         <div class="form-label-group">
                             <label>Name</label>
                             <input type="text" class="form-control" th:field="*{eventName}" />
