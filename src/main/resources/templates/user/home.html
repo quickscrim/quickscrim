@@ -13,7 +13,7 @@
             <div class="card card-signin my-5">
                 <div class="card-body">
                     <h5 class="card-title text-center">Create Event</h5>
-                    <form class="form-signin" th:action="@{/test}" method="post" th:object="${event}">
+                    <form class="form-signin" th:action="@{/home}" method="post" th:object="${event}">
                         <div class="form-label-group">
                             <label>Name</label>
                             <input type="text" class="form-control" th:field="*{eventName}" />
@@ -46,6 +46,20 @@
             </div>
             <p class="mb-1" th:text="${event.description}"></p>
             <small th:text="${event.eventByUser.username}"></small>
+        </a>
+    </th:block>
+</div>
+
+
+<h1>Posts from forum</h1>
+<div class="list-group">
+    <th:block th:each=" post: ${posts}">
+        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1" th:text="${post.title}"></h5>
+            </div>
+            <p class="mb-1" th:text="${post.body}"></p>
+<!--            <small th:text="${post.postByUser.username}"></small>-->
         </a>
     </th:block>
 </div>
