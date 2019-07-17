@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Events</title>
+    <link th:replace="fragments/header :: header(Events)" />
+</head>
+<body>
+<div th:replace="fragments/navbar :: navbar"></div>
+
+    <div class="list-group">
+        <th:block th:each="event : ${event}">
+            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1" th:text="${event.eventName}"></h5>
+                </div>
+                <p class="mb-1" th:text="${event.description}"></p>
+                <small th:text="${event.eventByUser}"></small>
+                <!-- event.eventByUser.username doesnt work -->
+            </a>
+        </th:block>
+    </div>
+
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

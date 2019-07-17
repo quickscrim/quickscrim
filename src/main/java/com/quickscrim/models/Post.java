@@ -20,9 +20,9 @@ public class Post {
     @Column(nullable = false, length = 8000)
     private String body;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(nullable = false)
-    private Date date;
+//    @Temporal(TemporalType.TIMESTAMP)
+//    @Column(nullable = false)
+//    private Date date;
 
     @OneToOne
     private User postByUser;
@@ -33,11 +33,12 @@ public class Post {
     @OneToMany(mappedBy = "commentOnPost")
     private List<Comment> postComments;
 
+    public Post() {}
 
     public Post(String title, String body, Date date, User postAuthor, Category postCategory, List<Comment> postComments) {
         this.title = title;
         this.body = body;
-        this.date = date;
+//        this.date = date;
         this.postByUser = postAuthor;
         this.postCategory = postCategory;
         this.postComments = postComments;
@@ -67,13 +68,13 @@ public class Post {
         this.body = body;
     }
 
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
+//    public Date getDate() {
+//        return date;
+//    }
+//
+//    public void setDate(Date date) {
+//        this.date = date;
+//    }
 
     public User getPostAuthor() {
         return postByUser;
