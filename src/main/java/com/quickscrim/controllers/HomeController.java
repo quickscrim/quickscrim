@@ -2,11 +2,18 @@
 package com.quickscrim.controllers;
 
 import com.quickscrim.models.Event;
+import com.quickscrim.models.User;
 import com.quickscrim.repositories.EventRepository;
 import com.quickscrim.repositories.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.validation.Valid;
 
 
 @Controller
@@ -37,4 +44,14 @@ public class HomeController {
         return "user/home";
     }
 
+    @PostMapping("/home")
+    public String insertEvent(@ModelAttribute @Valid Event event, Errors validation, Model model) {
+        if (validation.hasErrors()) {
+            model.addAttribute("errors", validation);
+            return "user/home";
+        }
+        event.setEventByUser((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        eventDao.save(event);
+        return "/home";
+    }
 }
