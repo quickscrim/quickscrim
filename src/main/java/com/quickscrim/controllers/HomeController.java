@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.util.List;
 
 
 @Controller
@@ -57,7 +58,7 @@ public class HomeController {
             model.addAttribute("event", eventPosted);
             return "events/index";
         }
-        eventPosted.setEventByUser((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        eventPosted.setuserEvents((List<User>) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         eventDao.save(eventPosted);
         return "redirect:/index";
     }
