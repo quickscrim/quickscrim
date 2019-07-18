@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <title>Home</title>
     <link th:replace="fragments/header :: header(Home)" />
+    <style>
+        #map {
+            width: 400px;
+            height: 400px;
+        }
+    </style>
 </head>
 <body>
 <nav th:replace="fragments/navbar :: navbar"></nav>
@@ -13,7 +19,7 @@
             <div class="card card-signin my-5">
                 <div class="card-body">
                     <h5 class="card-title text-center">Create Event</h5>
-                    <form class="form-signin" th:action="@{/home}" method="post" th:object="${event}">
+                    <form class="form-signin" th:action="@{/home}" method="post" id="searchForm" th:object="${event}">
                         <div class="form-label-group">
                             <label>Name</label>
                             <input type="text" class="form-control" th:field="*{eventName}" />
@@ -28,9 +34,12 @@
                         </div>
                         <div class="form-label-group">
                             <label>Location</label>
-                            <input class="form-control" th:field="*{locationApi}"  />
+                            <input class="form-control" th:field="*{locationApi}" type="hidden"/>
                         </div>
-                        <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" value="Create Event">Create Event</button>
+                        <div class="form-label-group">
+                            <input id="mapsearch" type="text" class="validate form-control" placeholder=" " />
+                        </div>
+                        <button class="btn btn-lg btn-primary btn-block text-uppercase mt-3" type="submit" value="Create Event">Create Event</button>
                     </form>
                 </div>
             </div>
@@ -38,34 +47,66 @@
     </div>
 </div>
 
-<div class="list-group">
-    <th:block th:each="event : ${events}">
-        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
-            <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1" th:text="${event.eventName}"></h5>
-            </div>
-            <p class="mb-1" th:text="${event.description}"></p>
-            <small th:text="${event.eventByUser.username}"></small>
-        </a>
-    </th:block>
-</div>
+<!--<div class="list-group">-->
+    <!--<th:block th:each="event : ${events}">-->
+        <!--<a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">-->
+            <!--<div class="d-flex w-100 justify-content-between">-->
+                <!--<h5 class="mb-1" th:text="${event.eventName}"></h5>-->
+            <!--</div>-->
+            <!--<p class="mb-1" th:text="${event.description}"></p>-->
+            <!--<small th:text="${event.eventByUser.username}"></small>-->
+        <!--</a>-->
+    <!--</th:block>-->
+<!--</div>-->
 
 
-<h1>Posts from forum</h1>
-<div class="list-group">
-    <th:block th:each=" post: ${posts}">
-        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
-            <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1" th:text="${post.title}"></h5>
-            </div>
-            <p class="mb-1" th:text="${post.body}"></p>
-<!--            <small th:text="${post.postByUser.username}"></small>-->
-        </a>
-    </th:block>
-</div>
+<!--<h1>Posts from forum</h1>-->
+<!--<div class="list-group">-->
+    <!--<th:block th:each=" post: ${posts}">-->
+        <!--<a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">-->
+            <!--<div class="d-flex w-100 justify-content-between">-->
+                <!--<h5 class="mb-1" th:text="${post.title}"></h5>-->
+            <!--</div>-->
+            <!--<p class="mb-1" th:text="${post.body}"></p>-->
+        <!--</a>-->
+    <!--</th:block>-->
+<!--</div>-->
 
 
-
+<div id="map"></div>
 <div th:include="fragments/footer :: footer"></div>
+<script th:src="@{ 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCO2UFPuK_2nL3FPcjAOeilpUxUirnYptA&amp;libraries=places&amp;callback=initMap'}"
+async="async" defer="defer">
+</script>
+<script th:inline = "javascript">
+    /*<![CDATA[*/
+    "use strict";
+    var map;
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: {
+                lat:  29.426791,
+                lng: -98.489602
+            },
+            zoom: 18
+        });
+    var marker = new google.maps.Marker({
+        position:{
+            lat:  29.426791,
+            lng: -98.489602
+        },
+        map: map,
+        draggable: true
+
+    })
+        var searchBox = new google.maps.places.SearchBox(document.getElementById('mapsearch'));
+    }
+
+
+    /*]]>*/
+</script>
+
 </body>
 </html>
+
+
