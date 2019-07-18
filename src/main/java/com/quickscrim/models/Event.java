@@ -4,6 +4,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table
@@ -32,8 +33,8 @@ public class Event {
     @Column
     private int howOften;
 
-    @OneToOne
-    private User eventByUser;
+    @ManyToMany(mappedBy = "userEvents")
+    private  List<User> userEvents;
 
 
     public Event() { }
@@ -43,14 +44,14 @@ public class Event {
         this.description = description;
     }
 
-    public Event(String eventName, String description, Date eventDate, int locationApi, boolean recurring, int howOften, User eventByUser) {
+    public Event(String eventName, String description, Date eventDate, int locationApi, boolean recurring, int howOften, List<User> userEvents) {
         this.eventName = eventName;
         this.description = description;
         this.eventDate = eventDate;
         this.locationApi = locationApi;
         this.recurring = recurring;
         this.howOften = howOften;
-        this.eventByUser = eventByUser;
+        this.userEvents = userEvents;
     }
 
     public Event(String eventName, String description, Date eventDate, int locationApi) {
@@ -60,10 +61,10 @@ public class Event {
         this.locationApi = locationApi;
     }
 
-    public Event(String eventName, String description, User eventByUser) {
+    public Event(String eventName, String description, List<User> userEvents) {
         this.eventName = eventName;
         this.description = description;
-        this.eventByUser = eventByUser;
+        this.userEvents = userEvents;
     }
 
     public long getId() {
@@ -122,11 +123,11 @@ public class Event {
         this.howOften = howOften;
     }
 
-    public User getEventByUser() {
-        return eventByUser;
+    public List<User> getUserEvents() {
+        return userEvents;
     }
 
-    public void setEventByUser(User eventCreator) {
-        this.eventByUser = eventCreator;
+    public void setUserEvents(List<User> userEvents) {
+        this.userEvents = userEvents;
     }
 }

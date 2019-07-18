@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 public class EventController {
@@ -35,7 +36,7 @@ public class EventController {
     public String insertEvent(@ModelAttribute @Valid Event eventPosted, Errors validation, Model model) {
         if (validation.hasErrors()) {
             model.addAttribute("errors", validation);
-            eventPosted.setEventByUser((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+            eventPosted.setUserEvents((List<User>) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
             eventDao.save(eventPosted);
             return "events/index";
         }
