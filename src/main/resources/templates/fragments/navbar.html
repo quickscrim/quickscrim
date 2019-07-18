@@ -1,43 +1,52 @@
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
 
 <div th:fragment="navbar">
 
     <!-- This displays for guests -->
+
     <nav class="navbar navbar-expand navbar-light bg-light">
         <a class="navbar-brand" href="/"><img class="logo" src="/img/qs-logo-test2.png" /></a>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/register">Register <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/login">Login <span class="sr-only">(current)</span></a>
-                </li>
+            <div sec:authorize="isAnonymous()" class="ml-auto">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/register">Register <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/login">Login <span class="sr-only">(current)</span></a>
+                    </li>
 
-            </ul>
+                </ul>
+
+            </div>
 
         <!-- This displays for users/admin -->
+        <div sec:authorize="isAuthenticated()" class="ml-auto">
 
             <ul class="navbar-nav ml-auto">
+                <h3>Welcome, <span th:text="${#authentication.name}"></span>!</h3>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img id="navbar-profile-img" src="/img/elon.jpg" class="rounded-circle" /> User
+                        <img id="navbar-profile-img" src="/img/elon.jpg" class="rounded-circle" /> <span th:text="${#authentication.name}"></span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/logout">Logout</a>
+                        <a class="dropdown-item" th:href="@{/logout}">Logout</a>
                             <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="/events">Events</a>
+                        <a class="dropdown-item" href="/events/index">Events</a>
                             <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="/teams">Groups</a>
-                            <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="/posts/category">Forums</a>
+<!--                        <a class="dropdown-item" href="/teams">Groups</a>-->
+<!--                            <div class="dropdown-divider"></div>-->
+                        <a class="dropdown-item" href="/posts">Forums</a>
                             <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Settings</a>
                     </div>
                 </li>
             </ul>
+        </div>
 
         </div>
     </nav>
