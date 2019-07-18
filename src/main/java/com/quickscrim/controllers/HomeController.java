@@ -54,11 +54,10 @@ public class HomeController {
     public String insertEvent(@ModelAttribute @Valid Event eventPosted, Errors validation, Model model) {
         if (validation.hasErrors()) {
             model.addAttribute("errors", validation);
-            model.addAttribute("event", eventPosted);
             return "events/index";
         }
         eventPosted.setEventByUser((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         eventDao.save(eventPosted);
-        return "redirect:/index";
+        return "redirect:/home";
     }
 }
