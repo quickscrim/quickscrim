@@ -28,9 +28,10 @@
         <div sec:authorize="isAuthenticated()" class="ml-auto">
 
             <ul class="navbar-nav ml-auto">
+                <h3>Welcome, <span th:text="${#authentication.name}"></span>!</h3>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img id="navbar-profile-img" src="/img/elon.jpg" class="rounded-circle" /> User
+                        <img id="navbar-profile-img" src="/img/elon.jpg" class="rounded-circle" /> <span th:text="${#authentication.name}"></span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="/logout">Logout</a>
