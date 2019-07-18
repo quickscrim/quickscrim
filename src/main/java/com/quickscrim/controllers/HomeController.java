@@ -7,6 +7,8 @@ import com.quickscrim.models.User;
 import com.quickscrim.repositories.EventRepository;
 import com.quickscrim.repositories.PostRepository;
 import com.quickscrim.repositories.UserRepository;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,7 +38,13 @@ public class HomeController {
 
     @GetMapping("/")
     public String index() {
-        return "index";
+        Authentication token = SecurityContextHolder.getContext().getAuthentication();
+
+        // if not logged in:
+        if (token instanceof AnonymousAuthenticationToken) return "index";
+
+        // if logged in, redirect
+        return String.format("redirect:%s", "/home");
     }
 
 
