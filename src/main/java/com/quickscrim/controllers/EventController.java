@@ -18,6 +18,11 @@ public class EventController {
         this.userDao = userDao;
     }
 
+    @GetMapping ("events/index")
+    public String returnEventsIndex() {
+        return "events/index";
+    }
+
 //
 //    @GetMapping("/home")
 //    public String createPostForm(Model model){

@@ -64,7 +64,12 @@ public class User {
     @OneToMany(mappedBy = "commentByUser")
     private List<Comment> userComments;
 
-    @OneToMany(mappedBy = "eventByUser")
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "user_events",
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "event_id")}
+    )
     private List<Event> userEvents;
 
     @ManyToMany(cascade = CascadeType.ALL)
