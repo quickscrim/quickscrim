@@ -1,5 +1,6 @@
 package com.quickscrim.models;
 
+import org.springframework.context.annotation.Configuration;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -32,6 +33,9 @@ public class Event {
 
     @Column
     private int howOften;
+
+    @ManyToOne
+    private User eventCreator;
 
     @ManyToMany(mappedBy = "userEvents")
     private  List<User> userEvents;
@@ -129,5 +133,13 @@ public class Event {
 
     public void setUserEvents(List<User> userEvents) {
         this.userEvents = userEvents;
+    }
+
+    public User getEventCreator() {
+        return eventCreator;
+    }
+
+    public void setEventCreator(User eventCreator) {
+        this.eventCreator = eventCreator;
     }
 }

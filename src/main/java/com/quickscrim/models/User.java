@@ -80,6 +80,9 @@ public class User {
     )
     private List<Team> userTeams;
 
+    @OneToMany(mappedBy = "eventCreator")
+    private List<Event> event;
+
 
     public User() {
     }
@@ -253,5 +256,13 @@ public class User {
 
     public void setUserTeams(List<Team> userTeams) {
         this.userTeams = userTeams;
+    }
+
+    public List<Event> getEvent() {
+        return event;
+    }
+
+    public void setEvent(List<Event> event) {
+        this.event = event;
     }
 }

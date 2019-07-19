@@ -36,10 +36,10 @@ public class EventController {
     public String insertEvent(@ModelAttribute @Valid Event eventPosted, Errors validation, Model model) {
         if (validation.hasErrors()) {
             model.addAttribute("errors", validation);
-            eventPosted.setUserEvents((List<User>) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
-            eventDao.save(eventPosted);
             return "events/index";
         }
+        eventPosted.setEventCreator((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+                eventDao.save(eventPosted);
         return "redirect:/home";
     }
 
