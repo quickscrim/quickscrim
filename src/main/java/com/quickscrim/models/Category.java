@@ -39,6 +39,10 @@ public class Category {
         this.favSports = favSports;
     }
 
+    public Category(String sport) {
+        this.sport = sport;
+    }
+
     public Category() { }
 
     public long getId() {
