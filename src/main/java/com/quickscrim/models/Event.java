@@ -34,9 +34,12 @@ public class Event {
     @Column
     private int howOften;
 
+<<<<<<< HEAD
     @ManyToOne
     private User eventCreator;
 
+=======
+>>>>>>> 899894dd5cf78e914ce146f38d8b4576afe11d28
     @ManyToMany(mappedBy = "userEvents")
     private  List<User> userEvents;
 
@@ -127,6 +130,7 @@ public class Event {
         this.howOften = howOften;
     }
 
+<<<<<<< HEAD
     public List<User> getUserEvents() {
         return userEvents;
     }
@@ -141,5 +145,13 @@ public class Event {
 
     public void setEventCreator(User eventCreator) {
         this.eventCreator = eventCreator;
+=======
+    public List<User> getuserEvents() {
+        return userEvents;
+    }
+
+    public void setuserEvents(List<User> eventCreator) {
+        this.userEvents = eventCreator;
+>>>>>>> 899894dd5cf78e914ce146f38d8b4576afe11d28
     }
 }

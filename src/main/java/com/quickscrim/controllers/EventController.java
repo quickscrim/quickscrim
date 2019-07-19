@@ -32,6 +32,12 @@ public class EventController {
         return "events/create";
     }
 
+    @GetMapping ("events/index")
+    public String returnEventsIndex() {
+        return "events/index";
+    }
+
+
     @PostMapping("/events/create")
     public String insertEvent(@ModelAttribute @Valid Event eventPosted, Errors validation, Model model) {
         if (validation.hasErrors()) {
