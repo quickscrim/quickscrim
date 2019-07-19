@@ -25,10 +25,6 @@ public class ForumController {
 //        this.userService = userService;
     }
 
-    @GetMapping("/posts/select")
-    public String CategorySelect() {
-        return "posts/category";
-    }
 
     @GetMapping("/posts")
     public String index(Model model) {

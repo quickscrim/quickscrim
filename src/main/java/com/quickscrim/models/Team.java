@@ -17,7 +17,6 @@ public class Team {
     @ManyToMany(mappedBy = "userTeams")
     private List<User> userTeams;
 
-
     public Team(String name, List<User> userTeams) {
         this.name = name;
         this.userTeams = userTeams;

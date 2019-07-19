@@ -2,33 +2,75 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
-    <title>Title</title>
+    <title>Forum</title>
+    <link th:replace="fragments/header :: header(Forum)" />
 </head>
 <body>
+<div th:replace="fragments/navbar :: navbar"></div>
 
 <div class="container">
-
-    <h1>Posts</h1>
-
-    <hr/>
-
-    <th:block th:each="post : ${posts}">
+    <div class="row">
+        <div class="col">
         <div class="row">
-            <div class="column">
-                <div class="card">
-                    <h4 th:text="${post.getTitle()}"></h4>
-                    <em><h6 th:text="'Authored by ' + ${post.getPostAuthor().getUsername()}"></h6></em>
-                    <p class="body-preview" th:text="${post.getBody()}"></p>
-                    <a class="button button-clear" th:href="@{'/posts/' + ${post.getId()}}">Read More</a>
-                </div>
-            </div>
+
+
+
+        <ul class="col">
+            <li><a href=""><img th:src="@{/img/sport-icons/basketball.png}" alt="basketball" /></a></li>
+            <li><a href=""><img th:src="@{/img/sport-icons/soccer.png}" alt="soccer" /></a></li>
+            <li><a href=""><img th:src="@{/img/sport-icons/baseball.png}" alt="baseball" /></a></li>
+            <li><a href=""><img th:src="@{/img/sport-icons/football.png}" alt="football" /></a></li>
+        </ul>
+
+        <ul class="col">
+            <li><a href=""><img th:src="@{/img/sport-icons/volleyball.png}" alt="volleyball" /></a></li>
+            <li><a href=""><img th:src="@{/img/sport-icons/tennis.png}" alt="tennis" /></a></li>
+            <li><a href=""><img th:src="@{/img/sport-icons/bowling.png}" alt="bowling" /></a></li>
+            <li><a href=""><img th:src="@{/img/sport-icons/pool.png}" alt="pool" /></a></li>
+        </ul>
+
+        <ul class="col">
+            <li><a href=""><img th:src="@{/img/sport-icons/pingpong.png}" alt="pingpong" /></a></li>
+            <li><a href=""><img th:src="@{/img/sport-icons/golf.png}" alt="golf" /></a></li>
+            <li><a href=""><img th:src="@{/img/sport-icons/boxing.png}" alt="boxing" /></a></li>
+            <li><a href=""><img th:src="@{/img/sport-icons/hockey.png}" alt="hockey" /></a></li>
+        </ul>
+
+        <ul class="col">
+            <li><a href=""><img th:src="@{/img/sport-icons/running.png}" alt="running" /></a></li>
+            <li><a href=""><img th:src="@{/img/sport-icons/swimming.png}" alt="swimming" /></a></li>
+            <li><a href=""><img th:src="@{/img/sport-icons/cycling.png}" alt="cycling" /></a></li>
+            <li><a href=""><img th:src="@{/img/sport-icons/archery.png}" alt="archery" /></a></li>
+        </ul>
+
+        </div>
         </div>
 
-    <hr/>
 
-    </th:block>
 
+        <div class="col">
+
+        <h1>Posts</h1>
+        <button type="submit"><a th:href="@{/posts/create}">Create A Post +</a></button>
+        <hr/>
+        <th:block th:each="post : ${posts}">
+
+            <div class="row">
+                <div class="column">
+                    <div class="card">
+                        <h4 th:text="${post.getTitle()}"></h4>
+                        <em><h6 th:text="'Posted by ' + ${post.getPostAuthor().getUsername()}"></h6></em>
+                        <p class="body-preview" th:text="${post.getBody()}"></p>
+                        <a class="button button-clear" th:href="@{'/posts/' + ${post.getId()}}">Read More</a>
+                    </div>
+                </div>
+            </div>
+
+        </th:block>
+        </div>
+    </div>
 </div>
-
+<hr/>
+<div th:replace="fragments/footer :: footer"></div>
 </body>
 </html>
