@@ -39,6 +39,8 @@ public class Category {
         this.favSports = favSports;
     }
 
+    public Category() { }
+
     public long getId() {
         return id;
     }

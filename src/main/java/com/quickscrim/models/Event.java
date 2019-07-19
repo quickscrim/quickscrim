@@ -40,6 +40,9 @@ public class Event {
     @ManyToMany(mappedBy = "userEvents")
     private  List<User> userEvents;
 
+    @OneToOne
+    private Category eventSport;
+
 
     public Event() { }
 
@@ -48,7 +51,7 @@ public class Event {
         this.description = description;
     }
 
-    public Event(String eventName, String description, Date eventDate, int locationApi, boolean recurring, int howOften, List<User> userEvents) {
+    public Event(String eventName, String description, Date eventDate, int locationApi, boolean recurring, int howOften, List<User> userEvents, Category eventSport) {
         this.eventName = eventName;
         this.description = description;
         this.eventDate = eventDate;
@@ -56,6 +59,7 @@ public class Event {
         this.recurring = recurring;
         this.howOften = howOften;
         this.userEvents = userEvents;
+        this.eventSport = eventSport;
     }
 
     public Event(String eventName, String description, Date eventDate, int locationApi) {
@@ -141,5 +145,13 @@ public class Event {
 
     public void setEventCreator(User eventCreator) {
         this.eventCreator = eventCreator;
+    }
+
+    public Category getEventSport() {
+        return eventSport;
+    }
+
+    public void setEventSport(Category eventSport) {
+        this.eventSport = eventSport;
     }
 }

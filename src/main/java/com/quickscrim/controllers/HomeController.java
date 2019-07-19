@@ -4,6 +4,7 @@ package com.quickscrim.controllers;
 import com.quickscrim.models.Event;
 import com.quickscrim.models.Post;
 import com.quickscrim.models.User;
+import com.quickscrim.repositories.CategoryRepository;
 import com.quickscrim.repositories.EventRepository;
 import com.quickscrim.repositories.PostRepository;
 import com.quickscrim.repositories.UserRepository;
@@ -26,11 +27,13 @@ public class HomeController {
     private final EventRepository eventDao;
     private final UserRepository userDao;
     private final PostRepository postDao;
+    private final CategoryRepository categoryDao;
 
-    public HomeController(EventRepository eventDao, UserRepository userDao, PostRepository postDao) {
+    public HomeController(EventRepository eventDao, UserRepository userDao, PostRepository postDao, CategoryRepository categoryDao) {
         this.eventDao = eventDao;
         this.userDao = userDao;
         this.postDao = postDao;
+        this.categoryDao = categoryDao;
     }
 
 
