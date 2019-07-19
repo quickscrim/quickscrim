@@ -6,16 +6,17 @@
 </head>
 <body>
 
-<div class="container">
+<div class="container, card">
 
     <div class="row">
+        <div class="column"><a th:href="@{/posts}">Back to posts</a></div>
         <div class="column"><h2 th:text="${post.getTitle()}"></h2></div>
     </div>
 
     <div class="row">
         <div class="column">
             <em>
-                <h6 th:text="'Posted by: ' + ${post.getPostAuthor().getUsername()}"></h6>
+                <h6 th:text="'Posted by ' + ${post.getPostAuthor().getUsername()}"></h6>
             </em>
         </div>
     </div>
