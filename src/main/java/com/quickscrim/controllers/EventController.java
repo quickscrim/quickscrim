@@ -26,17 +26,16 @@ public class EventController {
         this.userDao = userDao;
     }
 
-    @GetMapping("/events/create")
-    public String create(Model model){
-        model.addAttribute("event", new Event());
-        return "events/create";
-    }
-
     @GetMapping ("events/index")
     public String returnEventsIndex() {
         return "events/index";
     }
 
+    @GetMapping("/events/create")
+    public String create(Model model){
+        model.addAttribute("event", new Event());
+        return "events/create";
+    }
 
     @PostMapping("/events/create")
     public String insertEvent(@ModelAttribute @Valid Event eventPosted, Errors validation, Model model) {
@@ -44,8 +43,10 @@ public class EventController {
             model.addAttribute("errors", validation);
             return "events/index";
         }
-        eventPosted.setEventCreator((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
-                eventDao.save(eventPosted);
+        User sessionUser = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        User userDb = userDao.findOne(sessionUser.getId());
+        eventPosted.setEventCreator(userDb);
+        eventDao.save(eventPosted);
         return "redirect:/home";
     }
 
