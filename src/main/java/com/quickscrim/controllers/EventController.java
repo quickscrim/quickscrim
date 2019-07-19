@@ -30,7 +30,7 @@ public class EventController {
         this.categoryDao = categoryDao;
     }
 
-    @GetMapping ("events/index")
+    @GetMapping ("/events/index")
     public String returnEventsIndex() {
         return "events/index";
     }
@@ -43,7 +43,7 @@ public class EventController {
     }
 
     @PostMapping("/events/create")
-    public String insertEvent(@ModelAttribute @Valid Event eventPosted, Errors validation, Model model, Category category) {
+    public String insertEvent(@ModelAttribute @Valid Event eventPosted, Errors validation, Model model) {
         if (validation.hasErrors()) {
             model.addAttribute("errors", validation);
             return "events/index";
@@ -52,7 +52,6 @@ public class EventController {
         User userDb = userDao.findOne(sessionUser.getId());
 
         eventPosted.setEventCreator(userDb);
-        eventPosted.setEventSport(category);
         eventDao.save(eventPosted);
         return "redirect:/home";
     }

@@ -38,11 +38,11 @@
             <div class="card card-signin my-5">
                 <div class="card-body">
                     <h5 class="card-title text-center">Create Event</h5>
-                    <form class="form-signin" th:action="@{/home}" method="post" id="searchForm" th:object="${event}">
+                    <form class="form-signin" th:action="@{/events/create}" method="post" id="searchForm" th:object="${event}">
 
                                 <div class="form-label-group">
                                     <label for="exampleFormControlSelect1">Sport</label>
-                                    <select class="form-control" id="exampleFormControlSelect1">
+                                    <select class="form-control" id="exampleFormControlSelect1" th:field="*{eventSport}">
                                         <option th:each="category : ${categories}" th:text="${category.sport}" th:value="${category.id}"></option>
                                     </select>
                                 </div>
@@ -62,9 +62,9 @@
                             <label>Location</label>
                             <input class="form-control" th:field="*{locationApi}" type="hidden"/>
                         </div>
-                        <!--<div class="form-label-group">-->
-                            <!--<input id="mapsearch" type="text" class="validate form-control" placeholder=" " />-->
-                        <!--</div>-->
+                        <div class="form-label-group">
+                            <input id="mapsearch" type="text" class="validate form-control" placeholder=" " />
+                        </div>
                         <button class="btn btn-lg btn-primary btn-block text-uppercase mt-3" type="submit" value="Create Event">Create Event</button>
                     </form>
                 </div>

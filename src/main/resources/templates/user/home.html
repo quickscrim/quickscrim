@@ -14,7 +14,6 @@
 <body>
 <nav th:replace="fragments/navbar :: navbar"></nav>
 
-<h1>Button/Link to create event</h1>
 
 <div class="list-group">
     <th:block th:each="event : ${events}">
@@ -23,7 +22,8 @@
                 <h5 class="mb-1" th:text="${event.eventName}"></h5>
             </div>
             <p class="mb-1" th:text="${event.description}"></p>
-            <!--<small th:text="${event.eventCreator.username}"></small>-->
+            <p class="mb-1" th:text="${event.locationApi}"></p>
+            <!--&lt;!&ndash;<small th:text="${event.eventCreator.username}"></small>&ndash;&gt;-->
         </a>
     </th:block>
 </div>
