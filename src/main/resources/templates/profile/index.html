@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<head th:replace="fragments/header :: header('Quick Scrim')"></head>
+<body>
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<h1>User Profile's</h1>
+
+<div th:each="profile : ${profile}">
+    <img id="navbar-profile-img" src="/img/elon.jpg" class="rounded-circle" />
+    <span th:text="${profile.getUsername()}"></span>
+    <a class="button button-clear" th:href="@{'/profile/' + ${profile.getId()}}">View Profile</a>
+</div>
+
+<br/>
+
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+
+</html>
