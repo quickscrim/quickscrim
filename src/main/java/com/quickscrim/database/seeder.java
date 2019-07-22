@@ -2,9 +2,11 @@ package com.quickscrim.database;
 
 import com.quickscrim.models.Category;
 import com.quickscrim.models.Event;
+import com.quickscrim.models.Post;
 import com.quickscrim.models.User;
 import com.quickscrim.repositories.CategoryRepository;
 import com.quickscrim.repositories.EventRepository;
+import com.quickscrim.repositories.PostRepository;
 import com.quickscrim.repositories.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,15 +26,17 @@ public class seeder implements CommandLineRunner {
     private final UserRepository userDao;
     private final PasswordEncoder passwordEncoder;
     private final CategoryRepository categoryDao;
+    private final PostRepository postDao;
 
     @Value("${app.env}")
     private String environment;
 
-    public seeder(EventRepository eventDao, UserRepository userDao, PasswordEncoder passwordEncoder, CategoryRepository categoryDao) {
+    public seeder(EventRepository eventDao, UserRepository userDao, PasswordEncoder passwordEncoder, CategoryRepository categoryDao, PostRepository postDao) {
         this.eventDao = eventDao;
         this.userDao = userDao;
         this.passwordEncoder = passwordEncoder;
         this.categoryDao = categoryDao;
+        this.postDao = postDao;
     }
 
     private List<User> seedUsers() {
@@ -98,6 +102,8 @@ public class seeder implements CommandLineRunner {
         }
         log.info("Deleting events...");
         eventDao.deleteAll();
+        log.info("Deleting posts...");
+        postDao.deleteAll();
         log.info("Deleting users...");
         userDao.deleteAll();
         log.info("Deleting categories...");
@@ -109,6 +115,8 @@ public class seeder implements CommandLineRunner {
         log.info("Seeding categories...");
         List<Category> categories = seedCategory();
         log.info("Finished running seeders!");
+
+
     }
 }
 
