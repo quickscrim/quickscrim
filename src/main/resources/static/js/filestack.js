@@ -3,4 +3,11 @@
 console.log("moo-moo.");
 
 const client = filestack.init(filestackApiKey);
-client.picker().open();
+
+const options = {
+    onFileUploadFinished: file => {
+        console.log("I did it!");
+        }
+    };
+
+client.picker(options).open();
