@@ -4,6 +4,7 @@ package com.quickscrim.controllers;
 import com.quickscrim.models.Event;
 import com.quickscrim.models.Post;
 import com.quickscrim.models.User;
+import com.quickscrim.repositories.CategoryRepository;
 import com.quickscrim.repositories.EventRepository;
 import com.quickscrim.repositories.PostRepository;
 import com.quickscrim.repositories.UserRepository;
@@ -26,11 +27,13 @@ public class HomeController {
     private final EventRepository eventDao;
     private final UserRepository userDao;
     private final PostRepository postDao;
+    private final CategoryRepository categoryDao;
 
-    public HomeController(EventRepository eventDao, UserRepository userDao, PostRepository postDao) {
+    public HomeController(EventRepository eventDao, UserRepository userDao, PostRepository postDao, CategoryRepository categoryDao) {
         this.eventDao = eventDao;
         this.userDao = userDao;
         this.postDao = postDao;
+        this.categoryDao = categoryDao;
     }
 
 
@@ -52,22 +55,12 @@ public class HomeController {
 
     @GetMapping("/home")
     public String homePageforUsers(Model model) {
-        model.addAttribute("events", eventDao.findAll());
+        User sessionUser = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        User userDb = userDao.findOne(sessionUser.getId());
+        model.addAttribute("events", eventDao.findAllByEventCreator();
         model.addAttribute("posts", postDao.findAll());
         model.addAttribute("event", new Event());
         model.addAttribute("post", new Post());
         return "user/home";
-    }
-
-    @PostMapping("/home")
-    public String insertEvent(@ModelAttribute @Valid Event eventPosted, Errors validation, Model model) {
-        if (validation.hasErrors()) {
-            model.addAttribute("errors", validation);
-            model.addAttribute("event", eventPosted);
-            return "events/index";
-        }
-        eventPosted.setuserEvents((List<User>) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
-        eventDao.save(eventPosted);
-        return "redirect:/index";
     }
 }

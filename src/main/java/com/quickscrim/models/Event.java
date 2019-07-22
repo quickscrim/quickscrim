@@ -1,5 +1,6 @@
 package com.quickscrim.models;
 
+import org.springframework.context.annotation.Configuration;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -33,8 +34,14 @@ public class Event {
     @Column
     private int howOften;
 
+    @ManyToOne
+    private User eventCreator;
+
     @ManyToMany(mappedBy = "userEvents")
     private  List<User> userEvents;
+
+    @OneToOne
+    private Category eventSport;
 
 
     public Event() { }
@@ -44,7 +51,7 @@ public class Event {
         this.description = description;
     }
 
-    public Event(String eventName, String description, Date eventDate, int locationApi, boolean recurring, int howOften, List<User> userEvents) {
+    public Event(String eventName, String description, Date eventDate, int locationApi, boolean recurring, int howOften, List<User> userEvents, Category eventSport) {
         this.eventName = eventName;
         this.description = description;
         this.eventDate = eventDate;
@@ -52,6 +59,7 @@ public class Event {
         this.recurring = recurring;
         this.howOften = howOften;
         this.userEvents = userEvents;
+        this.eventSport = eventSport;
     }
 
     public Event(String eventName, String description, Date eventDate, int locationApi) {
@@ -123,11 +131,27 @@ public class Event {
         this.howOften = howOften;
     }
 
-    public List<User> getuserEvents() {
+    public List<User> getUserEvents() {
         return userEvents;
     }
 
-    public void setuserEvents(List<User> eventCreator) {
-        this.userEvents = eventCreator;
+    public void setUserEvents(List<User> userEvents) {
+        this.userEvents = userEvents;
+    }
+
+    public User getEventCreator() {
+        return eventCreator;
+    }
+
+    public void setEventCreator(User eventCreator) {
+        this.eventCreator = eventCreator;
+    }
+
+    public Category getEventSport() {
+        return eventSport;
+    }
+
+    public void setEventSport(Category eventSport) {
+        this.eventSport = eventSport;
     }
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8" />
     <title>Events</title>
@@ -8,6 +8,8 @@
 <body>
 <div th:replace="fragments/navbar :: navbar"></div>
 
+<h1>Events Index</h1>
+
     <div class="list-group">
         <th:block th:each="event : ${event}">
             <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
@@ -15,8 +17,12 @@
                     <h5 class="mb-1" th:text="${event.eventName}"></h5>
                 </div>
                 <p class="mb-1" th:text="${event.description}"></p>
-                <small th:text="${event.getuserEvents()}"></small>
-                <!-- event.eventByUser.username doesnt work -->
+                <small th:text="${event.eventCreator.username}"></small>
+                <div class="row" sec:authorize="isAuthenticated()">
+                    <div class="column">
+                        <a th:href="@{'/events/' + ${event.getId()} + '/edit'}" class="button button-outline">Edit Event</a>
+                    </div>
+                </div>
             </a>
         </th:block>
     </div>

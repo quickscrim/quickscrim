@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<head th:replace="fragments/header :: header('Quick Scrim')"></head>
+<body>
+
+
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<h1>FileStack Uploader</h1>
+
+
+<div th:replace="fragments/footer :: footer"></div>
+
+<form action="#" th:action="@{/saveUserPhoto}" th:object ="${userPhoto}" method="GET">
+
+
+</form>
+
+
+</body>
+
+<script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+<script src="/js/keys.js"></script>
+<script src="/js/filestack.js"></script>
+
+</html>

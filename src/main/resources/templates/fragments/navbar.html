@@ -28,7 +28,6 @@
         <div sec:authorize="isAuthenticated()" class="ml-auto">
 
             <ul class="navbar-nav ml-auto">
-                <h3>Welcome, <span th:text="${#authentication.name}"></span>!</h3>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <img id="navbar-profile-img" src="/img/elon.jpg" class="rounded-circle" /> <span th:text="${#authentication.name}"></span>
@@ -38,6 +37,8 @@
                             <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="/events/index">Events</a>
                             <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/events/create">Create Event</a>
+                        <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="/teams">Groups</a>
                             <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="/posts">Forums</a>
