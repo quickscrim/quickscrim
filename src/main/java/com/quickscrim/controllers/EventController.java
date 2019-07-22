@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
@@ -31,7 +32,8 @@ public class EventController {
     }
 
     @GetMapping ("/events/index")
-    public String returnEventsIndex() {
+    public String returnEventsIndex(Model model) {
+        model.addAttribute("event", eventDao.findAll());
         return "events/index";
     }
 
@@ -54,6 +56,24 @@ public class EventController {
         eventPosted.setEventCreator(userDb);
         eventDao.save(eventPosted);
         return "redirect:/home";
+    }
+
+    @GetMapping("/events/{id}/edit")
+    public  String editEvent(@PathVariable Long id, Model model) {
+        model.addAttribute("event", eventDao.findOne(id));
+        return "events/edit";
+    }
+
+    @PostMapping("/events/{id}/edit")
+    public String updateEvent(@PathVariable Long id, @ModelAttribute Event event) {
+        eventDao.save(event);
+        return "redirect:/events";
+    }
+
+    @PostMapping("/events/{id}/delete")
+    public String deleteEvent(@PathVariable Long id) {
+        eventDao.delete(id);
+        return "redirect:/events";
     }
 
 }
