@@ -2,6 +2,7 @@ package com.quickscrim.controllers;
 
 import com.quickscrim.models.User;
 import com.quickscrim.repositories.UserRepository;
+import com.quickscrim.services.UserDetailsLoader;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -11,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,11 +21,11 @@ import javax.validation.Valid;
 
 @Controller
 public class UserController {
-    private UserRepository users;
+    private UserRepository userDao;
     private PasswordEncoder passwordEncoder;
 
-    public UserController(UserRepository users, PasswordEncoder passwordEncoder) {
-        this.users = users;
+    public UserController(UserRepository userDao, PasswordEncoder passwordEncoder) {
+        this.userDao = userDao;
         this.passwordEncoder = passwordEncoder;
     }
 
@@ -35,21 +37,28 @@ public class UserController {
 
     @PostMapping("/register")
     public String saveUser(@ModelAttribute @Valid User user, Errors validation, Model model) {
+        String username = user.getUsername();
+        User existingUsername = userDao.findByUsername(username);
+        User existingEmail = userDao.findByEmail(user.getEmail());
+
+        if (existingUsername != null) {
+            validation.rejectValue("username", "user.username", "Duplicated username " + username);
+        }
+
+        if(existingEmail != null){
+
+            validation.rejectValue("email", "user.email", "Duplicated email " + user.getEmail());
+
+        }
+
         if (validation.hasErrors()) {
             model.addAttribute("errors", validation);
             return "user/register";
         }
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
-        users.save(user);
+        userDao.save(user);
         return "redirect:/login";
     }
-
-    @GetMapping("user/profile")
-    public String displayUserProfile () {
-
-            return "user/profile";
-    }
-
 
 }
