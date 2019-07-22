@@ -22,4 +22,21 @@ public class UserDetailsLoader implements UserDetailsService {
         }
         return new UserWithRoles(user);
     }
+
+    public Iterable<User> getAllUsers() {
+        return users.findAll();
+    }
+
+    public User getUser(long id) {
+        return users.findOne(id);
+    }
+
+    public User save(User user) {
+        return users.save(user);
+    }
+
+    public void delete(Long id) {
+        users.delete(id);
+    }
+
 }
