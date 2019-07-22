@@ -55,7 +55,9 @@ public class HomeController {
 
     @GetMapping("/home")
     public String homePageforUsers(Model model) {
-        model.addAttribute("events", eventDao.findAll());
+        User sessionUser = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        User userDb = userDao.findOne(sessionUser.getId());
+        model.addAttribute("events", eventDao.findAllByEventCreator();
         model.addAttribute("posts", postDao.findAll());
         model.addAttribute("event", new Event());
         model.addAttribute("post", new Post());
