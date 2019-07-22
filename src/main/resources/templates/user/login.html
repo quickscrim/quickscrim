@@ -10,6 +10,10 @@
 <div th:if="${param.error}">
     You have entered an invalid username and/or password. Please try again
 </div>
+<div th:if="${param.logout}">
+    You have been logged out
+</div>
+
 <nav th:replace="fragments/navbar :: navbar"></nav>
 <div class="container">
     <div class="row">
