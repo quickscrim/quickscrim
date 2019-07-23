@@ -14,6 +14,7 @@
             <div th:if="${posts}" th:each="post : ${posts}">
                 <h5 th:text="${post.title}"></h5>
                 <p class="content" th:text="${post.body}"></p>
+                <p class="content" th:text="${post.postCategory.sport}"></p>
                 <a class="waves-effect waves-light btn-large" th:href="@{ /posts/{id}(id=${post.id}) }">Show Post</a>
             </div>
 
