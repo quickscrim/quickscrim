@@ -26,7 +26,7 @@ public class Event {
     private Date eventDate;
 
     @Column
-    private int locationApi;
+    private String locationApi;
 
     @Column
     private boolean recurring;
@@ -51,7 +51,7 @@ public class Event {
         this.description = description;
     }
 
-    public Event(String eventName, String description, Date eventDate, int locationApi, boolean recurring, int howOften, List<User> userEvents, Category eventSport) {
+    public Event(String eventName, String description, Date eventDate, String locationApi, boolean recurring, int howOften, List<User> userEvents, Category eventSport) {
         this.eventName = eventName;
         this.description = description;
         this.eventDate = eventDate;
@@ -62,7 +62,7 @@ public class Event {
         this.eventSport = eventSport;
     }
 
-    public Event(String eventName, String description, Date eventDate, int locationApi) {
+    public Event(String eventName, String description, Date eventDate, String locationApi) {
         this.eventName = eventName;
         this.description = description;
         this.eventDate = eventDate;
@@ -107,11 +107,11 @@ public class Event {
         this.eventDate = eventDate;
     }
 
-    public int getLocationApi() {
+    public String getLocationApi() {
         return locationApi;
     }
 
-    public void setLocationApi(int locationApi) {
+    public void setLocationApi(String locationApi) {
         this.locationApi = locationApi;
     }
 
