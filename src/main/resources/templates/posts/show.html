@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8" />
     <title>Title</title>
+    <link th:replace="fragments/header :: header(Forum)" />
 </head>
 <body>
+<div th:replace="fragments/navbar :: navbar"></div>
 
 <div class="container, card">
 
@@ -45,5 +47,7 @@
 
 </div>
 
+
+<div th:replace="fragments/footer :: footer"></div>
 </body>
 </html>

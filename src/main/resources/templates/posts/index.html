@@ -8,12 +8,12 @@
 <body>
 <div th:replace="fragments/navbar :: navbar"></div>
 
-<th:block th:fragment="searchForm">
+<th:block>
     <div class="container">
         <form th:action="@{/posts/search}" th:method="POST">
             <label for="term">Search</label>
-            <input type="text" id="term" name="term" placeholder="Search by title/sport/content"/>
-            <input class="btn-large wave-effect" type="submit" value="Search" />
+            <input type="text" id="term" name="term" placeholder="Search by title or body content"/>
+            <input type="submit" value="Search" />
         </form>
     </div>
 </th:block>
@@ -24,14 +24,20 @@
         <div class="row">
 
 
-
+<th:block>
         <ul class="col">
-            <li><a href=""><img th:src="@{/img/sport-icons/basketball.png}" alt="basketball" /></a></li>
-            <li><a href=""><img th:src="@{/img/sport-icons/soccer.png}" alt="soccer" /></a></li>
-            <li><a href=""><img th:src="@{/img/sport-icons/baseball.png}" alt="baseball" /></a></li>
-            <li><a href=""><img th:src="@{/img/sport-icons/football.png}" alt="football" /></a></li>
-        </ul>
+            <form th:action="@{/post/filter}" th:method="POST">
+                <label for="sport">Filter</label>
+                <input type="submit" id="sport" name="basketball"/>
+                <li><a   th:href="@{/posts/filter}"><img th:src="@{/img/sport-icons/basketball.png}" alt="basketball" /></a></li>
+            </form>
 
+                <li><a href=""><img th:src="@{/img/sport-icons/soccer.png}" alt="soccer" /></a></li>
+                <li><a href=""><img th:src="@{/img/sport-icons/baseball.png}" alt="baseball" /></a></li>
+                <li><a href=""><img th:src="@{/img/sport-icons/football.png}" alt="football" /></a></li>
+            <!--</form>-->
+        </ul>
+</th:block>
         <ul class="col">
             <li><a href=""><img th:src="@{/img/sport-icons/volleyball.png}" alt="volleyball" /></a></li>
             <li><a href=""><img th:src="@{/img/sport-icons/tennis.png}" alt="tennis" /></a></li>

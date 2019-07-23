@@ -14,6 +14,8 @@ import java.util.List;
 @Repository
 public interface PostRepository extends CrudRepository<Post, Long> {
     List<Post> findAllByPostByUser(User user);
+
     List<Post> findByBodyIsLikeOrTitleIsLike(String term, String term2);
-//    List<Post> findAllByPostByCategory (Category category);
+
+    List<Post> findAllByPostCategory (List<Category> sport);
 }

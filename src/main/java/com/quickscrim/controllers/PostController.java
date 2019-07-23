@@ -1,5 +1,6 @@
 package com.quickscrim.controllers;
 
+import com.quickscrim.models.Category;
 import com.quickscrim.models.Post;
 import com.quickscrim.models.User;
 import com.quickscrim.repositories.CategoryRepository;
@@ -91,10 +92,18 @@ public class PostController {
         return "redirect:/posts";
     }
 
+//    @PostMapping("/posts/filter")
+//    public String filterResults(@RequestParam (name = "sport") String sport, Model model) {
+//        sport = "sport";
+//        model.addAttribute("posts", postRepository.findAllByPostCategory(sport));
+//        return "posts/filter";
+//    }
+
+
     @PostMapping("/posts/search")
-    public String search(@RequestParam(name = "term") String term, Model vModel){
+    public String search(@RequestParam(name = "term") String term, Model model){
         term = "%"+term+"%";
-        vModel.addAttribute("posts", postRepository.findByBodyIsLikeOrTitleIsLike(term, term));
+        model.addAttribute("posts", postRepository.findByBodyIsLikeOrTitleIsLike(term, term));
         return "posts/results";
     }
 
