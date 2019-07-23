@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <title>Event</title>
+    <link th:replace="fragments/header :: header(Event)" />
+</head>
+<body>
+<div th:replace="fragments/navbar :: navbar"></div>
+
+    <main class="container">
+        <div>
+            <h1 th:text="${event.eventName}"></h1>
+            <p th:text="${event.description}"></p>
+            <p th:text="${event.eventDate}"></p>
+            <p th:text="${event.locationApi}"></p>
+            <p th:text="${event.eventSport}"></p>
+            <small th:text="${event.eventCreator.username}"></small>
+            <small th:text="${event.eventCreator.email}"></small>
+        </div>
+        <div sec:authorize="isAuthenticated()">
+            <th:block th:if="${#authentication.principal.id} == ${event.eventCreator.id}" >
+                <form th:action="@{'/events/' + ${event.id} + '/delete'}" th:method="POST">
+                    <button id="${event.id}">Delete</button>
+                </form>
+                <form th:href="@{'/events/' + ${event.getId()} + '/edit'}" th:method="GET">
+                    <button th:id="${event.id}">Edit</button>
+                </form>
+            </th:block>
+        </div>
+    </main>
+
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

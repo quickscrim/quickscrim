@@ -18,16 +18,9 @@
                 </div>
                 <p class="mb-1" th:text="${event.description}"></p>
                 <small th:text="${event.eventCreator.username}"></small>
-                <div sec:authorize="isAuthenticated()">
-                    <th:block th:if="${#authentication.principal.id} == ${event.eventCreator.id}" >
-                        <form th:action="@{'/events/' + ${event.id} + '/delete'}" th:method="POST">
-                            <button id="${event.id}">Delete</button>
-                        </form>
-                        <form th:href="@{'/events/' + ${event.getId()} + '/edit'}" th:method="GET">
-                            <button th:id="${event.id}">Edit</button>
-                        </form>
-                    </th:block>
-                </div>
+                <a th:href="@{'/events/' + ${event.getId()}}" th:method="GET">
+                    <button th:id="${event.id}">Checkout Event</button>
+                </a>
             </a>
         </th:block>
     </div>

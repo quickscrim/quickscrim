@@ -40,6 +40,12 @@ public class EventController {
         return "events/index";
     }
 
+    @GetMapping("/events/{id}")
+    public String show(@PathVariable Long id, Model model) {
+        model.addAttribute("event", eventDao.findOne(id));
+        return "events/show";
+    }
+
     @GetMapping("/events/create")
     public String create(Model model){
         model.addAttribute("event", new Event());
