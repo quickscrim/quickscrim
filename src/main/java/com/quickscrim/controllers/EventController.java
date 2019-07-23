@@ -49,14 +49,12 @@ public class EventController {
 
     @PostMapping("/events/create")
     public String insertEvent(@ModelAttribute @Valid Event eventPosted, Errors validation, Model model) {
+        User logUser = userService.loggedInUser();
         if (validation.hasErrors()) {
             model.addAttribute("errors", validation);
             return "events/index";
         }
-        User sessionUser = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
-        User userDb = userDao.findOne(sessionUser.getId());
-
-        eventPosted.setEventCreator(userDb);
+        eventPosted.setEventCreator(logUser);
         eventDao.save(eventPosted);
         return "redirect:/home";
     }

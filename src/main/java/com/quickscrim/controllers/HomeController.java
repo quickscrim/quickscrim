@@ -62,10 +62,8 @@ public class HomeController {
         User logUser = userService.loggedInUser();
         if (logUser == null) {
             model.addAttribute("msg", "You need to be logged in to be able to see");
-            return "error/custom";
+            return "/index";
         }
-        model.addAttribute("event", new Event());
-        model.addAttribute("post", new Post());
         model.addAttribute("events", eventDao.findAllByEventCreator(logUser));
         model.addAttribute("posts", postDao.findAllByPostByUser(logUser));
         return "user/home";
