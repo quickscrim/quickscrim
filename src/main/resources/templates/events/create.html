@@ -4,36 +4,6 @@
     <meta charset="UTF-8" />
     <title>Home</title>
     <link th:replace="fragments/header :: header(Home)" />
-    <script th:inline = "javascript">
-        /*<![CDATA[*/
-        "use strict";
-        var autocomplete;
-        function initAutocomplete() {
-            // Create the autocomplete object, restricting the search to geographical
-            // location types.
-              autocomplete = new google.maps.places.Autocomplete(
-                /** @type {!HTMLInputElement} */(document.getElementById('mapsearch')),
-                {types: ['geocode']});
-
-            // When the user selects an address from the dropdown, populate the address
-            // fields in the form.
-            autocomplete.addListener('place_changed', fillInAddress);
-        }
-
-        function fillInAddress() {
-            // Get the place details from the autocomplete object.
-            var place = autocomplete.getPlace();
-            console.log(place.geometry.location.lat());
-            console.log(place.geometry.location.lng());
-            console.log(place);
-
-
-        }
-        /*]]>*/
-    </script>
-    <script th:src="@{ 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCO2UFPuK_2nL3FPcjAOeilpUxUirnYptA&amp;libraries=places&amp;callback=initAutocomplete'}"
-            async="async" defer="defer">
-    </script>
 </head>
 <body>
 <nav th:replace="fragments/navbar :: navbar"></nav>
@@ -52,7 +22,7 @@
                                     </select>
                                 </div>
                         <div class="form-label-group">
-                            <label>Name</label>
+                            <label>Name of Event</label>
                             <input type="text" class="form-control" th:field="*{eventName}" />
                         </div>
                         <div class="form-label-group">
@@ -65,10 +35,7 @@
                         </div>
                         <div class="form-label-group">
                             <label>Location</label>
-                            <input class="form-control" th:field="*{locationApi}" type="hidden"/>
-                        </div>
-                        <div class="form-label-group">
-                            <input id="mapsearch" type="text" class="validate form-control" placeholder=" " />
+                            <input class="form-control" th:field="*{locationApi}" />
                         </div>
                         <button class="btn btn-lg btn-primary btn-block text-uppercase mt-3" type="submit" value="Create Event">Create Event</button>
                     </form>
