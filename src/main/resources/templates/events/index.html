@@ -18,10 +18,15 @@
                 </div>
                 <p class="mb-1" th:text="${event.description}"></p>
                 <small th:text="${event.eventCreator.username}"></small>
-                <div class="row" sec:authorize="isAuthenticated()">
-                    <div class="column">
-                        <a th:href="@{'/events/' + ${event.getId()} + '/edit'}" class="button button-outline">Edit Event</a>
-                    </div>
+                <div sec:authorize="isAuthenticated()">
+                    <th:block th:if="${#authentication.principal.id} == ${event.eventCreator.id}" >
+                        <form th:action="@{'/events/' + ${event.id} + '/delete'}" th:method="POST">
+                            <button id="${event.id}">Delete</button>
+                        </form>
+                        <form th:href="@{'/events/' + ${event.getId()} + '/edit'}" th:method="GET">
+                            <button th:id="${event.id}">Edit</button>
+                        </form>
+                    </th:block>
                 </div>
             </a>
         </th:block>
