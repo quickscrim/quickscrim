@@ -9,19 +9,11 @@ const options = {
         console.log(file.url);
         const profilePicUrl = file.url;
 
-        $.ajax({
-            type: "POST",
-            url: "/upload/pic",
-            data: {profilePicUrl: profilePicUrl}
-        });
-
-        function storeUrl(url) {
-            // take the profile pic url
-        }
-        }
+        $('<input/>').attr({'type': 'hidden', 'value': file.url, 'name': 'profilePicUrl'}).appendTo("#pfpUpload");
+        $('#pfpUpload').submit();
 
 
-    };
-
+    }
+};
 client.picker(options).open();
 
