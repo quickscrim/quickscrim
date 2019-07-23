@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<head th:replace="fragments/header :: header('Quick Scrim')"></head>
+<body>
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<h1>Your Profile</h1>
+
+<div th:object="${profile}">
+    <img id="navbar-profile-img" th:src="${profile.getImage()}" class="rounded-circle" />
+    <br/>
+    <span th:text="${profile.getUsername()}"></span>
+    <br/>
+    <span th:text="${profile.getEmail()}"></span>
+    <br/>
+    <span th:text="${profile.getFirstName()}"></span>
+    <br/>
+    <span th:text="${profile.getLastName()}"></span>
+    <br/>
+    <span th:text="${profile.getBio()}"></span>
+    <br/>
+    <span th:text="${profile.getCity()}"></span>
+    <br/>
+    <span th:text="${profile.getState()}"></span>
+    <br/>
+    <a class="button button-clear" th:href="@{'/profile/' + ${profile.getId()} + '/edit'}">Edit Profile</a>
+</div>
+
+<br/>
+
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+
+</html>

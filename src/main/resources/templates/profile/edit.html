@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<head th:replace="fragments/header :: header('Quick Scrim')"></head>
+<body>
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<h1>Edit Profile</h1>
+
+<div>
+    <form th:action="@{'/profile/' + ${profile.getId()} + '/edit'}" method="post" th:object="${profile}">
+        <label for="username">Username:</label>
+        <input id="username" type="text" th:field="*{username}" th:value="${profile.getUsername()}"/>
+        <br/>
+        <label for="email">E-mail:</label>
+        <input id="email" type="text" th:field="*{email}" th:value="${profile.getEmail()}"/>
+        <br/>
+        <label for="firstName">First Name:</label>
+        <input id="firstName" type="text" th:field="*{firstName}" th:value="${profile.getFirstName()}"/>
+        <br/>
+        <label for="lastName">Last Name:</label>
+        <input id="lastName" type="text" th:field="*{lastName}" th:value="${profile.getLastName()}"/>
+        <br/>
+        <label for="bio">Bio:</label>
+        <textarea id="bio" th:field="*{bio}" th:value="${profile.getBio()}"></textarea>
+        <br/>
+        <label for="city">City:</label>
+        <input id="city" type="text" th:field="*{city}" th:value="${profile.getCity()}"/>
+        <br/>
+        <label for="state">State:</label>
+        <input id="state" type="text" th:field="*{state}" th:value="${profile.getState()}"/>
+        <br/>
+        <input type="hidden" th:field="*{password}"/>
+        <input class="button button-outline" type="submit" value="Save Changes"/>
+    </form>
+</div>
+
+<br/>
+
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+
+</html>
