@@ -8,6 +8,16 @@
 <body>
 <div th:replace="fragments/navbar :: navbar"></div>
 
+<th:block th:fragment="searchForm">
+    <div class="container">
+        <form th:action="@{/posts/search}" th:method="POST">
+            <label for="term">Search</label>
+            <input type="text" id="term" name="term" placeholder="Search by title/sport/content"/>
+            <input class="btn-large wave-effect" type="submit" value="Search" />
+        </form>
+    </div>
+</th:block>
+
 <div class="container">
     <div class="row">
         <div class="col">
@@ -46,7 +56,7 @@
         </div>
         </div>
 
-
+        
 
         <div class="col">
 
@@ -61,6 +71,7 @@
                         <h4 th:text="${post.getTitle()}"></h4>
                         <em><h6 th:text="'Posted by ' + ${post.getPostAuthor().getUsername()}"></h6></em>
                         <p class="body-preview" th:text="${post.getBody()}"></p>
+                        <p th:text="${post.getPostCategory().sport}"></p>
                         <a class="button button-clear" th:href="@{'/posts/' + ${post.getId()}}">Read More</a>
                     </div>
                 </div>

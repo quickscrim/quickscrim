@@ -2,26 +2,30 @@ package com.quickscrim.controllers;
 
 import com.quickscrim.models.Post;
 import com.quickscrim.models.User;
+import com.quickscrim.repositories.CategoryRepository;
+import com.quickscrim.repositories.PostRepository;
 import com.quickscrim.services.PostService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
 @Controller
-public class ForumController {
+public class PostController {
 
     private final PostService postService;
+    private final PostRepository postRepository;
+    private final CategoryRepository categoryDao;
+
 //    private final UserService userService;
 
-    public ForumController(PostService postService) {
+    public PostController(PostService postService, PostRepository postRepository, CategoryRepository categoryDao) {
         this.postService = postService;
+        this.postRepository = postRepository;
+        this.categoryDao = categoryDao;
 //        this.userService = userService;
     }
 
@@ -45,6 +49,7 @@ public class ForumController {
     @GetMapping("/posts/create")
     public String getCreate(Model model) {
         model.addAttribute("post", new Post());
+        model.addAttribute("categories", categoryDao.findAll());
         return "posts/create";
     }
 
@@ -84,6 +89,13 @@ public class ForumController {
         if (authorUser.getId() == postService.getPost(id).getPostAuthor().getId())
             postService.delete(id);
         return "redirect:/posts";
+    }
+
+    @PostMapping("/posts/search")
+    public String search(@RequestParam(name = "term") String term, Model vModel){
+        term = "%"+term+"%";
+        vModel.addAttribute("posts", postRepository.findByBodyIsLikeOrTitleIsLike(term, term));
+        return "posts/results";
     }
 
 }

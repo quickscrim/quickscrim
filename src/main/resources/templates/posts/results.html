@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+</head>
+<body>
+
+
+<div class="container">
+    <h4 class="page-title">Search results</h4>
+    <div class="row">
+        <div class="col l10 offset-l1">
+            <div th:if="${posts}" th:each="post : ${posts}">
+                <h5 th:text="${post.title}"></h5>
+                <p class="content" th:text="${post.body}"></p>
+                <a class="waves-effect waves-light btn-large" th:href="@{ /posts/{id}(id=${post.id}) }">Show Post</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
