@@ -6,6 +6,7 @@ import com.quickscrim.models.User;
 import com.quickscrim.repositories.CategoryRepository;
 import com.quickscrim.repositories.EventRepository;
 import com.quickscrim.repositories.UserRepository;
+import com.quickscrim.services.UserService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,11 +25,13 @@ public class EventController {
     private final EventRepository eventDao;
     private final UserRepository userDao;
     private final CategoryRepository categoryDao;
+    private final UserService userService;
 
-    public EventController(EventRepository eventDao, UserRepository userDao, CategoryRepository categoryDao){
+    public EventController(EventRepository eventDao, UserRepository userDao, CategoryRepository categoryDao, UserService userService){
         this.eventDao = eventDao;
         this.userDao = userDao;
         this.categoryDao = categoryDao;
+        this.userService = userService;
     }
 
     @GetMapping ("/events/index")
@@ -60,13 +63,23 @@ public class EventController {
 
     @GetMapping("/events/{id}/edit")
     public  String editEvent(@PathVariable Long id, Model model) {
-        model.addAttribute("event", eventDao.findOne(id));
+        Event event = eventDao.findOne(id);
+        if (!userService.isOwner(event.getEventCreator())) {
+            return "redirect:/events";
+        }
+        model.addAttribute("event", event);
         return "events/edit";
     }
 
-    @PostMapping("/events/{id}/edit")
-    public String updateEvent(@PathVariable Long id, @ModelAttribute Event event) {
-        eventDao.save(event);
+    @PostMapping("/events/edit")
+    public String updateEvent(@Valid Event eventEdited, Errors val, Model model) {
+        if (val.hasErrors()) {
+            model.addAttribute("errors", val);
+            model.addAttribute("event", eventEdited);
+            return "events/edit";
+        }
+        Event eventUpdated = eventDao.findOne(eventEdited.getId());
+        eventDao.save(eventUpdated);
         return "redirect:/events";
     }
 
