@@ -3,19 +3,29 @@
 <head>
     <meta charset="UTF-8" />
     <title>Title</title>
+    <link th:replace="fragments/header :: header(Forum)" />
 </head>
 <body>
+<div th:replace="fragments/navbar :: navbar"></div>
 
 <div class="container">
     <form th:action="@{'/posts/' + ${post.getId()} + '/edit'}" method="post" th:object="${post}">
+
         <label for="title">Title:</label>
+
         <input id="title" type="text" th:field="*{title}" th:value="${post.getTitle()}"/>
+
         <label for="body">Body:</label>
+
         <textarea id="body" th:field="*{body}" th:value="${post.getBody()}"></textarea>
+
         <input type="hidden" th:field="*{postAuthor}"/>
+
         <input class="button button-outline" type="submit" value="Save Post"/>
     </form>
 </div>
 
+
+<div th:replace="fragments/footer :: footer"></div>
 </body>
 </html>

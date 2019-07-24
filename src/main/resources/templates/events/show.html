@@ -20,7 +20,7 @@
         </div>
         <div sec:authorize="isAuthenticated()">
             <th:block th:if="${#authentication.principal.id} != ${event.eventCreator.id}" >
-            <form th:href="@{'/events/' + ${event.getId()} + '/join'}" th:method="GET">
+            <form th:action="@{'/events/' + ${event.getId()} + '/join'}" th:method="GET">
                 <button th:id="${event.id}">Join Event</button>
             </form>
             </th:block>
@@ -30,7 +30,7 @@
                 <form th:action="@{'/events/' + ${event.id} + '/delete'}" th:method="POST">
                     <button id="${event.id}">Delete</button>
                 </form>
-                <form th:href="@{'/events/' + ${event.getId()} + '/edit'}" th:method="GET">
+                <form th:action="@{'/events/' + ${event.getId()} + '/edit'}" th:method="GET">
                     <button th:id="${event.id}">Edit</button>
                 </form>
             </th:block>
