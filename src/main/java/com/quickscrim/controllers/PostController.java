@@ -113,7 +113,7 @@ public class PostController {
 //        return "user/home";
 //    }
 
-    @PostMapping("/posts/filter")
+    @GetMapping("/posts/filter")
     public String usersHome(Model model, @RequestParam(name="categories", required = false) Long id) {
         Iterable<Post> posts;
         if(id!=null){
@@ -121,7 +121,7 @@ public class PostController {
         } else{
         posts = postService.getAllPosts();
         }
-        model.addAttribute("search", postRepository.findAllByPostCategory_Id(id));
+        model.addAttribute("filter", postRepository.findAllByPostCategory_Id(id));
         model.addAttribute("posts", posts);
         model.addAttribute("categories", categoryDao.findAll());
         return "posts/index";

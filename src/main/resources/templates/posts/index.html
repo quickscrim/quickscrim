@@ -24,10 +24,10 @@
         <div class="row">
 
 
-            <form class="form-signin" th:action="@{'/post/filter'}" method="post" id="searchForm" th:object="${posts}">
+            <form class="form-signin" th:action="@{/filter}" method="get" id="searchForm" th:object="${filter}">
                 <div class="form-label-group">
                     <label for="exampleFormControlSelect1">Sport</label>
-                    <select class="form-control" id="exampleFormControlSelect1" name="categories" th:field="${postsCategory}">
+                    <select class="form-control" id="exampleFormControlSelect1" name="categories">
                         <option th:each="category : ${categories}" th:text="${category.sport}" th:value="${category.id}"></option>
                     </select>
                     <button type="submit">Search</button>
