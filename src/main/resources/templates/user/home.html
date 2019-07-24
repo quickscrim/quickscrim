@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <title>Home</title>
     <link th:replace="fragments/header :: header(Home)" />
+    <link rel="stylesheet" type="text/css" href="../css/modern-business.css" />
 </head>
 <body>
 <nav th:replace="fragments/navbar :: navbar"></nav>
     <form class="form-signin" th:action="@{/home}" method="get" id="searchForm" th:object="${search}">
         <div class="form-label-group">
-            <label for="exampleFormControlSelect1">Sport</label>
             <select class="form-control" id="exampleFormControlSelect1" name="categories">
             <option th:each="category : ${categories}" th:text="${category.sport}" th:value="${category.id}"></option>
             </select>
@@ -17,21 +17,71 @@
         </div>
     </form>
 
-    <div class="list-group">
-        <th:block th:each="event : ${events}">
-            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
-                <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1" th:text="${event.eventName}"></h5>
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--<div class="list-group">-->
+        <!--<th:block th:each="event : ${events}">-->
+            <!--<a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">-->
+                <!--<div class="d-flex w-100 justify-content-between">-->
+                    <!--<h5 class="mb-1" th:text="${event.eventName}"></h5>-->
+                <!--</div>-->
+                <!--<p class="mb-1" th:text="${event.description}"></p>-->
+                <!--<p class="mb-1" th:text="${event.eventCreator.username}"></p>-->
+                <!--<p class="mb-1" th:text="${event.locationApi}"></p>-->
+            <!--</a>-->
+        <!--</th:block>-->
+    <!--</div>-->
+
+
+<div class = "row">
+<th:block th:each="event : ${events}">
+<div class="col-xs-12 col-sm-6 col-md-4">
+    <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+        <div class="mainflip">
+            <div class="frontside">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <p><img class=" img-fluid" src="https://sunlimetech.com/portfolio/boot4menu/assets/imgs/team/img_02.png" alt="card image" /></p>
+                        <h5 class="mb-1" th:text="${event.eventName}"></h5>
+                        <p class="card-text" th:text="${event.eventCreator.username}"></p>
+                        <p class="card-text" th:text="${event.locationApi}"></p>
+                    </div>
                 </div>
-                <p class="mb-1" th:text="${event.description}"></p>
-                <p class="mb-1" th:text="${event.eventCreator.username}"></p>
-                <p class="mb-1" th:text="${event.locationApi}"></p>
+            </div>
+            <div class="backside">
+                <div class="card">
+                    <div class="card-body text-center mt-4">
+                        <h4 class="card-title">Description</h4>
+                        <p class="card-text" th:text="${event.description}" ></p>
 
-
-
-            </a>
-        </th:block>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+</div>
+</th:block>
+</div>
+
+
+
+
+
+
+
+
+
+
 
     <h1>Posts from forum</h1>
 

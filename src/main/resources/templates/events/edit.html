@@ -30,9 +30,6 @@
         </div>
         <button class="btn btn-block btn-primary">Submit</button>
     </form>
-    <form th:action="@{'/events/' + ${event.id} + '/delete'}" th:method="POST">
-        <button class="btn btn-danger">Delete</button>
-    </form>
 </main>
 
 <div th:replace="fragments/footer :: footer"></div>

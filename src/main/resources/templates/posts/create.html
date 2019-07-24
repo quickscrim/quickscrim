@@ -3,21 +3,30 @@
 <head>
     <meta charset="UTF-8" />
     <title>Title</title>
+    <link th:replace="fragments/header :: header(Forum)" />
 </head>
 <body>
+<div th:replace="fragments/navbar :: navbar"></div>
 
 <div>
 
     <form th:action="@{'/posts/create'}" method="post" th:object="${post}">
 
-        <label for="title">Title:</label>
+        <label for="title">Title: </label>
         <input id="title" type="text" th:field="*{title}"/>
         <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></p>
 
-        <label for="body">Body:</label>
+        <label for="body">Body: </label>
         <textarea id="body" th:field="*{body}"></textarea>
         <p th:if="${#fields.hasErrors('body')}" th:errors="*{body}"></p>
 
+        <div class="form-label-group">
+            <label for="exampleFormControlSelect1">Sport: </label>
+            <select class="form-control" id="exampleFormControlSelect1" th:field="*{postCategory}">
+                <option th:each="category : ${categories}" th:text="${category.sport}" th:value="${category.id}"></option>
+                <p th:if="${#fields.hasErrors('postCategory')}" th:errors="*{postCategory}"></p>
+            </select>
+        </div>
 
         <input type="hidden" th:field="*{postAuthor}"/>
         <input type="submit" value="Create Post"/>
@@ -25,5 +34,7 @@
 
 </div>
 
+
+<div th:replace="fragments/footer :: footer"></div>
 </body>
 </html>

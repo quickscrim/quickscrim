@@ -59,8 +59,9 @@ public class HomeController {
         User logUser = userService.loggedInUser();
         if (logUser == null) {
             model.addAttribute("msg", "You need to be logged in to be able to see");
-            return "error/custom";
+            return "/index";
         }
+
         Iterable<Event> events;
         if(id!=null){
         events = eventDao.findAllByEventSport_Id(id);

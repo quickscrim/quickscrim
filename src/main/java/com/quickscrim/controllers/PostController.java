@@ -1,36 +1,37 @@
 package com.quickscrim.controllers;
 
+import com.quickscrim.models.Category;
+import com.quickscrim.models.Event;
 import com.quickscrim.models.Post;
 import com.quickscrim.models.User;
+import com.quickscrim.repositories.CategoryRepository;
+import com.quickscrim.repositories.PostRepository;
 import com.quickscrim.services.PostService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
 @Controller
-public class ForumController {
+public class PostController {
 
     private final PostService postService;
+    private final PostRepository postRepository;
+    private final CategoryRepository categoryDao;
+
 //    private final UserService userService;
 
-    public ForumController(PostService postService) {
+    public PostController(PostService postService, PostRepository postRepository, CategoryRepository categoryDao) {
         this.postService = postService;
+        this.postRepository = postRepository;
+        this.categoryDao = categoryDao;
 //        this.userService = userService;
     }
 
 
-    @GetMapping("/posts")
-    public String index(Model model) {
-        model.addAttribute("posts", postService.getAllPosts());
-        return "posts/index";
-    }
 
     @GetMapping("/posts/{id}")
     public String show(@PathVariable long id, Model model) {
@@ -45,6 +46,7 @@ public class ForumController {
     @GetMapping("/posts/create")
     public String getCreate(Model model) {
         model.addAttribute("post", new Post());
+        model.addAttribute("categories", categoryDao.findAll());
         return "posts/create";
     }
 
@@ -84,6 +86,34 @@ public class ForumController {
         if (authorUser.getId() == postService.getPost(id).getPostAuthor().getId())
             postService.delete(id);
         return "redirect:/posts";
+    }
+
+//    @GetMapping("/posts")
+//    public String index(Model model) {
+//        model.addAttribute("posts", postService.getAllPosts());
+//        return "posts/index";
+//    }
+
+    @GetMapping("/posts")
+    public String PostIndex(Model model, @RequestParam(name="categories", required = false) Long id) {
+        Iterable<Post> posts;
+        if(id!=null){
+        posts = postRepository.findAllByPostCategory_Id(id);
+        } else{
+        posts = postService.getAllPosts();
+        }
+        model.addAttribute("posts", postService.getAllPosts());
+        model.addAttribute("filter", postRepository.findAllByPostCategory_Id(id));
+        model.addAttribute("posts", posts);
+        model.addAttribute("categories", categoryDao.findAll());
+        return "posts/index";
+    }
+
+    @PostMapping("/posts/search")
+    public String search(@RequestParam(name = "term") String term, Model model){
+        term = "%"+term+"%";
+        model.addAttribute("posts", postRepository.findByBodyIsLikeOrTitleIsLike(term, term));
+        return "posts/index";
     }
 
 }

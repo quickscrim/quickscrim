@@ -17,6 +17,10 @@ public class PostService {
         return postDao.findAll();
     }
 
+//    public Iterable<Post> getAllPostByCategory() {
+//        return postDao.findAllByPostByCategory(getPost());
+//    }
+
     public Post getPost(long id) {
         return postDao.findOne(id);
     }
