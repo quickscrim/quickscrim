@@ -13,4 +13,6 @@ import java.util.List;
 @Repository
 public interface EventRepository extends CrudRepository<Event, Long> {
     List<Event> findAllByEventCreator(User user);
+//    find all events that u have joined
+    List<Event> findAllByUserEvents(User user);
 }

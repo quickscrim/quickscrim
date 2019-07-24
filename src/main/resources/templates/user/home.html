@@ -22,6 +22,9 @@
                 </div>
                 <p class="mb-1" th:text="${event.description}"></p>
                 <p class="mb-1" th:text="${event.eventCreator.username}"></p>
+                <a th:href="@{'/events/' + ${event.getId()}}" th:method="GET">
+                    <button th:id="${event.id}">Checkout Event</button>
+                </a>
             </a>
         </th:block>
     </div>
