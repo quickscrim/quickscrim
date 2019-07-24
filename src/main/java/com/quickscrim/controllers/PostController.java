@@ -32,11 +32,6 @@ public class PostController {
     }
 
 
-    @GetMapping("/posts")
-    public String index(Model model) {
-        model.addAttribute("posts", postService.getAllPosts());
-        return "posts/index";
-    }
 
     @GetMapping("/posts/{id}")
     public String show(@PathVariable long id, Model model) {
@@ -93,15 +88,21 @@ public class PostController {
         return "redirect:/posts";
     }
 
+//    @GetMapping("/posts")
+//    public String index(Model model) {
+//        model.addAttribute("posts", postService.getAllPosts());
+//        return "posts/index";
+//    }
 
-    @GetMapping("/posts/filter")
-    public String usersHome(Model model, @RequestParam(name="categories", required = false) Long id) {
+    @GetMapping("/posts")
+    public String PostIndex(Model model, @RequestParam(name="categories", required = false) Long id) {
         Iterable<Post> posts;
         if(id!=null){
         posts = postRepository.findAllByPostCategory_Id(id);
         } else{
         posts = postService.getAllPosts();
         }
+        model.addAttribute("posts", postService.getAllPosts());
         model.addAttribute("filter", postRepository.findAllByPostCategory_Id(id));
         model.addAttribute("posts", posts);
         model.addAttribute("categories", categoryDao.findAll());

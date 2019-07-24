@@ -24,7 +24,7 @@
         <div class="row">
 
 
-            <form class="form-signin" th:action="@{/posts/filter}" method="get" id="searchForm" th:object="${filter}">
+            <form class="form-signin" th:action="@{/posts}" method="get" id="searchForm" th:object="${filter}">
                 <div class="form-label-group">
                     <label for="exampleFormControlSelect1">Sport</label>
                     <select class="form-control" id="exampleFormControlSelect1" name="categories">
@@ -33,6 +33,18 @@
                     <button type="submit">Search</button>
                 </div>
             </form>
+
+        <a type="submit" th:href="@{/posts}">Clear search/filter results</a>
+
+            <!--<ul class="col">-->
+                <!--<form class="form-signin" th:action="@{/posts/filter}" method="get" id="searchForm" th:object="${filter}">-->
+                    <!--<div class="form-label-group">-->
+                        <!--<button type="submit">-->
+                            <!--<li><a th:field="" th:text="${}" th:href="@{/posts/filter}"><img th:src="@{/img/sport-icons/basketball.png}" alt="basketball" /></a></li>-->
+                        <!--</button>-->
+                    <!--</div>-->
+                <!--</form>-->
+            <!--</ul>-->
 
 
         <!--<ul class="col">-->
