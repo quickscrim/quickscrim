@@ -9,6 +9,12 @@
 <h1>Edit Profile</h1>
 
 <div>
+    <img id="navbar-profile-img" th:src="${profile.getImage()}" />
+    <br />
+    <a href="/upload/pic">Update Photo</a>
+</div>
+
+<div>
     <form th:action="@{'/profile/' + ${profile.getId()} + '/edit'}" method="post" th:object="${profile}">
         <label for="username">Username:</label>
         <input id="username" type="text" th:field="*{username}" th:value="${profile.getUsername()}"/>
