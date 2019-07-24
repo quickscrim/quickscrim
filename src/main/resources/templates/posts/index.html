@@ -24,20 +24,24 @@
         <div class="row">
 
 
-<th:block>
-        <ul class="col">
-            <form th:action="@{/post/filter}" th:method="POST">
-                <label for="sport">Filter</label>
-                <input type="submit" id="sport" name="basketball"/>
-                <li><a   th:href="@{/posts/filter}"><img th:src="@{/img/sport-icons/basketball.png}" alt="basketball" /></a></li>
+            <form class="form-signin" th:action="@{'/post/filter'}" method="post" id="searchForm" th:object="${posts}">
+                <div class="form-label-group">
+                    <label for="exampleFormControlSelect1">Sport</label>
+                    <select class="form-control" id="exampleFormControlSelect1" name="categories" th:field="${postsCategory}">
+                        <option th:each="category : ${categories}" th:text="${category.sport}" th:value="${category.id}"></option>
+                    </select>
+                    <button type="submit">Search</button>
+                </div>
             </form>
 
-                <li><a href=""><img th:src="@{/img/sport-icons/soccer.png}" alt="soccer" /></a></li>
-                <li><a href=""><img th:src="@{/img/sport-icons/baseball.png}" alt="baseball" /></a></li>
-                <li><a href=""><img th:src="@{/img/sport-icons/football.png}" alt="football" /></a></li>
-            <!--</form>-->
+
+        <ul class="col">
+            <li><a href=""><img th:src="@{/img/sport-icons/basketball.png}" alt="basketball" /></a></li>
+            <li><a href=""><img th:src="@{/img/sport-icons/soccer.png}" alt="soccer" /></a></li>
+            <li><a href=""><img th:src="@{/img/sport-icons/baseball.png}" alt="baseball" /></a></li>
+            <li><a href=""><img th:src="@{/img/sport-icons/football.png}" alt="football" /></a></li>
         </ul>
-</th:block>
+
         <ul class="col">
             <li><a href=""><img th:src="@{/img/sport-icons/volleyball.png}" alt="volleyball" /></a></li>
             <li><a href=""><img th:src="@{/img/sport-icons/tennis.png}" alt="tennis" /></a></li>

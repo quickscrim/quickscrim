@@ -1,6 +1,7 @@
 package com.quickscrim.controllers;
 
 import com.quickscrim.models.Category;
+import com.quickscrim.models.Event;
 import com.quickscrim.models.Post;
 import com.quickscrim.models.User;
 import com.quickscrim.repositories.CategoryRepository;
@@ -92,19 +93,45 @@ public class PostController {
         return "redirect:/posts";
     }
 
-//    @PostMapping("/posts/filter")
-//    public String filterResults(@RequestParam (name = "sport") String sport, Model model) {
-//        sport = "sport";
-//        model.addAttribute("posts", postRepository.findAllByPostCategory(sport));
-//        return "posts/filter";
+//    @GetMapping("/home")
+//    public String usersHome(Model model, @RequestParam(name="categories", required = false) Long id) {
+//        User logUser = userService.loggedInUser();
+//        if (logUser == null) {
+//            model.addAttribute("msg", "You need to be logged in to be able to see");
+//            return "error/custom";
+//        }
+//        Iterable<Event> events;
+//        if(id!=null){
+//            events = eventDao.findAllByEventSport_Id(id);
+//        } else{
+//            events = eventDao.findAllByEventCreator(logUser);
+//        }
+//        model.addAttribute("search", eventDao.findAllByEventSport_Id(id));
+//        model.addAttribute("events", events);
+//        model.addAttribute("posts", postDao.findAllByPostByUser(logUser));
+//        model.addAttribute("categories", categoryDao.findAll());
+//        return "user/home";
 //    }
 
+    @PostMapping("/posts/filter")
+    public String usersHome(Model model, @RequestParam(name="categories", required = false) Long id) {
+        Iterable<Post> posts;
+        if(id!=null){
+        posts = postRepository.findAllByPostCategory_Id(id);
+        } else{
+        posts = postService.getAllPosts();
+        }
+        model.addAttribute("search", postRepository.findAllByPostCategory_Id(id));
+        model.addAttribute("posts", posts);
+        model.addAttribute("categories", categoryDao.findAll());
+        return "posts/index";
+    }
 
     @PostMapping("/posts/search")
     public String search(@RequestParam(name = "term") String term, Model model){
         term = "%"+term+"%";
         model.addAttribute("posts", postRepository.findByBodyIsLikeOrTitleIsLike(term, term));
-        return "posts/results";
+        return "posts/index";
     }
 
 }
