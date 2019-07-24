@@ -9,7 +9,7 @@
 <h1>User Profile's</h1>
 
 <div th:each="profile : ${profile}">
-    <img id="navbar-profile-img" src="/img/elon.jpg" class="rounded-circle" />
+    <img id="navbar-profile-img" th:src="${profile.getImage()}" class="rounded-circle" />
     <span th:text="${profile.getUsername()}"></span>
     <a class="button button-clear" th:href="@{'/profile/' + ${profile.getId()}}">View Profile</a>
 </div>
