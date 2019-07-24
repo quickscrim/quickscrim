@@ -3,6 +3,10 @@
     width: 800px;
 }
 
+.team-member-photo {
+    width:100%;
+}
+
 #navbar-profile-img {
     height: 100px;
 }
