@@ -18,11 +18,9 @@
                 </div>
                 <p class="mb-1" th:text="${event.description}"></p>
                 <small th:text="${event.eventCreator.username}"></small>
-                <div class="row" sec:authorize="isAuthenticated()">
-                    <div class="column">
-                        <a th:href="@{'/events/' + ${event.getId()} + '/edit'}" class="button button-outline">Edit Event</a>
-                    </div>
-                </div>
+                <a th:href="@{'/events/' + ${event.getId()}}" th:method="GET">
+                    <button th:id="${event.id}">Checkout Event</button>
+                </a>
             </a>
         </th:block>
     </div>
