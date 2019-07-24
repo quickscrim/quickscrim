@@ -15,10 +15,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -58,14 +55,23 @@ public class HomeController {
 //    Landing Page after a User sucessfully logs in
 
     @GetMapping("/home")
-    public String usersHome(Model model) {
+    public String usersHome(Model model, @RequestParam(name="categories", required = false) Long id) {
         User logUser = userService.loggedInUser();
         if (logUser == null) {
             model.addAttribute("msg", "You need to be logged in to be able to see");
             return "/index";
         }
-        model.addAttribute("events", eventDao.findAllByEventCreator(logUser));
+
+        Iterable<Event> events;
+        if(id!=null){
+        events = eventDao.findAllByEventSport_Id(id);
+        } else{
+           events = eventDao.findAllByEventCreator(logUser);
+        }
+        model.addAttribute("search", eventDao.findAllByEventSport_Id(id));
+        model.addAttribute("events", events);
         model.addAttribute("posts", postDao.findAllByPostByUser(logUser));
+        model.addAttribute("categories", categoryDao.findAll());
         return "user/home";
     }
 }

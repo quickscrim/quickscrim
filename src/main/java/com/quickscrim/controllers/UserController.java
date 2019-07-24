@@ -41,6 +41,10 @@ public class UserController {
         User existingUsername = userDao.findByUsername(username);
         User existingEmail = userDao.findByEmail(user.getEmail());
 
+        String defaultProfilePic = "https://cdn.filestackcontent.com/MNkQjxqpRBWhy5x4Z7Wu";
+
+        user.setImage(defaultProfilePic);
+
         if (existingUsername != null) {
             validation.rejectValue("username", "user.username", "Duplicated username " + username);
         }

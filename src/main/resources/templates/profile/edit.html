@@ -9,6 +9,12 @@
 <h1>Edit Profile</h1>
 
 <div>
+    <img id="navbar-profile-img" th:src="${profile.getImage()}" />
+    <br />
+    <a href="/upload/pic">Update Photo</a>
+</div>
+
+<div>
     <form th:action="@{'/profile/' + ${profile.getId()} + '/edit'}" method="post" th:object="${profile}">
         <label for="username">Username:</label>
         <input id="username" type="text" th:field="*{username}" th:value="${profile.getUsername()}"/>
@@ -28,8 +34,8 @@
         <label for="city">City:</label>
         <input id="city" type="text" th:field="*{city}" th:value="${profile.getCity()}"/>
         <br/>
-        <label for="state">State:</label>
-        <input id="state" type="text" th:field="*{state}" th:value="${profile.getState()}"/>
+        <!--<label for="state">State:</label>-->
+        <!--<input id="state" type="text" th:field="*{state}" th:value="${profile.getState()}"/>-->
         <br/>
         <input type="hidden" th:field="*{password}"/>
         <input class="button button-outline" type="submit" value="Save Changes"/>
