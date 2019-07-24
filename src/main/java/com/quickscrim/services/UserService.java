@@ -33,8 +33,4 @@ public class UserService {
         }
         return false;
     }
-
-    public boolean canEditEvent(User eventUser) {
-        return isLoggedIn() && (eventUser.getId() == loggedInUser().getId());
-    }
 }

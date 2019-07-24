@@ -9,7 +9,7 @@
 <h1>Your Profile</h1>
 
 <div th:object="${profile}">
-    <img id="navbar-profile-img" th:src="${profile.getImage()}" class="rounded-circle" />
+    <img id="navbar-profile-img" th:src="${profile.getImage()}" />
     <br/>
     <span th:text="${profile.getUsername()}"></span>
     <br/>
