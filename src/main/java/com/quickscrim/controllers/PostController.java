@@ -93,25 +93,6 @@ public class PostController {
         return "redirect:/posts";
     }
 
-//    @GetMapping("/home")
-//    public String usersHome(Model model, @RequestParam(name="categories", required = false) Long id) {
-//        User logUser = userService.loggedInUser();
-//        if (logUser == null) {
-//            model.addAttribute("msg", "You need to be logged in to be able to see");
-//            return "error/custom";
-//        }
-//        Iterable<Event> events;
-//        if(id!=null){
-//            events = eventDao.findAllByEventSport_Id(id);
-//        } else{
-//            events = eventDao.findAllByEventCreator(logUser);
-//        }
-//        model.addAttribute("search", eventDao.findAllByEventSport_Id(id));
-//        model.addAttribute("events", events);
-//        model.addAttribute("posts", postDao.findAllByPostByUser(logUser));
-//        model.addAttribute("categories", categoryDao.findAll());
-//        return "user/home";
-//    }
 
     @GetMapping("/posts/filter")
     public String usersHome(Model model, @RequestParam(name="categories", required = false) Long id) {

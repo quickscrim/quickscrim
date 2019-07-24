@@ -24,7 +24,7 @@
         <div class="row">
 
 
-            <form class="form-signin" th:action="@{/filter}" method="get" id="searchForm" th:object="${filter}">
+            <form class="form-signin" th:action="@{/posts/filter}" method="get" id="searchForm" th:object="${filter}">
                 <div class="form-label-group">
                     <label for="exampleFormControlSelect1">Sport</label>
                     <select class="form-control" id="exampleFormControlSelect1" name="categories">
@@ -35,33 +35,33 @@
             </form>
 
 
-        <ul class="col">
-            <li><a href=""><img th:src="@{/img/sport-icons/basketball.png}" alt="basketball" /></a></li>
-            <li><a href=""><img th:src="@{/img/sport-icons/soccer.png}" alt="soccer" /></a></li>
-            <li><a href=""><img th:src="@{/img/sport-icons/baseball.png}" alt="baseball" /></a></li>
-            <li><a href=""><img th:src="@{/img/sport-icons/football.png}" alt="football" /></a></li>
-        </ul>
+        <!--<ul class="col">-->
+            <!--<li><a href=""><img th:src="@{/img/sport-icons/basketball.png}" alt="basketball" /></a></li>-->
+            <!--<li><a href=""><img th:src="@{/img/sport-icons/soccer.png}" alt="soccer" /></a></li>-->
+            <!--<li><a href=""><img th:src="@{/img/sport-icons/baseball.png}" alt="baseball" /></a></li>-->
+            <!--<li><a href=""><img th:src="@{/img/sport-icons/football.png}" alt="football" /></a></li>-->
+        <!--</ul>-->
 
-        <ul class="col">
-            <li><a href=""><img th:src="@{/img/sport-icons/volleyball.png}" alt="volleyball" /></a></li>
-            <li><a href=""><img th:src="@{/img/sport-icons/tennis.png}" alt="tennis" /></a></li>
-            <li><a href=""><img th:src="@{/img/sport-icons/bowling.png}" alt="bowling" /></a></li>
-            <li><a href=""><img th:src="@{/img/sport-icons/pool.png}" alt="pool" /></a></li>
-        </ul>
+        <!--<ul class="col">-->
+            <!--<li><a href=""><img th:src="@{/img/sport-icons/volleyball.png}" alt="volleyball" /></a></li>-->
+            <!--<li><a href=""><img th:src="@{/img/sport-icons/tennis.png}" alt="tennis" /></a></li>-->
+            <!--<li><a href=""><img th:src="@{/img/sport-icons/bowling.png}" alt="bowling" /></a></li>-->
+            <!--<li><a href=""><img th:src="@{/img/sport-icons/pool.png}" alt="pool" /></a></li>-->
+        <!--</ul>-->
 
-        <ul class="col">
-            <li><a href=""><img th:src="@{/img/sport-icons/pingpong.png}" alt="pingpong" /></a></li>
-            <li><a href=""><img th:src="@{/img/sport-icons/golf.png}" alt="golf" /></a></li>
-            <li><a href=""><img th:src="@{/img/sport-icons/boxing.png}" alt="boxing" /></a></li>
-            <li><a href=""><img th:src="@{/img/sport-icons/hockey.png}" alt="hockey" /></a></li>
-        </ul>
+        <!--<ul class="col">-->
+            <!--<li><a href=""><img th:src="@{/img/sport-icons/pingpong.png}" alt="pingpong" /></a></li>-->
+            <!--<li><a href=""><img th:src="@{/img/sport-icons/golf.png}" alt="golf" /></a></li>-->
+            <!--<li><a href=""><img th:src="@{/img/sport-icons/boxing.png}" alt="boxing" /></a></li>-->
+            <!--<li><a href=""><img th:src="@{/img/sport-icons/hockey.png}" alt="hockey" /></a></li>-->
+        <!--</ul>-->
 
-        <ul class="col">
-            <li><a href=""><img th:src="@{/img/sport-icons/running.png}" alt="running" /></a></li>
-            <li><a href=""><img th:src="@{/img/sport-icons/swimming.png}" alt="swimming" /></a></li>
-            <li><a href=""><img th:src="@{/img/sport-icons/cycling.png}" alt="cycling" /></a></li>
-            <li><a href=""><img th:src="@{/img/sport-icons/archery.png}" alt="archery" /></a></li>
-        </ul>
+        <!--<ul class="col">-->
+            <!--<li><a href=""><img th:src="@{/img/sport-icons/running.png}" alt="running" /></a></li>-->
+            <!--<li><a href=""><img th:src="@{/img/sport-icons/swimming.png}" alt="swimming" /></a></li>-->
+            <!--<li><a href=""><img th:src="@{/img/sport-icons/cycling.png}" alt="cycling" /></a></li>-->
+            <!--<li><a href=""><img th:src="@{/img/sport-icons/archery.png}" alt="archery" /></a></li>-->
+        <!--</ul>-->
 
         </div>
         </div>
@@ -91,6 +91,8 @@
         </div>
     </div>
 </div>
+
+<hr/>
 <hr/>
 <div th:replace="fragments/footer :: footer"></div>
 </body>
