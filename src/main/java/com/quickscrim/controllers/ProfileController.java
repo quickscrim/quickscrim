@@ -18,11 +18,11 @@ public ProfileController(UserRepository users, UserDetailsLoader userService) {
     this.userService = userService;
 }
 
-    @GetMapping("/users")
-    public String profileIndex(Model model) {
-        model.addAttribute("profile", userService.getAllUsers());
-        return "profile/index";
-    }
+//    @GetMapping("/users")
+//    public String profileIndex(Model model) {
+//        model.addAttribute("profile", userService.getAllUsers());
+//        return "profile/index";
+//    }
 
     @GetMapping("/profile/{id}")
     public String displayUserProfile(
