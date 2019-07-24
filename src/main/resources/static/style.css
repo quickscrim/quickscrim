@@ -7,10 +7,15 @@
     width:100%;
 }
 
+.social-icon {
+    width:40px;
+
+}
+
 .footer{
-    position: absolute;
-    bottom: 0;
-    width: 100%;
+    position: absolute !important;
+    bottom: 0 !important;
+    width: 100% !important;
 }
 #navbar-profile-img {
     height: 100px;
