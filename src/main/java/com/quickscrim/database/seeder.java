@@ -73,22 +73,22 @@ public class seeder implements CommandLineRunner {
 
     private List<Category> seedCategory() {
         List<Category> categories = Arrays.asList(
-                new Category("Basketball"),
-                new Category("Baseball"),
-                new Category("Archery"),
-                new Category("Bowling"),
-                new Category("Boxing"),
-                new Category("Cycling"),
-                new Category("Football"),
-                new Category("Golf"),
-                new Category("Hockey"),
-                new Category("Pingpong"),
-                new Category("Pool"),
-                new Category("Running"),
-                new Category("Soccer"),
-                new Category("Swimming"),
-                new Category("Tennis"),
-                new Category("Volleyball")
+                new Category("Basketball", "basketball.png"),
+                new Category("Baseball", "img/sport-icons/baseball.png"),
+                new Category("Archery", "archery.png"),
+                new Category("Bowling", "bowling.png"),
+                new Category("Boxing", "boxing.png"),
+                new Category("Cycling", "cycling.png"),
+                new Category("Football", "football.png"),
+                new Category("Golf", "golf.png"),
+                new Category("Hockey", "hockey.png"),
+                new Category("Pingpong", "pingpong.png"),
+                new Category("Pool", "pool.png"),
+                new Category("Running", "running.png"),
+                new Category("Soccer", "soccer.png"),
+                new Category("Swimming", "swimming.png"),
+                new Category("Tennis", "tennis.png"),
+                new Category("Volleyball", "volleyball.png")
         );
         categoryDao.save(categories);
         return categories;
