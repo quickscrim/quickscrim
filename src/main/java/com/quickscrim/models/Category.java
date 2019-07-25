@@ -39,8 +39,9 @@ public class Category {
         this.favSports = favSports;
     }
 
-    public Category(String sport) {
+    public Category(String sport, String iconIMG) {
         this.sport = sport;
+        this.iconIMG = iconIMG;
     }
 
     public Category() { }

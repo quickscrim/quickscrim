@@ -95,4 +95,5 @@ public class EventController {
 //        eventDao.save(eventJoined);
 //        return "redirect:/home";
 //    }
+
 }

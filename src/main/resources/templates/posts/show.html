@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8" />
     <title>Title</title>
+    <link th:replace="fragments/header :: header(Forum)" />
 </head>
 <body>
+<div th:replace="fragments/navbar :: navbar"></div>
 
 <div class="container, card">
 
@@ -27,6 +29,7 @@
         <div class="column">
             <blockquote>
                 <p th:text="${post.getBody()}"></p>
+                <p th:text="${post.getPostCategory().sport}"></p>
             </blockquote>
         </div>
     </div>
@@ -44,5 +47,7 @@
 
 </div>
 
+
+<div th:replace="fragments/footer :: footer"></div>
 </body>
 </html>

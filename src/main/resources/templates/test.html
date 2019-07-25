@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header('Quick Scrim')"></head>
+<head>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>Modern Business - Start Bootstrap Template</title>
+  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="../css/modern-business.css" rel="stylesheet" />
+</head>
+
+<body>
+<div th:replace="fragments/navbar :: navbar"></div>
+  <header>
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <div class="carousel-item active" style="background-image: url(/img/basketball.jpg)">
+          <div class="carousel-caption d-none d-md-block">
+            <h1>Play!</h1>
+            <h3>With over 20 sports to choose from, you are guaranteed to find something that interests you!</h3>
+          </div>
+        </div>
+        <div class="carousel-item" style="background-image: url(/img/phone.jpg)">
+          <div class="carousel-caption d-none d-md-block">
+            <h1>Search!</h1>
+            <h3>Quickly search by the sport you are wanting to play to find a match near you!</h3>
+          </div>
+        </div>
+        <div class="carousel-item" style="background-image: url(/img/team.jpg)">
+          <div class="carousel-caption d-none d-md-block">
+            <h1>Connect!</h1>
+            <h3>Connect with other people who share the same interests as you!</h3>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <h1 class="my-4 text-center" style="color: white">Welcome to QuickScrim!</h1>
+
+    <!-- Marketing Icons Section -->
+    <div class="row">
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header text-center">Create/Search through Forums!</h4>
+          <div class="card-body text-center">
+            <p class="card-text text-center">Search through forums to see what people are talking about or ask your own questions!</p>
+          </div>
+          <div class="card-footer text-center">
+            <a th:href="@{'/posts'}" class="btn btn-primary text-center">Search through Forums!</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header text-center">Create an event!</h4>
+          <div class="card-body">
+            <p class="card-text text-center">Create an event by sport and also add any information needed with ease!</p>
+          </div>
+          <div class="card-footer text-center text-center">
+            <a th:href="@{'/events/create'}" class="btn btn-primary">Create event!</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header text-center">No Account? No Problem!</h4>
+          <div class="card-body text-center">
+            <p class="card-text text-center">All you need is a valid email and username to get started and playing in no time!</p>
+          </div>
+          <div class="card-footer text-center">
+            <a th:href="@{'/register'}" class="btn btn-primary text-center">Register Now!</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.row -->
+
+
+
+    <div th:replace="fragments/footer :: footer"></div>
+
+
+
+  <!-- Bootstrap core JavaScript -->
+    <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  </div>
+</body>
+
+</html>
