@@ -1,0 +1,31 @@
+
+.logo {
+    width:100px;
+}
+
+.landing-carousel-img {
+    width:800px;
+    height:400px;
+}
+
+.team-member-photo {
+    border-radius: 1em;
+    width:100%;
+}
+
+.social-icon {
+    width:40px;
+
+}
+
+#footer-custom{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+
+
+}
+#navbar-profile-img {
+    height: 100px;
+}

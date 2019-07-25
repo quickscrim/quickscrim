@@ -19,7 +19,7 @@
                 <p class="mb-1" th:text="${event.description}"></p>
                 <small th:text="${event.eventCreator.username}"></small>
                 <a th:href="@{'/events/' + ${event.getId()}}" th:method="GET">
-                    <button th:id="${event.id}">Checkout Event</button>
+                    <button th:id="${event.id}">View Event</button>
                 </a>
             </a>
         </th:block>
