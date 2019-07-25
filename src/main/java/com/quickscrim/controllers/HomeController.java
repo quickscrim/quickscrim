@@ -45,7 +45,7 @@ public class HomeController {
         Authentication token = SecurityContextHolder.getContext().getAuthentication();
 
         // if not logged in:
-        if (token instanceof AnonymousAuthenticationToken) return "index";
+        if (token instanceof AnonymousAuthenticationToken) return "test";
 
         // if logged in, redirect
         return String.format("redirect:%s", "/home");
@@ -59,7 +59,7 @@ public class HomeController {
         User logUser = userService.loggedInUser();
         if (logUser == null) {
             model.addAttribute("msg", "You need to be logged in to be able to see");
-            return "/index";
+            return "/test";
         }
 
         Iterable<Event> events;
