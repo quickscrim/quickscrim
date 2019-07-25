@@ -38,12 +38,14 @@
     <hr/>
 
     <div class="row" sec:authorize="isAuthenticated()">
+        <th:block th:if="${#authentication.principal.id} == ${post.postAuthor.id}">
         <div class="column">
             <a th:href="@{'/posts/' + ${post.getId()} + '/edit'}" class="button button-outline">Edit Post</a>
             <form th:action="@{'/posts/' + ${post.getId()} + '/delete'}" method="post" th:object="${post}">
                 <input class="button button-outline" type="submit" value="Delete Post"/>
             </form>
         </div>
+        </th:block>
     </div>
 
 </div>
