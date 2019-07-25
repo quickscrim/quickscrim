@@ -13,7 +13,7 @@
 </head>
 
 <body>
-<div th:replace="fragments/navbar :: navbar"></div>
+  <div th:replace="fragments/navbar :: navbar"></div>
   <header>
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
@@ -95,16 +95,8 @@
     </div>
     <!-- /.row -->
 
-
-
-    <div th:replace="fragments/footer :: footer"></div>
-
-
-
-  <!-- Bootstrap core JavaScript -->
-    <script src="../vendor/jquery/jquery.min.js"></script>
-  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   </div>
-</body>
 
+    <div th:include="fragments/footer :: footer"></div>
+</body>
 </html>
