@@ -88,12 +88,13 @@ public class EventController {
         return "redirect:/home";
     }
 
-//    @PostMapping("/events/{id}/join")
-//    public String joinEvent(@PathVariable Long id, @ModelAttribute Event eventJoined) {
-////        User logUser = userService.loggedInUser();
-//        eventJoined.setUserEvents();
-//        eventDao.save(eventJoined);
-//        return "redirect:/home";
-//    }
+    @PostMapping("/events/{id}/join")
+    public String eventUsers(@PathVariable Long id, @ModelAttribute Event eventJoined) {
+        User logUser = userService.loggedInUser();
+        Event event = eventDao.findOne(id);
+        logUser.getUserEvents().add(event);
+        userDao.save(logUser);
+        return "redirect:/home";
+    }
 
 }

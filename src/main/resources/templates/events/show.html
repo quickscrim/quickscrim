@@ -20,8 +20,8 @@
         </div>
         <div sec:authorize="isAuthenticated()">
             <th:block th:if="${#authentication.principal.id} != ${event.eventCreator.id}" >
-            <form th:action="@{'/events/' + ${event.getId()} + '/join'}" th:method="GET">
-                <button th:id="${event.id}">Join Event</button>
+            <form th:action="@{'/events/' + ${event.id} + '/join'}" th:method="POST">
+                <button type="submit">Join Event</button>
             </form>
             </th:block>
         </div>
