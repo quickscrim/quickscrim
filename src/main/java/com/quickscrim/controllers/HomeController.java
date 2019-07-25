@@ -62,12 +62,15 @@ public class HomeController {
             return "/test";
         }
 
-        Iterable<Event> events;
+        List<Event> events;
         if(id!=null){
         events = eventDao.findAllByEventSport_Id(id);
         } else{
            events = eventDao.findAllByEventCreator(logUser);
         }
+        List<Event>joinedEvents = logUser.getUserEvents();
+        events.addAll(joinedEvents);
+
         model.addAttribute("search", eventDao.findAllByEventSport_Id(id));
         model.addAttribute("events", events);
         model.addAttribute("posts", postDao.findAllByPostByUser(logUser));
