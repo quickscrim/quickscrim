@@ -76,13 +76,7 @@ public class EventController {
     }
 
     @PostMapping("/events/{id}/edit")
-    public String updateEvent(@PathVariable Long id,@ModelAttribute Event eventEdited, Errors validation, Model model) {
-        System.out.println(eventEdited.getEventName());
-        if (validation.hasErrors()) {
-            model.addAttribute("errors", validation);
-            model.addAttribute("event", eventEdited);
-            return "events/edit";
-        }
+    public String updateEvent(@PathVariable Long id,@ModelAttribute Event eventEdited) {
         eventEdited.setEventCreator(userDao.findOne(eventDao.findOne(id).getEventCreator().getId()));
         eventDao.save(eventEdited);
         return "redirect:/home";
@@ -94,10 +88,11 @@ public class EventController {
         return "redirect:/home";
     }
 
-//    @GetMapping("/events/{id}/join")
-//    public String joinEvent(@PathVariable Long id, Model model) {
-//        Event event = eventDao.findOne(id);
-//        model.addAttribute("event", event);
-//        return
+//    @PostMapping("/events/{id}/join")
+//    public String joinEvent(@PathVariable Long id, @ModelAttribute Event eventJoined) {
+////        User logUser = userService.loggedInUser();
+//        eventJoined.setUserEvents();
+//        eventDao.save(eventJoined);
+//        return "redirect:/home";
 //    }
 }
