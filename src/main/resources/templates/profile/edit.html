@@ -16,6 +16,7 @@
 
 <div>
     <form th:action="@{'/profile/' + ${profile.getId()} + '/edit'}" method="post" th:object="${profile}">
+        <input type="hidden" id="image" th:field="*{image}" th:value="${profile.getImage()}"/>
         <label for="username">Username:</label>
         <input id="username" type="text" th:field="*{username}" th:value="${profile.getUsername()}"/>
         <br/>
