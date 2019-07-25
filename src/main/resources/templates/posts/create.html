@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
     <title>Title</title>
     <link th:replace="fragments/header :: header(Forum)" />
+    <link rel="stylesheet" type="text/css" href="../css/modern-business.css" />
+    <link rel="stylesheet" type="text/css" href="../css/post-style" />
+
 </head>
 <body>
 <div th:replace="fragments/navbar :: navbar"></div>
@@ -12,16 +15,20 @@
 
     <form th:action="@{'/posts/create'}" method="post" th:object="${post}">
 
-        <label for="title">Title: </label>
-        <input id="title" type="text" th:field="*{title}"/>
+       <div class="form-signin">
+        <label for="title"></label>
+        <input id="title" placeholder="Post Title" type="text" th:field="*{title}"/>
         <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></p>
+       </div>
 
-        <label for="body">Body: </label>
-        <textarea id="body" th:field="*{body}"></textarea>
+       <div class="form-signin">
+        <label for="body"></label>
+        <textarea id="body" placeholder="Post Body" th:field="*{body}"></textarea>
         <p th:if="${#fields.hasErrors('body')}" th:errors="*{body}"></p>
+       </div>
 
-        <div class="form-label-group">
-            <label for="exampleFormControlSelect1">Sport: </label>
+        <div class="form-signin">
+            <label for="exampleFormControlSelect1"></label>
             <select class="form-control" id="exampleFormControlSelect1" th:field="*{postCategory}">
                 <option th:each="category : ${categories}" th:text="${category.sport}" th:value="${category.id}"></option>
                 <p th:if="${#fields.hasErrors('postCategory')}" th:errors="*{postCategory}"></p>

@@ -8,6 +8,7 @@
 </head>
 <body>
 <nav th:replace="fragments/navbar :: navbar"></nav>
+
     <form class="form-signin" th:action="@{/home}" method="get" id="searchForm" th:object="${search}">
         <div class="form-label-group">
             <select class="form-control" id="exampleFormControlSelect1" name="categories">
