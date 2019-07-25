@@ -93,10 +93,13 @@ public class EventController {
         return "redirect:/home";
     }
 
+
 //    @GetMapping("/events/{id}/join")
 //    public String joinEvent(@PathVariable Long id, Model model) {
 //        Event event = eventDao.findOne(id);
 //        model.addAttribute("event", event);
 //        return
 //    }
+
+
 }
