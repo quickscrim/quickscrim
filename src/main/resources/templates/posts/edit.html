@@ -2,8 +2,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
-    <title>Title</title>
+    <title>Post Edit</title>
     <link th:replace="fragments/header :: header(Forum)" />
+    <link rel="stylesheet" type="text/css" href="../css/modern-business.css" />
+    <link rel="stylesheet" type="text/css" href="../css/post-style" />
+
+
 </head>
 <body>
 <div th:replace="fragments/navbar :: navbar"></div>
@@ -11,15 +15,16 @@
 <div class="container">
     <form th:action="@{'/posts/' + ${post.getId()} + '/edit'}" method="post" th:object="${post}">
 
+    <div class="form-label-group">
         <label for="title">Title:</label>
+        <input class="form-control" id="title" type="text" th:field="*{title}" th:value="${post.getTitle()}"/>
+    </div>
 
-        <input id="title" type="text" th:field="*{title}" th:value="${post.getTitle()}"/>
-
+    <div class="form-label-group">
         <label for="body">Body:</label>
-
         <textarea id="body" th:field="*{body}" th:value="${post.getBody()}"></textarea>
-
-        <input type="hidden" th:field="*{postAuthor}"/>
+    </div>
+        <input class="form-control" type="hidden" th:field="*{postAuthor}"/>
 
         <input class="button button-outline" type="submit" value="Save Post"/>
     </form>
