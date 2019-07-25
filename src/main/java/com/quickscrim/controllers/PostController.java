@@ -6,7 +6,9 @@ import com.quickscrim.models.Post;
 import com.quickscrim.models.User;
 import com.quickscrim.repositories.CategoryRepository;
 import com.quickscrim.repositories.PostRepository;
+import com.quickscrim.repositories.UserRepository;
 import com.quickscrim.services.PostService;
+import com.quickscrim.services.UserService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,16 +21,17 @@ import javax.validation.Valid;
 public class PostController {
 
     private final PostService postService;
+    private final UserRepository userDao;
     private final PostRepository postRepository;
     private final CategoryRepository categoryDao;
+    private final UserService userService;
 
-//    private final UserService userService;
-
-    public PostController(PostService postService, PostRepository postRepository, CategoryRepository categoryDao) {
+    public PostController(PostService postService, UserRepository userDao, PostRepository postRepository, CategoryRepository categoryDao, UserService userService) {
         this.postService = postService;
+        this.userDao = userDao;
         this.postRepository = postRepository;
         this.categoryDao = categoryDao;
-//        this.userService = userService;
+        this.userService = userService;
     }
 
 
@@ -52,39 +55,40 @@ public class PostController {
 
     @PostMapping("/posts/create")
     public String postCreate(@Valid Post post, Errors validation, Model model) {
-
+        User logUser = userService.loggedInUser();
         if (validation.hasErrors()) {
             model.addAttribute("errors", validation);
             model.addAttribute("post", post);
             return "posts/create";
         }
-
-        User authorUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        post.setPostAuthor(authorUser);
+        post.setPostAuthor(logUser);
         postService.save(post);
         return "redirect:/posts";
     }
 
     @GetMapping("/posts/{id}/edit")
-    public String getEdit(@PathVariable long id, Model model) {
-        model.addAttribute("post", postService.getPost(id));
-        User authorUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (authorUser.getId() == postService.getPost(id).getPostAuthor().getId()) {
-            return "posts/edit";
-        } else return "redirect/posts{id}";
+    public String editPost(@PathVariable long id, Model model) {
+        Post post = postRepository.findOne(id);
+//        model.addAttribute("post", postService.getPost(id));
+//        User authorUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (!userService.isOwner(post.getPostAuthor())) {
+            return "redirect:/posts/edit";
+        }
+        model.addAttribute("categories", categoryDao.findAll());
+        model.addAttribute("post", post);
+        return "posts/edit";
     }
 
     @PostMapping("/posts/{id}/edit")
-    public String postEdit(@PathVariable long id, @ModelAttribute Post post) {
+    public String updatePost(@PathVariable long id, @ModelAttribute Post post) {
+        post.setPostAuthor(userDao.findOne(postRepository.findOne(id).getPostAuthor().getId()));
         postService.save(post);
-        return "redirect:/posts/{id}";
+        return "redirect:/posts";
     }
 
     @PostMapping("/posts/{id}/delete")
     public String postDelete(@PathVariable long id) {
-        User authorUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (authorUser.getId() == postService.getPost(id).getPostAuthor().getId())
-            postService.delete(id);
+        postRepository.delete(id);
         return "redirect:/posts";
     }
 
