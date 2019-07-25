@@ -1,55 +1,55 @@
-//package com.quickscrim.database;
-//
-//import com.quickscrim.models.Category;
-//import com.quickscrim.models.Event;
-//import com.quickscrim.models.Post;
-//import com.quickscrim.models.User;
-//import com.quickscrim.repositories.CategoryRepository;
-//import com.quickscrim.repositories.EventRepository;
-//import com.quickscrim.repositories.PostRepository;
-//import com.quickscrim.repositories.UserRepository;
-//import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
-//import org.springframework.beans.factory.annotation.Value;
-//import org.springframework.boot.CommandLineRunner;
-//import org.springframework.security.crypto.password.PasswordEncoder;
-//import org.springframework.stereotype.Component;
-//
-//import java.util.Arrays;
-//import java.util.List;
-//import java.util.Random;
-//
-//@Component
-//public class seeder implements CommandLineRunner {
-//    private final Logger log = LoggerFactory.getLogger(this.getClass());
-//    private final EventRepository eventDao;
-//    private final UserRepository userDao;
-//    private final PasswordEncoder passwordEncoder;
-//    private final CategoryRepository categoryDao;
-//    private final PostRepository postDao;
-//
-//    @Value("${app.env}")
-//    private String environment;
-//
-//    public seeder(EventRepository eventDao, UserRepository userDao, PasswordEncoder passwordEncoder, CategoryRepository categoryDao, PostRepository postDao) {
-//        this.eventDao = eventDao;
-//        this.userDao = userDao;
-//        this.passwordEncoder = passwordEncoder;
-//        this.categoryDao = categoryDao;
-//        this.postDao = postDao;
-//    }
-//
-//    private List<User> seedUsers() {
-//        List<User> users = Arrays.asList(
-//                new User("edwin", "edwin@mail.com", passwordEncoder.encode("edwinedwin")),
-//                new User("matt", "matt@mail.com", passwordEncoder.encode("mattmatt")),
-//                new User("nathan", "nathan@mail.com", passwordEncoder.encode("nathannathan")),
-//                new User("harley", "harley@mail.com", passwordEncoder.encode("harleyharley"))
-//        );
-//        userDao.save(users);
-//        return users;
-//    }
-//
+package com.quickscrim.database;
+
+import com.quickscrim.models.Category;
+import com.quickscrim.models.Event;
+import com.quickscrim.models.Post;
+import com.quickscrim.models.User;
+import com.quickscrim.repositories.CategoryRepository;
+import com.quickscrim.repositories.EventRepository;
+import com.quickscrim.repositories.PostRepository;
+import com.quickscrim.repositories.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Component;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
+
+@Component
+public class seeder implements CommandLineRunner {
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
+    private final EventRepository eventDao;
+    private final UserRepository userDao;
+    private final PasswordEncoder passwordEncoder;
+    private final CategoryRepository categoryDao;
+    private final PostRepository postDao;
+
+    @Value("${app.env}")
+    private String environment;
+
+    public seeder(EventRepository eventDao, UserRepository userDao, PasswordEncoder passwordEncoder, CategoryRepository categoryDao, PostRepository postDao) {
+        this.eventDao = eventDao;
+        this.userDao = userDao;
+        this.passwordEncoder = passwordEncoder;
+        this.categoryDao = categoryDao;
+        this.postDao = postDao;
+    }
+
+    private List<User> seedUsers() {
+        List<User> users = Arrays.asList(
+                new User("edwin", "edwin@mail.com", passwordEncoder.encode("edwinedwin")),
+                new User("matt", "matt@mail.com", passwordEncoder.encode("mattmatt")),
+                new User("nathan", "nathan@mail.com", passwordEncoder.encode("nathannathan")),
+                new User("harley", "harley@mail.com", passwordEncoder.encode("harleyharley"))
+        );
+        userDao.save(users);
+        return users;
+    }
+
 //    private void seedEvents(List<User> users) {
 //        Event longEvent = new Event(
 //                "Event 1", "description 1"
@@ -70,53 +70,53 @@
 //        }
 //        eventDao.save(events);
 //    }
-//
-//    private List<Category> seedCategory() {
-//        List<Category> categories = Arrays.asList(
-//                new Category("Basketball", "basketball.png"),
-//                new Category("Baseball", "img/sport-icons/baseball.png"),
-//                new Category("Archery", "archery.png"),
-//                new Category("Bowling", "bowling.png"),
-//                new Category("Boxing", "boxing.png"),
-//                new Category("Cycling", "cycling.png"),
-//                new Category("Football", "football.png"),
-//                new Category("Golf", "golf.png"),
-//                new Category("Hockey", "hockey.png"),
-//                new Category("Pingpong", "pingpong.png"),
-//                new Category("Pool", "pool.png"),
-//                new Category("Running", "running.png"),
-//                new Category("Soccer", "soccer.png"),
-//                new Category("Swimming", "swimming.png"),
-//                new Category("Tennis", "tennis.png"),
-//                new Category("Volleyball", "volleyball.png")
-//        );
-//        categoryDao.save(categories);
-//        return categories;
-//    }
-//
-//    @Override
-//    public void run(String... strings) throws Exception {
-//        if (! environment.equals("development")) {
-//            log.info("app.env is not development, doing nothing.");
-//            return;
-//        }
-//        log.info("Deleting events...");
-//        eventDao.deleteAll();
-//        log.info("Deleting posts...");
-//        postDao.deleteAll();
-//        log.info("Deleting users...");
-//        userDao.deleteAll();
-//        log.info("Deleting categories...");
-//        categoryDao.deleteAll();
-//        log.info("Seeding users...");
-//        List<User> users = seedUsers();
-//        log.info("Seeding events...");
-//        seedEvents(users);
-//        log.info("Seeding categories...");
-//        List<Category> categories = seedCategory();
-//        log.info("Finished running seeders!");
-//
-//
-//    }
-//}
-//
+
+    private List<Category> seedCategory() {
+        List<Category> categories = Arrays.asList(
+                new Category ("   ", "blank.png"),
+                new Category("Basketball", "basketball.png"),
+                new Category("Baseball", "baseball.png"),
+                new Category("Archery", "archery.png"),
+                new Category("Bowling", "bowling.png"),
+                new Category("Boxing", "boxing.png"),
+                new Category("Cycling", "cycling.png"),
+                new Category("Football", "football.png"),
+                new Category("Golf", "golf.png"),
+                new Category("Hockey", "hockey.png"),
+                new Category("Pingpong", "pingpong.png"),
+                new Category("Pool", "pool.png"),
+                new Category("Running", "running.png"),
+                new Category("Soccer", "soccer.png"),
+                new Category("Swimming", "swimming.png"),
+                new Category("Tennis", "tennis.png"),
+                new Category("Volleyball", "volleyball.png")
+        );
+        categoryDao.save(categories);
+        return categories;
+    }
+
+    @Override
+    public void run(String... strings) throws Exception {
+        if (! environment.equals("development")) {
+            log.info("app.env is not development, doing nothing.");
+            return;
+        }
+        log.info("Deleting events...");
+        eventDao.deleteAll();
+        log.info("Deleting posts...");
+        postDao.deleteAll();
+        log.info("Deleting users...");
+        userDao.deleteAll();
+        log.info("Deleting categories...");
+        categoryDao.deleteAll();
+        log.info("Seeding users...");
+        List<User> users = seedUsers();
+        log.info("Seeding events...");
+        log.info("Seeding categories...");
+        List<Category> categories = seedCategory();
+        log.info("Finished running seeders!");
+
+
+    }
+}
+

@@ -72,6 +72,6 @@ public class HomeController {
         model.addAttribute("events", events);
         model.addAttribute("posts", postDao.findAllByPostByUser(logUser));
         model.addAttribute("categories", categoryDao.findAll());
-        return "user/home";
+        return "user/index";
     }
 }

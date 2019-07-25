@@ -4,11 +4,11 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-logomodern-business-nav/blob/master/LICENSE)
  */
 
-body {
-  background: #007bff;
-  background: linear-gradient(to right, #0062E6, #33AEFF);
-  /*padding-top: 56px;*/
-}
+/*body {*/
+  /*background: #007bff;*/
+  /*background: linear-gradient(to right, #0062E6, #33AEFF);*/
+  /*!*padding-top: 56px;*!*/
+/*}*/
 
 .carousel-item {
   height: 65vh;
