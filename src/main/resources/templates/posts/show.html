@@ -2,8 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="UTF-8" />
-    <title>Title</title>
+    <title>Post View</title>
     <link th:replace="fragments/header :: header(Forum)" />
+    <link rel="stylesheet" type="text/css" href="../css/modern-business.css" />
+    <link rel="stylesheet" type="text/css" href="../css/post-style" />
+
 </head>
 <body>
 <div th:replace="fragments/navbar :: navbar"></div>
@@ -27,22 +30,22 @@
 
     <div class="row">
         <div class="column">
-            <blockquote>
                 <p th:text="${post.getBody()}"></p>
                 <p th:text="${post.getPostCategory().sport}"></p>
-            </blockquote>
         </div>
     </div>
 
     <hr/>
 
     <div class="row" sec:authorize="isAuthenticated()">
+        <th:block th:if="${#authentication.principal.id} == ${post.postAuthor.id}">
         <div class="column">
             <a th:href="@{'/posts/' + ${post.getId()} + '/edit'}" class="button button-outline">Edit Post</a>
             <form th:action="@{'/posts/' + ${post.getId()} + '/delete'}" method="post" th:object="${post}">
                 <input class="button button-outline" type="submit" value="Delete Post"/>
             </form>
         </div>
+        </th:block>
     </div>
 
 </div>

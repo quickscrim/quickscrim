@@ -50,6 +50,7 @@ public class seeder implements CommandLineRunner {
         return users;
     }
 
+
 //    private void seedEvents(List<User> users) {
 //        Event longEvent = new Event(
 //                "Event 1", "description 1"
@@ -71,11 +72,13 @@ public class seeder implements CommandLineRunner {
 //        eventDao.save(events);
 //    }
 
+   
+
     private List<Category> seedCategory() {
         List<Category> categories = Arrays.asList(
                 new Category ("   ", "blank.png"),
                 new Category("Basketball", "basketball.png"),
-                new Category("Baseball", "baseball.png"),
+                new Category("Baseball", "img/sport-icons/baseball.png"),
                 new Category("Archery", "archery.png"),
                 new Category("Bowling", "bowling.png"),
                 new Category("Boxing", "boxing.png"),
@@ -112,6 +115,10 @@ public class seeder implements CommandLineRunner {
         log.info("Seeding users...");
         List<User> users = seedUsers();
         log.info("Seeding events...");
+// <<<<<<< user-home-page
+// =======
+//         seedEvents(users);
+// >>>>>>> master
         log.info("Seeding categories...");
         List<Category> categories = seedCategory();
         log.info("Finished running seeders!");
