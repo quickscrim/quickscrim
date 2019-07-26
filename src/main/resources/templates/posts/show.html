@@ -13,12 +13,12 @@
 
 <div class="container">
 
-    <div class="row">
+    <div class="form-label-group">
         <div class="column"><a th:href="@{/posts}">Back to posts</a></div>
         <div class="column"><h2 th:text="${post.getTitle()}"></h2></div>
     </div>
 
-    <div class="row">
+    <div class="form-label-group">
         <div class="column">
             <em>
                 <h6 th:text="'Posted by ' + ${post.getPostAuthor().getUsername()}"></h6>
@@ -28,7 +28,7 @@
 
     <hr/>
 
-    <div class="row">
+    <div class="form-label-group">
         <div class="column">
                 <p th:text="${post.getBody()}"></p>
                 <p th:text="${post.getPostCategory().sport}"></p>
@@ -37,7 +37,7 @@
 
     <hr/>
 
-    <div class="row" sec:authorize="isAuthenticated()">
+    <div class="form-label-group" sec:authorize="isAuthenticated()">
         <th:block th:if="${#authentication.principal.id} == ${post.postAuthor.id}">
         <div class="column">
             <a th:href="@{'/posts/' + ${post.getId()} + '/edit'}" class="button button-outline">Edit Post</a>
