@@ -13,7 +13,14 @@ body {
 }
 
 .logo {
-    width:100px;
+    width:80px;
+}
+
+#banner-title {
+    font-size: 25px !important;
+    font-family: 'Graduate', cursive !important;
+    /*font-family: 'Bungee Inline', cursive;*/
+    /*font-family: 'Righteous', cursive;*/
 }
 
 .landing-carousel-img {
@@ -34,5 +41,5 @@ body {
 
 
 #navbar-profile-img {
-    height: 100px;
+    height: 50px;
 }
