@@ -50,29 +50,33 @@ public class seeder implements CommandLineRunner {
         return users;
     }
 
-    private void seedEvents(List<User> users) {
-        Event longEvent = new Event(
-                "Event 1", "description 1"
-        );
-        List<Event> events = Arrays.asList(
-                new Event("Event 2", "description 2"),
-                new Event("Event 3", "description 3"),
-                new Event("Event 4", "description 4"),
-                new Event("Event 5", "description 5"),
-                new Event("Event 6", "description 6"),
-                new Event("Event 7", "description 7"),
-                longEvent
-        );
-        Random r = new Random();
-        for (Event e : events) {
-            User randomUser = users.get(r.nextInt(users.size()));
-            e.setEventCreator(randomUser);
-        }
-        eventDao.save(events);
-    }
+
+//    private void seedEvents(List<User> users) {
+//        Event longEvent = new Event(
+//                "Event 1", "description 1"
+//        );
+//        List<Event> events = Arrays.asList(
+//                new Event("Event 2", "description 2"),
+//                new Event("Event 3", "description 3"),
+//                new Event("Event 4", "description 4"),
+//                new Event("Event 5", "description 5"),
+//                new Event("Event 6", "description 6"),
+//                new Event("Event 7", "description 7"),
+//                longEvent
+//        );
+//        Random r = new Random();
+//        for (Event e : events) {
+//            User randomUser = users.get(r.nextInt(users.size()));
+//            e.setEventCreator(randomUser);
+//        }
+//        eventDao.save(events);
+//    }
+
+   
 
     private List<Category> seedCategory() {
         List<Category> categories = Arrays.asList(
+                new Category ("   ", "blank.png"),
                 new Category("Basketball", "basketball.png"),
                 new Category("Baseball", "img/sport-icons/baseball.png"),
                 new Category("Archery", "archery.png"),
@@ -111,7 +115,10 @@ public class seeder implements CommandLineRunner {
         log.info("Seeding users...");
         List<User> users = seedUsers();
         log.info("Seeding events...");
-        seedEvents(users);
+// <<<<<<< user-home-page
+// =======
+//         seedEvents(users);
+// >>>>>>> master
         log.info("Seeding categories...");
         List<Category> categories = seedCategory();
         log.info("Finished running seeders!");

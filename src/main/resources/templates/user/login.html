@@ -9,13 +9,6 @@
 </head>
 <body>
 
-<div th:if="${param.error}">
-    You have entered an invalid username and/or password. Please try again
-</div>
-<div th:if="${param.logout}">
-    You have been logged out
-</div>
-
 <nav th:replace="fragments/navbar :: navbar"></nav>
 <div class="container">
     <div class="row">
@@ -23,6 +16,13 @@
             <div class="card card-signin my-5">
                 <div class="card-body">
                     <h5 class="card-title text-center">Sign In</h5>
+                    <div class="text-center" style="color: red;" th:if="${param.error}">
+                        You have entered an invalid username and/or password. Please try again
+                    </div>
+                    <div class="text-center" style="color: red;" th:if="${param.logout}">
+                        You have been logged out
+                    </div>
+                    <br/>
                     <form class="form-signin" th:action="@{/login}" method="post">
                             <label for="username" class="text-center">Username</label>
                         <div class="form-label-group">
