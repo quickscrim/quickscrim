@@ -8,22 +8,62 @@
 <body>
 <div th:replace="fragments/navbar :: navbar"></div>
 
-<h1>Events Index</h1>
+<main class="event-container">
 
-    <div class="list-group">
-        <th:block th:each="event : ${event}">
-            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
-                <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1" th:text="${event.eventName}"></h5>
+    <h1 style="color: white;" class="text-center mt-5">Your Events</h1>
+
+<!--    <form class="form-signin" th:action="@{events/index}" method="get" id="searchForm" th:object="${search}">-->
+<!--        <div class="form-label-group">-->
+<!--            <select class="form-control" id="exampleFormControlSelect1" name="categories">-->
+<!--                <option>Select a Category...</option>-->
+<!--                <option th:each="category : ${categories}" th:text="${category.sport}" th:value="${category.id}"></option>-->
+<!--            </select>-->
+<!--            <button type="submit">Search</button>-->
+<!--        </div>-->
+<!--    </form>-->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                <div class="card card-signin my-5">
+                    <div class="card-body">
+                        <th:block th:each="event : ${event}">
+<!--                            <div class="form-label-group">-->
+<!--                                <img class=" img-fluid" th:src="@{event.eventSport.iconIMG}" alt="card image" />-->
+<!--                            </div>-->
+                            <div class="form-label-group">
+                                <h5 class="mb-1" th:text="${event.eventName}"></h5>
+                            </div>
+                            <label>Creator</label>
+                            <div class="form-label-group">
+                                <small th:text="${event.eventCreator.username}"></small>
+                            </div>
+                            <br/>
+                            <a th:href="@{'/events/' + ${event.getId()}}" th:method="GET">
+                                <button th:id="${event.id}" class="btn btn-lg btn-primary btn-block text-uppercase mt-3">View Event</button>
+                            </a>
+                        </th:block>
+                    </div>
                 </div>
-                <p class="mb-1" th:text="${event.description}"></p>
-                <small th:text="${event.eventCreator.username}"></small>
-                <a th:href="@{'/events/' + ${event.getId()}}" th:method="GET">
-                    <button th:id="${event.id}">View Event</button>
-                </a>
-            </a>
-        </th:block>
+            </div>
+        </div>
     </div>
+
+<!--    <div class="card" style="width: 18rem;">-->
+<!--        <th:block th:each="event : ${event}">-->
+<!--            <img class=" img-fluid" th:src="@{event.eventSport.iconIMG}" alt="card image" />-->
+<!--            <div class="card-body">-->
+<!--                <h5 class="mb-1" th:text="${event.eventName}"></h5>-->
+<!--                <small th:text="${event.eventCreator.username}"></small>-->
+<!--                <br/>-->
+<!--                <a th:href="@{'/events/' + ${event.getId()}}" th:method="GET">-->
+<!--                    <button th:id="${event.id}">View Event</button>-->
+<!--                </a>-->
+<!--            </div>-->
+<!--        </th:block>-->
+<!--    </div>-->
+
+</main>
 
 <div th:replace="fragments/footer :: footer"></div>
 </body>
