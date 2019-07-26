@@ -43,28 +43,6 @@
     </div>
 </div>
 
-<!--<main class="container">-->
-<!--    <form th:action="@{'/events/' + ${event.id} + '/edit'}" th:method="POST" th:object="${event}">-->
-<!--        <div class="form-group">-->
-<!--            Event Name-->
-<!--            <input class="form-control" type="text" th:field="*{eventName}" />-->
-<!--        </div>-->
-<!--        <div class="form-group">-->
-<!--            Description-->
-<!--            <textarea class="form-control" cols="30" rows="10" th:field="*{description}"></textarea>-->
-<!--        </div>-->
-<!--        <div class="form-group">-->
-<!--            Event Date-->
-<!--            <input class="form-control" type="datetime-local" value="2019-08-19T13:45:00" th:field="*{eventDate}" />-->
-<!--        </div>-->
-<!--        <div class="form-group">-->
-<!--            Event Location-->
-<!--            <input th:field="*{locationApi}" type="text" />-->
-<!--        </div>-->
-<!--        <button class="btn btn-block btn-primary">Submit</button>-->
-<!--    </form>-->
-<!--</main>-->
-
 <div th:replace="fragments/footer :: footer"></div>
 </body>
 </html>
