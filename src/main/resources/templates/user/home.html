@@ -12,6 +12,7 @@
     <form class="form-signin" th:action="@{/home}" method="get" id="searchForm" th:object="${search}">
         <div class="form-label-group">
             <select class="form-control" id="exampleFormControlSelect1" name="categories">
+                <option>Select a Category...</option>
             <option th:each="category : ${categories}" th:text="${category.sport}" th:value="${category.id}"></option>
             </select>
             <button type="submit">Search</button>
@@ -19,21 +20,6 @@
     </form>
 
 
-
-
-
-    <!--<div class="list-group">-->
-        <!--<th:block th:each="event : ${events}">-->
-            <!--<a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">-->
-                <!--<div class="d-flex w-100 justify-content-between">-->
-                    <!--<h5 class="mb-1" th:text="${event.eventName}"></h5>-->
-                <!--</div>-->
-                <!--<p class="mb-1" th:text="${event.description}"></p>-->
-                <!--<p class="mb-1" th:text="${event.eventCreator.username}"></p>-->
-                <!--<p class="mb-1" th:text="${event.locationApi}"></p>-->
-            <!--</a>-->
-        <!--</th:block>-->
-    <!--</div>-->
 
 
 <div class = "row">
@@ -67,16 +53,6 @@
 </div>
 
 
-
-
-
-
-
-
-
-
-
-    <h1>Posts from forum</h1>
 
     <div class="list-group">
         <th:block th:each=" post: ${posts}">
