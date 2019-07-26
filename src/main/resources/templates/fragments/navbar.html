@@ -13,7 +13,7 @@
 
         <span id="banner-title" class="navbar-expand-lg float-left headline-font d-none d-sm-block">QuickScrim</span>
 
-        <div sec:authorize="isAnonymous()" class="ml-auto">
+        <div sec:authorize="isAnonymous()" class="ml-auto mr-4">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
                     <a class="nav-link" href="/register">Register <span class="sr-only">(current)</span></a>
@@ -25,29 +25,27 @@
 
         </div>
 
+<!--        <div sec:authorize="isAuthenticated()" class="mr-auto d-none d-sm-block">-->
 
+<!--            <ul class="navbar-nav ml-auto">-->
+<!--                <li class="nav-item active">-->
+<!--                    <a class="nav-link" href="/events/index">Events</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" href="/posts">Forums</a>-->
+<!--                </li>-->
+<!--            </ul>-->
 
-        <div sec:authorize="isAuthenticated()" class="mr-auto d-none d-sm-block">
-
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/events/index">Events</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/posts">Forums</a>
-                </li>
-            </ul>
-
-        </div>
+<!--        </div>-->
 
         <!-- This displays for users/admin -->
-        <div sec:authorize="isAuthenticated()" class="ml-auto">
+        <div sec:authorize="isAuthenticated()" id="authenticated-navbar-block" class="ml-auto">
 
             <ul class="navbar-nav ml-auto">
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img id="navbar-profile-img" th:src="${#authentication.principal.image}" class="rounded-circle" /><span th:text="${#authentication.name}"></span>
+                    <a class="nav-link dropdown-toggle mr-4" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img id="navbar-profile-img" th:src="${#authentication.principal.image}" class="rounded-circle mr-2" /><span class="user-name-style" th:text="${#authentication.name}"></span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" th:href="@{/logout}">Logout</a>

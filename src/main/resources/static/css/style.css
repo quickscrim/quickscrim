@@ -45,7 +45,15 @@ body {
 
 }
 
+.user-name-style {
+    margin-right: 20px;
+}
 
 #navbar-profile-img {
-    height: 50px;
+    height: 45px;
 }
+
+#authenticated-navbar-block {
+    margin-right:50px;
+}
+
