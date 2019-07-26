@@ -8,29 +8,40 @@
 <body>
 <div th:replace="fragments/navbar :: navbar"></div>
 
-<h1>Events Index</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+            <div class="card card-signin my-5">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Edit Event</h5>
+                    <form  th:action="@{'/events/' + ${event.id} + '/edit'}" th:method="POST" th:object="${event}">
+                        <label>Name</label>
+                        <div class="form-label-group">
+                            <input class="form-control" type="text" th:field="*{eventName}" />
+                        </div>
 
-<main class="container">
-    <form th:action="@{'/events/' + ${event.id} + '/edit'}" th:method="POST" th:object="${event}">
-        <div class="form-group">
-            Event Name
-            <input class="form-control" type="text" th:field="*{eventName}" />
+                        <label>Description</label>
+                        <div class="form-label-group">
+                            <textarea class="form-control" type="text" cols="30" rows="10" th:field="*{description}"></textarea>
+                        </div>
+
+                        <label>Date</label>
+                        <div class="form-label-group">
+                            <input class="form-control" type="datetime-local" value="2019-08-19T13:45:00" th:field="*{eventDate}" />
+                        </div>
+
+                        <label>Location</label>
+                        <div class="form-label-group">
+                            <input class="form-control" th:field="*{locationApi}" type="text" />
+                        </div>
+
+                        <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" value="Update">Update</button>
+                    </form>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            Description
-            <textarea class="form-control" cols="30" rows="10" th:field="*{description}"></textarea>
-        </div>
-        <div class="form-group">
-            Event Date
-            <input class="form-control" type="datetime-local" value="2019-08-19T13:45:00" th:field="*{eventDate}" />
-        </div>
-        <div class="form-group">
-            Event Location
-            <input th:field="*{locationApi}" type="text" />
-        </div>
-        <button class="btn btn-block btn-primary">Submit</button>
-    </form>
-</main>
+    </div>
+</div>
 
 <div th:replace="fragments/footer :: footer"></div>
 </body>
