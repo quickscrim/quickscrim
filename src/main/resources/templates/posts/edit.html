@@ -35,7 +35,7 @@
 <!--</main>-->
 
 <div class="container">
-    <form th:action="@{'/posts/' + ${post.getId()} + '/edit'}" method="post" th:object="${post}">
+    <form class="form-signin" th:action="@{'/posts/' + ${post.getId()} + '/edit'}" method="post" th:object="${post}">
 
     <div class="form-label-group">
         <label for="title">Title:</label>
@@ -44,15 +44,15 @@
 
     <div class="form-label-group">
         <label for="body">Body:</label>
-        <textarea id="body" th:field="*{body}" th:value="${post.getBody()}"></textarea>
+        <textarea class="form-control" id="body" th:field="*{body}" th:value="${post.getBody()}"></textarea>
     </div>
 
-        <div class="form-signin">
+        <div class="">
             <label for="exampleFormControlSelect1"></label>
-            <select class="form-control" id="exampleFormControlSelect1" th:field="*{postCategory}">
+            <select class="" id="exampleFormControlSelect1" th:field="*{postCategory}">
                 <option th:each="category : ${categories}" th:text="${category.sport}" th:value="${category.id}"></option>
-                <p th:if="${#fields.hasErrors('postCategory')}" th:errors="*{postCategory}"></p>
             </select>
+                <p th:if="${#fields.hasErrors('postCategory')}" th:errors="*{postCategory}"></p>
         </div>
 
         <input class="form-control" type="hidden" th:field="*{postAuthor}"/>

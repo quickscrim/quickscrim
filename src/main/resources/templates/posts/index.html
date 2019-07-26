@@ -25,17 +25,18 @@
 
             <div class="row">
 
-            <form class="forum-signin" th:action="@{/posts}" method="get" id="searchForm" th:object="${filter}">
-                <div class="">
-                    <label class="" for="exampleFormControlSelect1"></label>
-                    <select class="form-control dropdown" id="exampleFormControlSelect1" name="categories">
-                        <option th:each="category : ${categories}" th:text="${category.sport}" th:value="${category.id}"></option>
-                    </select>
-                    <button type="submit" class="btn btn-success">Search</button>
-                </div>
-            </form>
-
-                <button type="submit" class="btn btn-danger red-button" th:href="@{/posts}">Clear search/filter</button>
+            <th:block>
+                <form class="" th:action="@{/posts}" method="get" id="searchForm" th:object="${filter}">
+                    <div class="">
+                        <label class="" for="exampleFormControlSelect1"></label>
+                        <select class="form-control dropdown" id="exampleFormControlSelect1" name="categories">
+                            <option th:each="category : ${categories}" th:text="${category.sport}" th:value="${category.id}"></option>
+                        </select>
+                        <button type="submit" class="btn btn-success">Search</button>
+                    </div>
+                </form>
+                    <a th:href="@{/posts}"><button type="submit" class="btn btn-danger red-button">Clear search/filter</button></a>
+            </th:block>
 
 
             </div>
@@ -43,24 +44,25 @@
 
         
 
-        <div class="col">
+        <div class="list-group">
 
         <h1>Posts</h1>
         <button type="submit"><a th:href="@{/posts/create}">Create A Post +</a></button>
         <hr/>
         <th:block th:each="post : ${posts}">
-
+           <div>
             <div class="row">
                 <div class="column">
                     <div class="card">
                         <h4 th:text="${post.getTitle()}"></h4>
-                        <em><h6 th:text="'Posted by ' + ${post.getPostAuthor().getUsername()}"></h6></em>
+                        <p th:text="'Posted by ' + ${post.getPostAuthor().getUsername()}"></p>
                         <p class="body-preview" th:text="${post.getBody()}"></p>
                         <p th:text="${post.getPostCategory().sport}"></p>
                         <a class="button button-clear" th:href="@{'/posts/' + ${post.getId()}}">Read More</a>
                     </div>
                 </div>
             </div>
+           </div>
 
         </th:block>
         </div>
