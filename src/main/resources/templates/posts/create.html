@@ -11,34 +11,38 @@
 <body>
 <div th:replace="fragments/navbar :: navbar"></div>
 
-<div>
+<div class="container-fluid">
+    <div class="card card-signin my-5">
+        <div class="card-body">
+            <h5 class="card-title text-center">Create Post</h5>
 
-    <form th:action="@{'/posts/create'}" method="post" th:object="${post}">
+    <form class="form-signin" th:action="@{'/posts/create'}" method="post" th:object="${post}">
 
-       <div class="form-signin">
+       <div class="form-label-group">
         <label for="title"></label>
-        <input id="title" placeholder="Post Title" type="text" th:field="*{title}"/>
+        <input id="title" class="form-control" placeholder="Post Title" type="text" th:field="*{title}"/>
         <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></p>
        </div>
 
-       <div class="form-signin">
+       <div class="form-label-group">
         <label for="body"></label>
-        <textarea id="body" placeholder="Post Body" th:field="*{body}"></textarea>
+        <textarea id="body" class="form-control" placeholder="Post Body" th:field="*{body}"></textarea>
         <p th:if="${#fields.hasErrors('body')}" th:errors="*{body}"></p>
        </div>
 
-        <div class="form-signin">
+        <div class="">
             <label for="exampleFormControlSelect1"></label>
-            <select class="form-control" id="exampleFormControlSelect1" th:field="*{postCategory}">
+            <select class="" id="exampleFormControlSelect1" th:field="*{postCategory}">
                 <option th:each="category : ${categories}" th:text="${category.sport}" th:value="${category.id}"></option>
-                <p th:if="${#fields.hasErrors('postCategory')}" th:errors="*{postCategory}"></p>
             </select>
+                <p th:if="${#fields.hasErrors('postCategory')}" th:errors="*{postCategory}"></p>
         </div>
 
         <input type="hidden" th:field="*{postAuthor}"/>
         <input type="submit" value="Create Post"/>
     </form>
-
+        </div>
+    </div>
 </div>
 
 
