@@ -10,17 +10,17 @@
 
 <main class="event-container">
 
-    <h1>Your Events</h1>
+    <h1 style="color: white;" class="text-center mt-5">Your Events</h1>
 
-    <form class="form-signin" th:action="@{events/index}" method="get" id="searchForm" th:object="${search}">
-        <div class="form-label-group">
-            <select class="form-control" id="exampleFormControlSelect1" name="categories">
-                <option>Select a Category...</option>
-                <option th:each="category : ${categories}" th:text="${category.sport}" th:value="${category.id}"></option>
-            </select>
-            <button type="submit">Search</button>
-        </div>
-    </form>
+<!--    <form class="form-signin" th:action="@{events/index}" method="get" id="searchForm" th:object="${search}">-->
+<!--        <div class="form-label-group">-->
+<!--            <select class="form-control" id="exampleFormControlSelect1" name="categories">-->
+<!--                <option>Select a Category...</option>-->
+<!--                <option th:each="category : ${categories}" th:text="${category.sport}" th:value="${category.id}"></option>-->
+<!--            </select>-->
+<!--            <button type="submit">Search</button>-->
+<!--        </div>-->
+<!--    </form>-->
 
     <div class="container">
         <div class="row">
@@ -28,9 +28,9 @@
                 <div class="card card-signin my-5">
                     <div class="card-body">
                         <th:block th:each="event : ${event}">
-                            <div class="form-label-group">
-                                <img class=" img-fluid" th:src="@{event.eventSport.iconIMG}" alt="card image" />
-                            </div>
+<!--                            <div class="form-label-group">-->
+<!--                                <img class=" img-fluid" th:src="@{event.eventSport.iconIMG}" alt="card image" />-->
+<!--                            </div>-->
                             <div class="form-label-group">
                                 <h5 class="mb-1" th:text="${event.eventName}"></h5>
                             </div>
@@ -40,7 +40,7 @@
                             </div>
                             <br/>
                             <a th:href="@{'/events/' + ${event.getId()}}" th:method="GET">
-                                <button th:id="${event.id}">View Event</button>
+                                <button th:id="${event.id}" class="btn btn-lg btn-primary btn-block text-uppercase mt-3">View Event</button>
                             </a>
                         </th:block>
                     </div>

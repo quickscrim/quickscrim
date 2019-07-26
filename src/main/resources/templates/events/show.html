@@ -35,17 +35,17 @@
                     <div sec:authorize="isAuthenticated()">
                         <th:block th:if="${#authentication.principal.id} != ${event.eventCreator.id}" >
                             <form th:action="@{'/events/' + ${event.id} + '/join'}" th:method="POST">
-                                <button type="submit">Join Event</button>
+                                <button type="submit" class="btn btn-lg btn-primary btn-block text-uppercase mt-3">Join Event</button>
                             </form>
                         </th:block>
                     </div>
                     <div sec:authorize="isAuthenticated()">
                         <th:block th:if="${#authentication.principal.id} == ${event.eventCreator.id}" >
                             <form th:action="@{'/events/' + ${event.id} + '/delete'}" th:method="POST">
-                                <button id="${event.id}">Delete</button>
+                                <button id="${event.id}" class="btn btn-lg btn-primary btn-block text-uppercase mt-3">Delete</button>
                             </form>
                             <form th:action="@{'/events/' + ${event.getId()} + '/edit'}" th:method="GET">
-                                <button th:id="${event.id}">Edit</button>
+                                <button th:id="${event.id}" class="btn btn-lg btn-primary btn-block text-uppercase mt-3">Edit</button>
                             </form>
                         </th:block>
                     </div>
