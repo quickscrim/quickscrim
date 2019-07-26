@@ -15,24 +15,24 @@
                 <div class="card-body">
                     <h5 class="card-title text-center">Edit Event</h5>
                     <form  th:action="@{'/events/' + ${event.id} + '/edit'}" th:method="POST" th:object="${event}">
+                        <label>Name</label>
                         <div class="form-label-group">
                             <input class="form-control" type="text" th:field="*{eventName}" />
-                            <label>Name</label>
                         </div>
 
+                        <label>Description</label>
                         <div class="form-label-group">
-                            <label>Description</label>
                             <textarea class="form-control" type="text" cols="30" rows="10" th:field="*{description}"></textarea>
                         </div>
 
+                        <label>Date</label>
                         <div class="form-label-group">
                             <input class="form-control" type="datetime-local" value="2019-08-19T13:45:00" th:field="*{eventDate}" />
-                            <label>Date</label>
                         </div>
 
+                        <label>Location</label>
                         <div class="form-label-group">
                             <input class="form-control" th:field="*{locationApi}" type="text" />
-                            <label>Location</label>
                         </div>
 
                         <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" value="Update">Update</button>
