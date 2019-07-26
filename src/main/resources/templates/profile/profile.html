@@ -3,32 +3,91 @@
 
 
 <head th:replace="fragments/header :: header('Quick Scrim')"></head>
+<link rel="stylesheet" href="../css/profile.css" />
 <body>
 <div th:replace="fragments/navbar :: navbar"></div>
 
-<h1>Your Profile</h1>
 
-<div th:object="${profile}">
-    <img id="navbar-profile-img" th:src="${profile.getImage()}" />
-    <br/>
-    <span th:text="${profile.getUsername()}"></span>
-    <br/>
-    <span th:text="${profile.getEmail()}"></span>
-    <br/>
-    <span th:text="${profile.getFirstName()}"></span>
-    <br/>
-    <span th:text="${profile.getLastName()}"></span>
-    <br/>
-    <span th:text="${profile.getBio()}"></span>
-    <br/>
-    <span th:text="${profile.getCity()}"></span>
-    <br/>
-    <!--<span th:text="${profile.getState()}"></span>-->
-    <br/>
-    <a class="button button-clear" th:href="@{'/profile/' + ${profile.getId()} + '/edit'}">Edit Profile</a>
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+
+
+
+<div class="container emp-profile">
+    <form method="post">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="profile-img">
+                    <img class="profile-img" th:src="${profile.getImage()}" />
+                    <div class="file btn btn-lg btn-primary">
+                        <a href="/upload/pic" class="card-title text-center mb-2">Update Photo</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="profile-head">
+                    <h5 th:text="${profile.getUsername()}"></h5>
+                    <h6 th:text="${profile.getCity()}"></h6>
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <a class="button button-clear profile-edit-btn" th:href="@{'/profile/' + ${profile.getId()} + '/edit'}">Edit Profile</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="tab-content profile-tab" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>User ID</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p th:text="${profile.getId()}"></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Name</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p th:text="${profile.getFirstName() + ' ' + profile.getLastName()}"></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Email</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p th:text="${profile.getEmail()}"></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Bio</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p th:text="${profile.getBio()}"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
 </div>
 
-<br/>
+
+
+
+
+
+
 
 <div th:replace="fragments/footer :: footer"></div>
 </body>
