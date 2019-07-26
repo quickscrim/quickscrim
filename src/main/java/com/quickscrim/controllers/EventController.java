@@ -77,8 +77,15 @@ public class EventController {
 
     @PostMapping("/events/{id}/edit")
     public String updateEvent(@PathVariable Long id,@ModelAttribute Event eventEdited) {
-        eventEdited.setEventCreator(userDao.findOne(eventDao.findOne(id).getEventCreator().getId()));
-        eventDao.save(eventEdited);
+        Event eventModified = eventDao.findOne(eventEdited.getId());
+
+        eventModified.setEventName(eventEdited.getEventName());
+        eventModified.setDescription(eventEdited.getDescription());
+        eventModified.setEventDate(eventEdited.getEventDate());
+        eventModified.setLocationApi(eventEdited.getLocationApi());
+
+
+        eventDao.save(eventModified);
         return "redirect:/home";
     }
 

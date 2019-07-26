@@ -1,5 +1,6 @@
 //package com.quickscrim.controllers;
 //
+//
 //import org.springframework.boot.autoconfigure.web.ErrorController;
 //import org.springframework.http.HttpStatus;
 //import org.springframework.stereotype.Controller;
@@ -9,7 +10,19 @@
 //import javax.servlet.http.HttpServletRequest;
 //
 //@Controller
-//public class MyErrorController implements ErrorController {
+//public class QSErrorController implements ErrorController {
+//
+//        @RequestMapping("/error")
+//        public String handleError() {
+//            //do something like logging
+//            return "error";
+//        }
+//
+//
+//        @Override
+//        public String getErrorPath() {
+//            return "/error";
+//        }
 //
 //    @RequestMapping("/error")
 //    public String handleError(HttpServletRequest request) {
@@ -29,4 +42,7 @@
 //    }
 //
 //
+//
 //}
+//
+//
