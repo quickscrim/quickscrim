@@ -6,8 +6,6 @@
     <link th:replace="fragments/header :: header(Forum)" />
     <link rel="stylesheet" type="text/css" href="../css/modern-business.css" />
     <link rel="stylesheet" type="text/css" href="../css/post-style" />
-
-
 </head>
 <body>
 <div th:replace="fragments/navbar :: navbar"></div>
@@ -17,7 +15,7 @@
         <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
             <div class="card card-signin my-5">
                 <div class="card-body">
-                    <h5 class="card-title text-center">Edit Event</h5>
+                    <h5 class="card-title text-center">Edit Post</h5>
                     <form  class="form-signin" th:action="@{'/posts/' + ${post.getId()} + '/edit'}" method="post" th:object="${post}">
                         <label>Title</label>
                         <div class="form-label-group">
@@ -45,34 +43,6 @@
         </div>
     </div>
 </div>
-
-<!--<div class="container">-->
-<!--    <form class="form-signin" th:action="@{'/posts/' + ${post.getId()} + '/edit'}" method="post" th:object="${post}">-->
-
-<!--    <div class="form-label-group">-->
-<!--        <label for="title">Title:</label>-->
-<!--        <input class="form-control" id="title" type="text" th:field="*{title}" th:value="${post.getTitle()}"/>-->
-<!--    </div>-->
-
-<!--    <div class="form-label-group">-->
-<!--        <label for="body">Body:</label>-->
-<!--        <textarea class="form-control" id="body" th:field="*{body}" th:value="${post.getBody()}"></textarea>-->
-<!--    </div>-->
-
-<!--        <div class="">-->
-<!--            <label for="exampleFormControlSelect1"></label>-->
-<!--            <select class="" id="exampleFormControlSelect1" th:field="*{postCategory}">-->
-<!--                <option th:each="category : ${categories}" th:text="${category.sport}" th:value="${category.id}"></option>-->
-<!--            </select>-->
-<!--                <p th:if="${#fields.hasErrors('postCategory')}" th:errors="*{postCategory}"></p>-->
-<!--        </div>-->
-
-<!--        <input class="form-control" type="hidden" th:field="*{postAuthor}"/>-->
-
-<!--        <input class="button button-outline" type="submit" value="Save Post"/>-->
-<!--    </form>-->
-<!--</div>-->
-
 
 <div th:replace="fragments/footer :: footer"></div>
 </body>
