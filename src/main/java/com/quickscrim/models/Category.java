@@ -44,6 +44,10 @@ public class Category {
         this.iconIMG = iconIMG;
     }
 
+    public Category(String sport) {
+        this.sport = sport;
+    }
+
     public Category() { }
 
     public long getId() {

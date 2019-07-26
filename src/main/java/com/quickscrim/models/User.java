@@ -112,6 +112,12 @@ public class User {
         this.password = password;
     }
 
+    public User(String username, String email, String password, String image) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
+
     public User(long id, String username, String email, String password, Boolean isAdmin, String firstName, String lastName, String city, String state, String image, String bio, List<Category> favSports, List<Post> userPosts, List<Comment> userComments, List<Event> userEvents, List<Team> userTeams) {
         this.id = id;
         this.username = username;

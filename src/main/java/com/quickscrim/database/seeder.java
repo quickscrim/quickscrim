@@ -72,7 +72,6 @@ public class seeder implements CommandLineRunner {
 //        eventDao.save(events);
 //    }
 
-   
 
     private List<Category> seedCategory() {
         List<Category> categories = Arrays.asList(
