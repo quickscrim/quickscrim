@@ -41,7 +41,7 @@ public class UserController {
         User existingUsername = userDao.findByUsername(username);
         User existingEmail = userDao.findByEmail(user.getEmail());
 
-        String defaultProfilePic = "https://cdn.filestackcontent.com/MNkQjxqpRBWhy5x4Z7Wu";
+        String defaultProfilePic = "https://cdn.filestackcontent.com/Mi7E9NlyQCi3v1xQdLVG";
 
         user.setImage(defaultProfilePic);
 

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Bungee+Inline|Graduate|Righteous&display=swap');
 body {
     min-height: 100vh;
     position: relative;
@@ -13,7 +14,19 @@ body {
 }
 
 .logo {
-    width:100px;
+    width:80px;
+}
+
+#banner-title {
+    font-size: 30px !important;
+    color: #1574bd !important;
+    padding-right: 1em;
+}
+
+.headline-font {
+    /*font-family: 'Graduate', cursive !important;*/
+    /*font-family: 'Bungee Inline', cursive;*/
+    font-family: 'Righteous', cursive !important;
 }
 
 .landing-carousel-img {
@@ -34,5 +47,5 @@ body {
 
 
 #navbar-profile-img {
-    height: 100px;
+    height: 50px;
 }

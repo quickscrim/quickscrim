@@ -11,23 +11,40 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-            <div sec:authorize="isAnonymous()" class="ml-auto">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/register">Register <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/login">Login <span class="sr-only">(current)</span></a>
-                    </li>
+        <span id="banner-title" class="navbar-expand-lg float-left headline-font d-none d-sm-block">QuickScrim</span>
 
-                </ul>
+        <div sec:authorize="isAnonymous()" class="ml-auto">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/register">Register <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/login">Login <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
 
-            </div>
+        </div>
+
+
+
+        <div sec:authorize="isAuthenticated()" class="mr-auto d-none d-sm-block">
+
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/events/index">Events</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/posts">Forums</a>
+                </li>
+            </ul>
+
+        </div>
 
         <!-- This displays for users/admin -->
         <div sec:authorize="isAuthenticated()" class="ml-auto">
 
             <ul class="navbar-nav ml-auto">
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <img id="navbar-profile-img" th:src="${#authentication.principal.image}" class="rounded-circle" /><span th:text="${#authentication.name}"></span>
