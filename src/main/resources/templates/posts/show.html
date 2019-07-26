@@ -11,14 +11,14 @@
 <body>
 <div th:replace="fragments/navbar :: navbar"></div>
 
-<div class="container">
+<div class="container text-center card pt-1 mt-2">
+    <div class="column"><a th:href="@{/posts}">Back to posts</a></div>
 
-    <div class="form-label-group">
-        <div class="column"><a th:href="@{/posts}">Back to posts</a></div>
+    <div class="row">
         <div class="column"><h2 th:text="${post.getTitle()}"></h2></div>
     </div>
 
-    <div class="form-label-group">
+    <div class="row">
         <div class="column">
             <em>
                 <h6 th:text="'Posted by ' + ${post.getPostAuthor().getUsername()}"></h6>
@@ -26,9 +26,9 @@
         </div>
     </div>
 
-    <hr/>
+    <br/>
 
-    <div class="form-label-group">
+    <div class="row">
         <div class="column">
                 <p th:text="${post.getBody()}"></p>
                 <p th:text="${post.getPostCategory().sport}"></p>
@@ -37,13 +37,18 @@
 
     <hr/>
 
-    <div class="form-label-group" sec:authorize="isAuthenticated()">
+    <div class="row" sec:authorize="isAuthenticated()">
         <th:block th:if="${#authentication.principal.id} == ${post.postAuthor.id}">
         <div class="column">
-            <a th:href="@{'/posts/' + ${post.getId()} + '/edit'}" class="button button-outline">Edit Post</a>
+
+            <form th:action="@{'/posts/' + ${post.getId()} + '/edit'}" th:object="${post}" >
+                <input class="button button-outline" type="submit" value="Edit Post"/>
+            </form>
+
             <form th:action="@{'/posts/' + ${post.getId()} + '/delete'}" method="post" th:object="${post}">
                 <input class="button button-outline" type="submit" value="Delete Post"/>
             </form>
+
         </div>
         </th:block>
     </div>
