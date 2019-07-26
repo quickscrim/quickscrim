@@ -15,26 +15,30 @@
                     <h5 class="card-title text-center">Create Event</h5>
                     <form class="form-signin" th:action="@{/events/create}" method="post" id="searchForm" th:object="${event}">
 
-                                <div class="form-label-group">
-                                    <label for="exampleFormControlSelect1">Sport</label>
-                                    <select class="form-control" id="exampleFormControlSelect1" th:field="*{eventSport}">
-                                        <option th:each="category : ${categories}" th:text="${category.sport}" th:value="${category.id}"></option>
-                                    </select>
-                                </div>
+                        <label>Sport</label>
                         <div class="form-label-group">
-                            <label>Name of Event</label>
+                            <select class="form-control" id="exampleFormControlSelect1" th:field="*{eventSport}">
+                                <option th:each="category : ${categories}" th:text="${category.sport}" th:value="${category.id}"></option>
+                            </select>
+                        </div>
+
+                        <label>Name of Event</label>
+                        <div class="form-label-group">
                             <input type="text" class="form-control" th:field="*{eventName}" />
                         </div>
+
+                        <label>Description</label>
                         <div class="form-label-group">
-                            <label>Description</label>
                             <textarea  class="form-control" th:field="*{description}"></textarea>
                         </div>
+
+                        <label>Date and time</label>
                         <div class="form-label-group">
-                            <label>Date and time</label>
                             <input class="form-control" type="datetime-local" value="2019-08-19T13:45:00" th:field="*{eventDate}" />
                         </div>
+
+                        <label>Location</label>
                         <div class="form-label-group">
-                            <label>Location</label>
                             <input class="form-control" th:field="*{locationApi}" />
                         </div>
                         <button class="btn btn-lg btn-primary btn-block text-uppercase mt-3" type="submit" value="Create Event">Create Event</button>

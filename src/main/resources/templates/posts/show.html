@@ -11,10 +11,10 @@
 <body>
 <div th:replace="fragments/navbar :: navbar"></div>
 
-<div class="container">
+<div class="container text-center card pt-1 mt-2">
+    <div class="column"><a th:href="@{/posts}">Back to posts</a></div>
 
     <div class="row">
-        <div class="column"><a th:href="@{/posts}">Back to posts</a></div>
         <div class="column"><h2 th:text="${post.getTitle()}"></h2></div>
     </div>
 
@@ -26,7 +26,7 @@
         </div>
     </div>
 
-    <hr/>
+    <br/>
 
     <div class="row">
         <div class="column">
@@ -40,10 +40,15 @@
     <div class="row" sec:authorize="isAuthenticated()">
         <th:block th:if="${#authentication.principal.id} == ${post.postAuthor.id}">
         <div class="column">
-            <a th:href="@{'/posts/' + ${post.getId()} + '/edit'}" class="button button-outline">Edit Post</a>
+
+            <form th:action="@{'/posts/' + ${post.getId()} + '/edit'}" th:object="${post}" >
+                <input class="button button-outline" type="submit" value="Edit Post"/>
+            </form>
+
             <form th:action="@{'/posts/' + ${post.getId()} + '/delete'}" method="post" th:object="${post}">
                 <input class="button button-outline" type="submit" value="Delete Post"/>
             </form>
+
         </div>
         </th:block>
     </div>
