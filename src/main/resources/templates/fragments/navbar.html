@@ -11,7 +11,7 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-        <span id="banner-title" class="navbar-expand-lg float-left">QuickScrim</span>
+        <span id="banner-title" class="navbar-expand-lg float-left headline-font d-none d-sm-block">QuickScrim</span>
 
         <div sec:authorize="isAnonymous()" class="ml-auto">
             <ul class="navbar-nav ml-auto">
@@ -27,7 +27,7 @@
 
 
 
-        <div sec:authorize="isAuthenticated()" class="mr-auto">
+        <div sec:authorize="isAuthenticated()" class="mr-auto d-none d-sm-block">
 
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
