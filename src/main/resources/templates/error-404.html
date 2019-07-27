@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header('Oops!')"></head>
+
+<body>
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<div class="container">
+    <h3>Oh no! 404 Page Not Found!</h3>
+    <figure class="figure">
+        <img src="/img/basketballfail.png" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure." />
+    </figure>
+</div>
+
+
+
+<div th:include="fragments/footer :: footer"></div>
+</body>
+</html>
