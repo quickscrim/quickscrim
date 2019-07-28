@@ -41,7 +41,8 @@
                 <select class="form-control" id="exampleFormControlSelect1" name="categories">
                   <option>Select a Category...</option>
                   <option th:each="category : ${categories}" th:text="${category.sport}" th:value="${category.id}"></option>
-                </select>              </div>
+                </select>
+              </div>
               <div class="col-12 col-md-3">
                 <button type="submit" class="btn btn-block btn-lg btn-primary">Search</button>
               </div>

@@ -9,49 +9,81 @@
 <body>
 <nav th:replace="fragments/navbar :: navbar"></nav>
 
+<header class="masthead text-center text-white">
+<div class="overlay">
     <div class="container">
-
-            <form class="" th:action="@{/posts}" method="get" id="searchForm" th:object="${filter}">
-                <div class="">
-                    <select class="" id="exampleFormControlSelect1" name="categories">
-                            <option value="">Select a Category...</option>
-                            <option th:each="category : ${categories}" th:text="${category.sport}" th:value="${category.id}"></option>
-                    </select>
-                    <button type="submit" class="">Filter</button>
-                </div>
-            </form>
-
-
-            <form class="" th:action="@{/posts/search}" th:method="POST">
-                <div>
-                    <label class="" for="term"></label>
-                    <input class="" type="text" id="term" name="term" placeholder="Search by title or body content"/>
-                    <button type="submit" class="" >Search</button>
-                </div>
-            </form>
-
-                <div>
-                    <a th:href="@{/posts}"><button type="submit" class="">Clear search/filter</button></a>
-                </div>
-
-    </div>
-        
-
-    <div class="container">
-
-
-        <button class="btn btn-lg btn-primary btn-block text-uppercase mt-3" type="submit"><a th:href="@{/posts/create}">Create A Post</a></button>
-        <br/>
-
         <div class="row">
 
+            <div class="col-xl-9 mx-auto">
+                <h1 class="mb-5">The Forum Page</h1>
+            </div>
+
+                <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+
+                        <form th:action="@{/posts}" method="get" id="searchForm" th:object="${filter}">
+                            <div class="form-row">
+
+                                <div class="col-12 col-md-9 mb-2 mb-md-0">
+                                    <select class="form-control" id="exampleFormControlSelect1" name="categories">
+                                            <option value="">Select a Category...</option>
+                                            <option th:each="category : ${categories}" th:text="${category.sport}" th:value="${category.id}"></option>
+                                    </select>
+                                </div>
+
+                                   <div class="col-12 col-md-3">
+                                        <button type="submit" class="btn btn-block btn-lg btn-primary">Filter</button>
+                                   </div>
+
+                            </div>
+                        </form>
+                </div>
+
+                <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+
+
+                        <form th:action="@{/posts/search}" th:method="POST">
+                            <div class="form-row">
+
+                                <div class="col-12 col-md-9 mb-2 mb-md-0">
+                                    <label for="term"></label>
+                                    <input class="form-control" type="text" id="term" name="term" placeholder="Search by title or body content"/>
+                                </div>
+
+                                   <div class="col-12 col-md-3">
+                                        <button type="submit" class="btn btn-block btn-lg btn-primary">Search</button>
+                                   </div>
+
+                                </div>
+
+                        </form>
+                </div>
+
+                        <!--<div class="col-12 col-md-3">-->
+                            <!--<a class="btn btn-block btn-lg btn-danger" th:href="@{/posts}">Clear</a>-->
+                        <!--</div>-->
+
+            </div>
+
+        </div>
+    </div>
+</header>
+
+    <div class="container">
+
+
+
+
+        <div class="row">
             <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-
                 <div class="card card-signin my-5">
-
                     <div class="card-body">
 
+                            <div class="form-label-group">
+                                <a class="btn btn-lg btn-primary btn-block text-uppercase mt-3" th:href="@{/posts/create}">Create A Post</a>
+                            </div>
+
                         <th:block th:each="post : ${posts}">
+
 
                             <div class="form-label-group">
                                 <h4 class="mb-1 font-weight-bold" th:text="${post.getTitle()}"></h4>
@@ -69,13 +101,9 @@
                         </th:block>
 
                     </div>
-
                 </div>
-
             </div>
-
         </div>
-
     </div>
 
 
