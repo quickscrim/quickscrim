@@ -9,7 +9,13 @@ const options = {
 
         const profilePicUrl = file.url;
 
-        $('<input/>').attr({'type': 'hidden', 'value': file.url, 'name': 'profilePicUrl'}).appendTo("#pfpUpload");
+        let fileObj = {
+            'type': 'hidden',
+            'value': profilePicUrl,
+            'name': 'profilePicUrl'
+        };
+
+        $('<input/>').attr(fileObj).appendTo("#pfpUpload");
         $('#pfpUpload').submit();
 
 

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Bungee+Inline|Graduate|Righteous&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Bungee+Inline|Graduate|Righteous|Open+Sans:600i&display=swap');
 body {
     min-height: 100vh;
     position: relative;
@@ -23,10 +23,15 @@ body {
     padding-right: 1em;
 }
 
+
 .headline-font {
     /*font-family: 'Graduate', cursive !important;*/
     /*font-family: 'Bungee Inline', cursive;*/
     font-family: 'Righteous', cursive !important;
+}
+
+.team-member-name {
+    color:#1574bd !important;
 }
 
 .landing-carousel-img {
