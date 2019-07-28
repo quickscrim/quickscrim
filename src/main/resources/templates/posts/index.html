@@ -9,6 +9,8 @@
 <body>
 <nav th:replace="fragments/navbar :: navbar"></nav>
 
+    <div class="container">
+
             <form class="" th:action="@{/posts}" method="get" id="searchForm" th:object="${filter}">
                 <div class="">
                     <select class="" id="exampleFormControlSelect1" name="categories">
@@ -20,7 +22,6 @@
             </form>
 
 
-
             <form class="" th:action="@{/posts/search}" th:method="POST">
                 <div>
                     <label class="" for="term"></label>
@@ -29,41 +30,54 @@
                 </div>
             </form>
 
-
                 <div>
                     <a th:href="@{/posts}"><button type="submit" class="">Clear search/filter</button></a>
                 </div>
 
-
+    </div>
         
 
-    <div>
-        <h1 class="form-signin">Posts</h1>
-        <button type="submit"><a th:href="@{/posts/create}">Create A Post +</a></button>
+    <div class="container">
 
+
+        <button class="btn btn-lg btn-primary btn-block text-uppercase mt-3" type="submit"><a th:href="@{/posts/create}">Create A Post</a></button>
         <br/>
 
         <div class="row">
 
-            <th:block th:each="post : ${posts}">
-               <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
 
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <h4 class="mb-1" th:text="${post.getTitle()}"></h4>
-                            <p class="card-text" th:text="'Posted by ' + ${post.getPostAuthor().getUsername()}"></p>
-                            <p class="card-text" th:text="${post.getBody()}"></p>
-                            <p class="card-text" th:text="${post.getPostCategory().sport}"></p>
-                            <a class="button button-clear" th:href="@{'/posts/' + ${post.getId()}}">Read More</a>
-                        </div>
+                <div class="card card-signin my-5">
+
+                    <div class="card-body">
+
+                        <th:block th:each="post : ${posts}">
+
+                            <div class="form-label-group">
+                                <h4 class="mb-1 font-weight-bold" th:text="${post.getTitle()}"></h4>
+                            </div>
+
+                            <div class="form-label-group" >
+                                <p class="card-text" th:text="${post.getBody()}"></p>
+                                <p class="card-text" th:text="${post.getPostCategory().sport}"></p>
+                                <p class="font-italic" th:text="'Posted by ' + ${post.getPostAuthor().getUsername()}"></p>
+                                <a class="btn btn-lg btn-primary btn-block text-uppercase mt-3" th:href="@{'/posts/' + ${post.getId()}}">Read More</a>
+                            </div>
+
+                        <hr/>
+
+                        </th:block>
+
                     </div>
 
-               </div>
+                </div>
 
-            </th:block>
+            </div>
 
         </div>
+
     </div>
+
 
 <div th:replace="fragments/footer :: footer"></div>
 </body>
