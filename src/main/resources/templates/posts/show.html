@@ -45,7 +45,7 @@
                                 </form>
 
                                 <form th:action="@{'/posts/' + ${post.getId()} + '/delete'}" method="post" th:object="${post}">
-                                    <input class="btn btn-lg btn-primary btn-block text-uppercase mt-3" type="submit" value="Delete Post"/>
+                                    <input class="btn btn-lg btn-danger btn-block text-uppercase mt-3" type="submit" value="Delete Post"/>
                                 </form>
 
                             </div>
