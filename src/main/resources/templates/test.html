@@ -31,17 +31,17 @@
             </div>
         </div>
 
-        <div class="carousel-item" style="background-image: url(/img/soccer-1.jpg)">
-          <div class="carousel-caption mx-auto my-5 rounded card" style="background: rgba(80, 120, 150, .6);">
-            <h1>Play!</h1>
-            <h3>With over 20 sports to choose from, follow your passion!</h3>
-          </div>
-        </div>
-
         <div class="carousel-item" style="background-image: url(/img/phone3r.jpg)">
           <div class="carousel-caption mx-auto my-5 rounded card" style="background: rgba(80, 120, 150, .6);">
             <h1>Search!</h1>
-            <h3>Search by sport to find a game near you!</h3>
+            <h3>Find a game near you!</h3>
+          </div>
+        </div>
+
+        <div class="carousel-item" style="background-image: url(/img/soccer-1.jpg)">
+          <div class="carousel-caption mx-auto my-5 rounded card" style="background: rgba(80, 120, 150, .6);">
+            <h1>Play!</h1>
+            <h3>Over 20 sports to choose from!</h3>
           </div>
         </div>
 
@@ -66,7 +66,7 @@
   <!-- Page Content -->
   <div class="container">
 
-    <h1 class="my-4 text-center " style="color: white">Welcome to QuickScrim!</h1>
+    <h1 class="my-4 text-center " style="color: white">Welcome to <span class="headline-font">QuickScrim</span>!</h1>
 
     <!-- Marketing Icons Section -->
     <div class="row">
@@ -75,7 +75,7 @@
         <div class="card h-100">
           <h4 class="card-header text-center ">Create an event!</h4>
           <div class="card-body">
-            <p class="card-text text-center">!</p>
+            <p class="card-text text-center">Know a place to play? Organize an event others can join!</p>
           </div>
           <div class="card-footer text-center text-center">
             <a th:href="@{'/events/create'}" class="btn btn-primary">Create event!</a>
@@ -85,12 +85,12 @@
 
       <div class="col-lg-4 mb-4">
         <div class="card h-100">
-          <h4 class="card-header text-center ">Create/Search through Forums!</h4>
+          <h4 class="card-header text-center ">Check out the forums!</h4>
           <div class="card-body text-center">
-            <p class="card-text text-center">Search through forums to see what people are talking about or ask your own questions!</p>
+            <p class="card-text text-center">Ask questions, make connections, build community!</p>
           </div>
           <div class="card-footer text-center">
-            <a th:href="@{'/posts'}" class="btn btn-primary text-center">Search through Forums!</a>
+            <a th:href="@{'/posts'}" class="btn btn-primary text-center">See the Forums!</a>
           </div>
         </div>
       </div>
@@ -99,7 +99,7 @@
         <div class="card h-100">
           <h4 class="card-header text-center ">No Account? No Problem!</h4>
           <div class="card-body text-center">
-            <p class="card-text text-center">All you need is a valid email and username to get started and playing in no time!</p>
+            <p class="card-text text-center">Registration is absolutely free!</p>
           </div>
           <div class="card-footer text-center">
             <a th:href="@{'/register'}" class="btn btn-primary text-center">Register Now!</a>
