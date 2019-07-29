@@ -53,24 +53,25 @@
     </div>
   </header>
 
-<div class = "row">
+<div class = "row m-4">
   <th:block th:each="event : ${events}">
     <div class="col-xs-12 col-sm-6 col-md-4 mt-3">
       <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
         <div class="mainflip">
-          <div class="frontside">
+          <div class="frontside" style="width:100%;">
             <div class="card">
               <div class="card-body text-center">
-                <p><img class=" img-fluid" th:src="${'/img/sport-icons/'  + event.eventSport.iconIMG}" alt="card image" /></p>
+                <p><img class=" img-fluid" th:src="${'/img/sport-icons/'  + event.eventSport.iconIMG}" style="height:70px; width:70px;" alt="card image" /></p>
                 <h5 class="mb-1" th:text="${event.eventName}"></h5>
                 <p class="card-text" th:text="${event.eventCreator.username}"></p>
+                <p class="card-text" th:text="${event.getEventDate()}"></p>
                 <p class="card-text" th:text="${event.locationApi}"></p>
               </div>
             </div>
           </div>
-          <div class="backside">
+          <div class="backside" style="width:100%;">
             <div class="card">
-              <div class="card-body text-center mt-4">
+              <div class="card-body text-center">
                 <h4 class="card-title">Description</h4>
                 <p class="card-text" th:text="${event.description}" ></p>
                 <a th:href="@{'/events/' + ${event.getId()}}" th:method="GET">
