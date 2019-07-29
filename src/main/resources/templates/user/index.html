@@ -64,7 +64,8 @@
                 <p><img class=" img-fluid" th:src="${'/img/sport-icons/'  + event.eventSport.iconIMG}" style="height:70px; width:70px;" alt="card image" /></p>
                 <h5 class="mb-1" th:text="${event.eventName}"></h5>
                 <p class="card-text" th:text="${event.eventCreator.username}"></p>
-                <p class="card-text" th:text="${event.getEventDate()}"></p>
+                <p class="card-text" th:text="${#dates.format(event.getEventDate(), 'MM-dd-yyyy')}"></p>
+                <p class="card-text" th:text="${#dates.format(event.getEventDate(), 'HH-mm')}"></p>
                 <p class="card-text" th:text="${event.locationApi}"></p>
               </div>
             </div>
