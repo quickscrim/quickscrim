@@ -44,8 +44,8 @@
             <ul class="navbar-nav ml-auto">
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle mr-4" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img id="navbar-profile-img" th:src="${#authentication.principal.image}" class="rounded-circle mr-2" /><span class="user-name-style" th:text="${#authentication.name}"></span>
+                    <a class="nav-link dropdown-toggle mr-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img id="navbar-profile-img" th:src="${#authentication.principal.image}" class="rounded-circle mr-2" /><span class="mr-0" th:text="${#authentication.name}"></span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" th:href="@{/logout}">Logout</a>

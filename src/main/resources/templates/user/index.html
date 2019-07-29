@@ -58,7 +58,7 @@
     <div class="col-xs-12 col-sm-6 col-md-4 mt-3">
       <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
         <div class="mainflip">
-          <div class="frontside">
+          <div class="frontside" style="width:100%;">
             <div class="card">
               <div class="card-body text-center">
                 <p><img class=" img-fluid" th:src="${'/img/sport-icons/'  + event.eventSport.iconIMG}" style="height:80px; width:80px;" alt="card image" /></p>
@@ -68,9 +68,9 @@
               </div>
             </div>
           </div>
-          <div class="backside">
+          <div class="backside" style="width:100%;">
             <div class="card">
-              <div class="card-body text-center mt-4">
+              <div class="card-body text-center">
                 <h4 class="card-title">Description</h4>
                 <p class="card-text" th:text="${event.description}" ></p>
                 <a th:href="@{'/events/' + ${event.getId()}}" th:method="GET">
