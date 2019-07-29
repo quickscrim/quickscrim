@@ -14,24 +14,25 @@
             <div class="card card-signin my-5">
                 <div class="card-body">
                     <div class="form-label-group">
-                        <h1 class="text-center" th:text="${event.eventName}"></h1>
+                        <h1 class="text-center" th:text="${event.eventName}" style="color: #1574bd"></h1>
                     </div>
-                    <h5>Description</h5>
+                    <hr />
+                    <h5 class="text-center">Description</h5>
                     <div class="form-label-group">
-                        <p th:text="${event.description}"></p>
+                        <p class="text-center" th:text="${event.description}"></p>
                     </div>
-                    <h5>Date and Time</h5>
+                    <h5 class="text-center">Date and Time</h5>
                     <div class="form-label-group">
-                        <p class="card-text" th:text="${#dates.format(event.getEventDate(), 'MM-dd-yyyy')}"></p>
-                        <p class="card-text" th:text="${#dates.format(event.getEventDate(), 'HH:mm')}"></p>
+                        <p  class="card-text text-center" th:text="${#dates.format(event.getEventDate(), 'MM-dd-yyyy')}"></p>
+                        <p class="card-text text-center" th:text="${#dates.format(event.getEventDate(), 'HH:mm')}"></p>
                     </div>
-                    <h5>Location</h5>
+                    <h5 class="text-center">Location</h5>
                     <div class="form-label-group">
-                        <p th:text="${event.locationApi}"></p>
+                        <p class="text-center" th:text="${event.locationApi}"></p>
                     </div>
-                    <h5>Creator</h5>
+                    <h5 class="text-center">Creator</h5>
                     <div class="form-label-group">
-                        <p th:text="${event.eventCreator.username}"></p>
+                        <p class="text-center" th:text="${event.eventCreator.username}"></p>
                     </div>
                     <div sec:authorize="isAuthenticated()">
                         <th:block th:if="${#authentication.principal.id} != ${event.eventCreator.id}" >
