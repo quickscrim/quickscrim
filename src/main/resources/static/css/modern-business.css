@@ -275,3 +275,12 @@ section .section-title {
   height: 120px;
   border-radius: 50%;
 }
+
+/*fix search bar on posts page*/
+.fixSearchBar{
+  display: inherit; !important;
+}
+
+.fixForms{
+  justify-content: center; !important;
+}

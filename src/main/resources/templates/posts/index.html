@@ -15,85 +15,81 @@
         <div class="row">
 
             <div class="col-xl-9 mx-auto">
-                <h1 class="mb-5">The Forum Page</h1>
+                <h1 class="mb-5 pt-5">The Forum Page</h1>
             </div>
 
-                <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+
+    <div class="container">
+        <div class="row fixForms">
+            <div class="d-flex justify-content-around fixForms">
+                <div class="col-md-10 col-lg-8 col-xl-7 mx-auto fixForms">
 
                         <form th:action="@{/posts}" method="get" id="searchForm" th:object="${filter}">
                             <div class="form-row">
 
                                 <div class="col-12 col-md-9 mb-2 mb-md-0">
                                     <select class="form-control" id="exampleFormControlSelect1" name="categories">
-                                            <option value="">Select a Category...</option>
+                                            <option value="">Filter by sport</option>
                                             <option th:each="category : ${categories}" th:text="${category.sport}" th:value="${category.id}"></option>
                                     </select>
                                 </div>
 
-                                   <div class="col-12 col-md-3">
-                                        <button type="submit" class="btn btn-block btn-lg btn-primary">Filter</button>
+                                   <div class="col-12 col-md-3 input-group">
+                                       <div class="input-group-btn">
+                                        <button type="submit" class="btn btn-lg btn-primary">Filter</button>
+                                       </div>
                                    </div>
 
                             </div>
 
                         </form>
                 </div>
-
-            <br/>
-            <br/>
-            <br/>
 
                 <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
 
-
                         <form th:action="@{/posts/search}" th:method="POST">
+
                             <div class="form-row">
 
-                                <div class="col-12 col-md-9 mb-2 mb-md-0">
-                                    <label for="term"></label>
-                                    <input class="form-control" type="text" id="term" name="term" placeholder="Search by title or body content"/>
+                                <div class="col-12 col-md-9 mb-2 mb-md-0 fixSearchBar">
+                                    <label class="fixSearchBar" for="term"></label>
+                                    <input class="form-control" type="text" id="term" name="term" placeholder="Search by contents"/>
                                 </div>
 
-                                   <div class="col-12 col-md-3">
-                                        <button type="submit" class="btn btn-block btn-lg btn-primary">Search</button>
+                                   <div class="col-12 col-md-3 input-group">
+                                       <div class="input-group-btn">
+                                        <button type="submit" class="btn btn-lg btn-primary">Search</button>
+                                       </div>
                                    </div>
 
                             </div>
 
                         </form>
-                </div>
-
-            <br/>
-            <br/>
-            <br/>
-
-                <!--<div class="col-md-10 col-lg-8 col-xl-7 mx-auto">-->
-
-                    <!--<div class="form-row align-content-center">-->
-                        <!--<div class="col-12 col-md-3">-->
-                            <!--<a class="btn btn-block btn-lg btn-danger" th:href="@{/posts}">Clear</a>-->
-                        <!--</div>-->
-                    <!--</div>-->
-
-                <!--</div>-->
-
             </div>
-
+            </div>
+                </div>
+            </div>
         </div>
     </div>
+</div>
+
+                    <div class="row justify-content-center">
+                        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+
+                            <div class="form-label-group">
+                                <a class="btn btn-lg btn-warning text-uppercase mt-3" th:href="@{/posts}">Clear Filter/Search Results</a>
+                            </div>
+                        </div>
+                    </div>
+
 </header>
+<br/>
+<hr class="bg-white"/>
+<br/>
 
     <div class="container">
 
 
-        <div class="row">
-            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-
-                <div class="form-label-group">
-                    <a class="btn btn-block btn-lg btn-danger text-uppercase mt-3" th:href="@{/posts}">Clear Filter/Search Results</a>
-                </div>
-            </div>
-        </div>
 
 
         <div class="row">

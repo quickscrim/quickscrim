@@ -62,3 +62,6 @@ body {
     margin-right:50px;
 }
 
+.fixSearchBar{
+    display: initial;
+}
