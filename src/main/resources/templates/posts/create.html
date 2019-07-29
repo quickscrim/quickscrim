@@ -33,6 +33,7 @@
                         <div class="">
                             <label for="exampleFormControlSelect1"></label>
                             <select class="" id="exampleFormControlSelect1" th:field="*{postCategory}">
+                                <option value="test">Select a Category...</option>
                                 <option th:each="category : ${categories}" th:text="${category.sport}" th:value="${category.id}"></option>
                             </select>
                             <p th:if="${#fields.hasErrors('postCategory')}" th:errors="*{postCategory}"></p>
