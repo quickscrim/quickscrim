@@ -14,21 +14,22 @@
             <div class="card card-signin my-5">
                 <div class="card-body">
                     <div class="form-label-group">
-                        <h1 th:text="${event.eventName}"></h1>
+                        <h1 class="text-center" th:text="${event.eventName}"></h1>
                     </div>
-                    <label>Description</label>
+                    <h5>Description</h5>
                     <div class="form-label-group">
                         <p th:text="${event.description}"></p>
                     </div>
-                    <label>Date</label>
+                    <h5>Date and Time</h5>
                     <div class="form-label-group">
-                        <p th:text="${event.eventDate}"></p>
+                        <p class="card-text" th:text="${#dates.format(event.getEventDate(), 'MM-dd-yyyy')}"></p>
+                        <p class="card-text" th:text="${#dates.format(event.getEventDate(), 'HH:mm')}"></p>
                     </div>
-                    <label>Location</label>
+                    <h5>Location</h5>
                     <div class="form-label-group">
                         <p th:text="${event.locationApi}"></p>
                     </div>
-                    <label>Creator</label>
+                    <h5>Creator</h5>
                     <div class="form-label-group">
                         <p th:text="${event.eventCreator.username}"></p>
                     </div>

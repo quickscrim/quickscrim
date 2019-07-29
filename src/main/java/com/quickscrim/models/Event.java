@@ -21,7 +21,7 @@ public class Event {
     @Column(nullable = false, length = 8000)
     private String description;
 
-   @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+   @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column
     private Date eventDate;
 
