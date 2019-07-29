@@ -78,7 +78,7 @@
 //        List<Category> categories = Arrays.asList(
 //                new Category ("   ", "blank.png"),
 //                new Category("Basketball", "basketball.png"),
-//                new Category("Baseball", "img/sport-icons/baseball.png"),
+//                new Category("Baseball", "baseball.png"),
 //                new Category("Archery", "archery.png"),
 //                new Category("Bowling", "bowling.png"),
 //                new Category("Boxing", "boxing.png"),
