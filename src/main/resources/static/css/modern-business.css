@@ -280,3 +280,7 @@ section .section-title {
 .fixSearchBar{
   display: inherit; !important;
 }
+
+.fixForms{
+  justify-content: center; !important;
+}

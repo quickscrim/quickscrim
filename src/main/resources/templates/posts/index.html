@@ -20,9 +20,9 @@
 
 
     <div class="container">
-        <div class="row">
-            <div class="d-flex justify-content-around">
-                <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+        <div class="row fixForms">
+            <div class="d-flex justify-content-around fixForms">
+                <div class="col-md-10 col-lg-8 col-xl-7 mx-auto fixForms">
 
                         <form th:action="@{/posts}" method="get" id="searchForm" th:object="${filter}">
                             <div class="form-row">
@@ -72,22 +72,24 @@
         </div>
     </div>
 </div>
+
+                    <div class="row justify-content-center">
+                        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+
+                            <div class="form-label-group">
+                                <a class="btn btn-lg btn-warning text-uppercase mt-3" th:href="@{/posts}">Clear Filter/Search Results</a>
+                            </div>
+                        </div>
+                    </div>
+
 </header>
 <br/>
-<br/>
+<hr class="bg-white"/>
 <br/>
 
     <div class="container">
 
 
-        <div class="row">
-            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-
-                <div class="form-label-group">
-                    <a class="btn btn-block btn-lg btn-warning text-uppercase mt-3" th:href="@{/posts}">Clear Filter/Search Results</a>
-                </div>
-            </div>
-        </div>
 
 
         <div class="row">
