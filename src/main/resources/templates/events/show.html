@@ -24,7 +24,6 @@
                     <h5 class="text-center">Date and Time</h5>
                     <div class="form-label-group">
                         <p  class="card-text text-center" th:text="${#dates.format(event.getEventDate(), 'MM-dd-yyyy')}"></p>
-                        <p class="card-text text-center" th:text="${#dates.format(event.getEventDate(), 'HH:mm')}"></p>
                     </div>
                     <h5 class="text-center">Location</h5>
                     <div class="form-label-group">
